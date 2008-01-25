@@ -1,0 +1,2 @@
+external/activemq-cpp-library-3.9.5/src/main/.libs/libactivemq-cpp.a !text !filter !merge !diff
+external/activemq-cpp-library-3.9.5/src/main/.libs/libactivemq-cpp.so.19.0.5 !text !filter !merge !diff
