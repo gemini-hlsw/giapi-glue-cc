@@ -1,3 +1,4 @@
 *.d
 *.o
 libgiapi*
+.DS_STORE

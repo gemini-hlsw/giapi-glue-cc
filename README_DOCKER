@@ -1,0 +1,21 @@
+4 February 2021 ST
+
+To use both images the recommended method is to use docker compose to link both GMP and GIAPI glue. 
+The docker-compose.yml file can be found here: https://github.com/gemini-hlsw/scorpio-setup
+
+If Compose is used: 
+
+    $ docker-compose up 
+This should create the images if are not in local or pull them from the registry (prior configuration).
+Both giapi-glue-cc and gmp containers would start, giapi-glue-ext container can be deleted. 
+
+If giapi-glue-cc container does not open in interactive mode:
+    
+    $ docker run -it --name scorpio_giapi-glue-dev_1 \
+            -v $(pwd)/giapi-glue-cc/workspace:/home/software/giapi-glue-cc/workspace \
+            --net scorpio_default giapi-glue/build /bin/bash 
+This would create a new container (the docker-compose one can be deleted) with a new volume associated.
+Check for already created volumes with $ docker volume ls to see if an existing volume may work better or 
+just change -v flag value to a volume of your choose. NOTE: This only work if docker-compose is run first. 
+
+- stroncod
