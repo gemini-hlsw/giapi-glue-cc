@@ -1,4 +1,4 @@
-FROM giapi-glue-external:15
+FROM giapi-glue-external:R15
 COPY . /home/software/giapi-glue-cc
 # set common env variables for building
 ENV GIAPI_ROOT=/home/software/giapi-glue-cc
