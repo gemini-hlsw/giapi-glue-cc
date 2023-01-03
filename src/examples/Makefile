@@ -10,7 +10,7 @@ LIBS= -lgiapi-glue-cc -lactivemq-cpp -llog4cxx -lapr-1 -lcurlpp -lcurl
 
 LD_LIBRARY_PATH := ../../:$(LOG4CXX_LIB):$(CPPUNIT_LIB):$(ACTIVEMQ_LIB):$(APR_LIB):$(CURLPP_LIB)
 
-all: seq-command tcscontext pcsupdater obsevent epicssubscription epicsget logging fileevents status services apply-command any-command observe-simulator 
+all: seq-command tcscontext pcsupdater obsevent epicssubscription epicsget logging fileevents status services apply-command ghost-split-command any-command observe-simulator 
 
 seq-command: seq-command.o
 
@@ -42,6 +42,9 @@ services: services.o
 	$(CXX) $(LIB_DIRS) $(LIBS) -o $@  $<
 
 apply-command: apply-command.o
+	$(CXX) $(LIB_DIRS) $(LIBS) -o $@  $<
+
+ghost-split-command: ghost-split-command.o
 	$(CXX) $(LIB_DIRS) $(LIBS) -o $@  $<
 
 any-command: any-command.o
@@ -83,4 +86,4 @@ run:
 
 
 clean: 
-	-$(RM) *.o *.d stresstest seq-command pcsupdater tcscontext obsevent epicssubscription pcsupdater logging fileevents status services apply-command any-command obsacq gpim1zernikes gpisimulator gpiobssimulator engineering
+	-$(RM) *.o *.d stresstest seq-command pcsupdater tcscontext obsevent epicssubscription pcsupdater logging fileevents status services apply-command any-command obsacq gpim1zernikes gpisimulator gpiobssimulator engineering ghost-split-command
