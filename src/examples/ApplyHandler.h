@@ -22,12 +22,16 @@ class WorkerThread: public Runnable {
 private:
 
 	int numMessages;
+	int totalMessages;
+	int waitTime;
 
 	giapi::command::ActionId id;
 public:
 
-	WorkerThread() {
+	WorkerThread(int totalMessages = 10, int waitTime = 500) {
 		this->numMessages = 0;
+		this->totalMessages = totalMessages;
+		this->waitTime = waitTime;
 		this->id = 0;
 	}
 
@@ -42,13 +46,12 @@ public:
 
 	virtual void run() {
 		printf("Worker Thread started!\n");
-		while (numMessages < 10) {
-			printf("Messages processed = %d \n", numMessages++);
-			CountDownLatch lock(1);
-			lock.await(500);
-		}
-		CommandUtil::postCompletionInfo(id, HandlerResponse::create(
-				HandlerResponse::COMPLETED));
+    while (numMessages < this->totalMessages) {
+      printf("Messages processed = %d \n", numMessages++);
+      CountDownLatch lock(1);
+      lock.await(this->waitTime);
+    }
+    CommandUtil::postCompletionInfo(id, HandlerResponse::create(HandlerResponse::COMPLETED));
 	}
 
 private:
