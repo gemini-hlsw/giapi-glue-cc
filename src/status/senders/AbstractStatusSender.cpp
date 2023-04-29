@@ -34,10 +34,10 @@ int AbstractStatusSender::postStatus(const std::string &name) const
 
 int AbstractStatusSender::postStatus() const throw (PostException) {
 	//get the status items
-	const vector<pStatusItem> items =
+	const std::vector<pStatusItem> items =
 			StatusDatabase::Instance()->getStatusItems();
 	//and post the ones that haven't changed. Clear their status
-	for (vector<pStatusItem>::const_iterator it = items.begin(); it
+	for (std::vector<pStatusItem>::const_iterator it = items.begin(); it
 			!= items.end(); ++it) {
 		pStatusItem item = *it;
 		doPost(item);

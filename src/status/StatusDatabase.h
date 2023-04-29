@@ -1,9 +1,7 @@
 #ifndef STATUSDATABASE_H_
 #define STATUSDATABASE_H_
-#include <ext/hash_map>
 #include <cstdarg>
 #include <vector>
-#include <memory>
 
 #include <log4cxx/logger.h>
 
@@ -37,12 +35,12 @@ class StatusDatabase {
 	 * Type definition for the hash_table that will map strings to
 	 * StatusItems pointers
 	 */
-	typedef hash_map<const std::string, pStatusItem,  hash<std::string>, util::eqstr >
+	typedef std::unordered_map<const std::string, pStatusItem,  std::hash<std::string>, util::eqstr >
 			StringStatusMap;
 
 private:
 	StringStatusMap _map;
-	vector<pStatusItem> _statusItemList;
+	std::vector<pStatusItem> _statusItemList;
 	static pStatusDatabase INSTANCE;
 	/**
 	 * Private constructor
@@ -238,7 +236,7 @@ public:
 	 */
 	pStatusItem getStatusItem(const std::string &name);
 
-	const vector<pStatusItem>& getStatusItems();
+	const std::vector<pStatusItem>& getStatusItems();
 
 	virtual ~StatusDatabase();
 

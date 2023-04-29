@@ -72,7 +72,7 @@ private:
 	 * Type definition for the hash_table that will map EPICS channel names to
 	 * the consumer that is receiving the updates
 	 */
-	typedef hash_map<std::string, pEpicsConsumer> EpicsConsumersMap;
+	typedef std::unordered_map<std::string, pEpicsConsumer> EpicsConsumersMap;
 
 	EpicsConsumersMap _epicsConsumersMap;
 

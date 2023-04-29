@@ -4,11 +4,7 @@
 #include <giapi/Configuration.h>
 #include <util/giapiMaps.h>
 
-#include <ext/hash_map>
 
-//hash_map is an extension of STL widely available on gnu compilers, fortunately
-//Will make its namespace visible here.
-using namespace __gnu_cxx;
 
 
 namespace giapi {
@@ -60,7 +56,7 @@ private:
 	 * Type definition for the hash_table that will map strings to
 	 * values in the configuration
 	 */
-	typedef hash_map<std::string, std::string, hash<std::string>, util::eqstr>
+	typedef unordered_map<std::string, std::string, hash<std::string>, util::eqstr>
 			StringStringMap;
 
 	StringStringMap _configMap;
