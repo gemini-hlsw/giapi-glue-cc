@@ -14,7 +14,7 @@ using namespace giapi;
 
 //hash_map is an extension of STL widely available on gnu compilers, fortunately
 //Will make its namespace visible here.
-using namespace __gnu_cxx;
+//using namespace __gnu_cxx;
 
 namespace std _GLIBCXX_VISIBILITY(default) {
 template<> struct hash<command::Activity> {
