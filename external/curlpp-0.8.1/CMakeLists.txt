@@ -57,6 +57,8 @@ add_subdirectory(extras)
 
 message(STATUS "Looking for CURL")
 include(FindCURL)
+set(CURL_LIBRARY "$ENV{GIAPI_ROOT}/external/libcurl/lib")
+set(CURL_INCLUDE_DIR "$ENV{GIAPI_ROOT}/external/libcurl/include")
 find_package(CURL REQUIRED)
 
 if(CURL_FOUND)
