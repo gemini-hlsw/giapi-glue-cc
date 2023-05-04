@@ -1,7 +1,7 @@
 # Configure
 
 ```
-./configure --prefix=$GIAPI_ROOT/external/libcurl
+./configure  --without-ssl  --prefix=$GIAPI_ROOT/external/libcurl
 ```
 
 # Build
