@@ -12,9 +12,6 @@
 
 using namespace giapi;
 
-//hash_map is an extension of STL widely available on gnu compilers, fortunately
-//Will make its namespace visible here.
-//using namespace __gnu_cxx;
 
 namespace std _GLIBCXX_VISIBILITY(default) {
 template<> struct hash<command::Activity> {
@@ -54,7 +51,7 @@ struct eqstr {
  * Type definition for the hash_table that will map strings to
  * Action Ids.
  */
-  typedef std::unordered_map<const std::string, command::ActionId, std::hash<std::string>, util::eqstr>
+typedef std::unordered_map<const std::string, command::ActionId, std::hash<std::string>, util::eqstr>
 		StringActionIdMap;
 
 /**

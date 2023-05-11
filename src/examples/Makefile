@@ -3,17 +3,16 @@
 -include ../../conf/config.mk
 -include ../../conf/common.mk
 
-INC_DIRS= -I../../ -I../ -I$(ACTIVEMQ_INCLUDE) -I$(APR_INCLUDE) -I$(LOG4CXX_INCLUDE) -I$(CURLPP_INCLUDE) -I$(CURL_INCLUDE)
+INC_DIRS= -I../../ -I../ -I$(ACTIVEMQ_INCLUDE) -I$(APR_INCLUDE) -I$(APRUTIL_INCLUDE) -I$(LOG4CXX_INCLUDE) -I$(CURLPP_INCLUDE) -I$(CURL_INCLUDE)
 
-LIB_DIRS= -L../../ -L$(ACTIVEMQ_LIB) -L$(LOG4CXX_LIB) -L$(APR_LIB) -L$(CURLPP_LIB) -L$(CURLPP_LIB64)  -L$(CURL_LIB) -L$(CURL_LIB64)
+LIB_DIRS= -L../../ -L$(ACTIVEMQ_LIB) -L$(LOG4CXX_LIB) -L$(APR_LIB) -L$(APRUTIL_LIB) -L$(CURLPP_LIB) -L$(CURLPP_LIB64)  -L$(CURL_LIB) -L$(CURL_LIB64)
 
 LIBS= -lgiapi-glue-cc -lactivemq-cpp -llog4cxx -lapr-1 -lcurlpp -lcurl
 
-LD_LIBRARY_PATH := ../../:$(LOG4CXX_LIB):$(CPPUNIT_LIB):$(ACTIVEMQ_LIB):$(APR_LIB):$(CURLPP_LIB):$(CURLPP_LIB64)
+LD_LIBRARY_PATH := ../../:$(LOG4CXX_LIB):$(CPPUNIT_LIB):$(ACTIVEMQ_LIB):$(APR_LIB):$(APRUTIL_LIB):$(CURLPP_LIB):$(CURLPP_LIB64)
 
 all: seq-command tcscontext pcsupdater obsevent epicssubscription epicsget logging fileevents status services apply-command any-command observe-simulator 
 
-#checkenv: checkMain
 
 seq-command: seq-command.o
 

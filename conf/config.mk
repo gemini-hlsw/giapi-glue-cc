@@ -1,11 +1,7 @@
 #Directories used to build and install the GIAPI C++ language glue. 
 
-#mkfile_path := $(abspath $(lastword $(MAKEFILE_LIST)))
-#mkfile_dir := $(dir $(mkfile_path))
-#$(info path: $(mkfile_path)  $(mkfile_dir) values)
 
 ifndef GIAPI_ROOT
-       #GIAPI_ROOT:=$(shell pwd | sed '-E -e s/(src|test).*//' )
        GIAPI_ROOT:=$(shell pwd | sed -E 's/(src|test).*//' )
        $(info GIAPI_ROOT is not defined, using  $(GIAPI_ROOT) )
 endif
