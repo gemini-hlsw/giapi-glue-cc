@@ -82,7 +82,7 @@ private:
 	 * Type definition for the hash_table that will map command Ids to
 	 * the JMS Topic associated to them.
 	 */
-	typedef hash_map<command::Activity, pSequenceCommandConsumer>
+	typedef std::unordered_map<command::Activity, pSequenceCommandConsumer>
 			ActivityConsumerMap;
 
 	ActivityConsumerMap _activityConsumerMap;
@@ -126,7 +126,7 @@ private:
 	static pJmsCommandUtil INSTANCE;
 	JmsCommandUtil() throw (CommunicationException);
 
-	typedef hash_map<const std::string, ActivityHolder *, hash<std::string>, util::eqstr>
+	typedef std::unordered_map<const std::string, ActivityHolder *, hash<std::string>, util::eqstr>
 			CommandHolderMap;
 	CommandHolderMap _commandHolderMap;
 

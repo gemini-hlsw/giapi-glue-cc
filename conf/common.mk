@@ -51,15 +51,28 @@ ACTIVEMQ_INCLUDE := $(ACTIVEMQ_BASE)/include/activemq-cpp-3.4.1
 #ACTIVEMQ_INCLUDE := $(ACTIVEMQ_BASE)/include/activemq-cpp-3.1.3
 ACTIVEMQ_LIB := $(ACTIVEMQ_BASE)/lib
 
-#APR libs
+#APR lib
 APR_BASE:=$(EXTERNAL_LIB)/apr
 APR_INCLUDE:= $(APR_BASE)/include/apr-1
 APR_LIB:=$(APR_BASE)/lib
 
-#cURLpp
+#APR-UTIL libs
+APRUTIL_BASE:=$(EXTERNAL_LIB)/apr-util
+APRUTIL_INCLUDE:= $(APRUTIL_BASE)/include
+APRUTIL_LIB:=$(APRUTIL_BASE)/lib
+
+#CURL Lib
+CURL_BASE:=$(EXTERNAL_LIB)/libcurl
+CURL_INCLUDE:=$(CURL_BASE)/include/
+CURL_LIB:=$(CURL_BASE)/lib
+CURL_LIB64:=$(CURL_BASE)/lib64
+
+
+#Curlpp Lib
 CURLPP_BASE:=$(EXTERNAL_LIB)/curlpp
 CURLPP_INCLUDE:= $(CURLPP_BASE)/include/
 CURLPP_LIB:=$(CURLPP_BASE)/lib
+CURLPP_LIB64:=$(CURLPP_BASE)/lib64
 
 #Extra distribution files to be included in the package for distribution
 EXTRA_DIST_FILES := README RELEASE_NOTES
@@ -74,6 +87,6 @@ TMP_DIST_DIR := /tmp/$(DIST_PACKAGE_NAME)
 %.o: %.cpp
 	@echo 'Building file: $<'
 	@echo 'Invoking $(OS) C++ Compiler'
-	$(CXX) $(INC_DIRS) -g -O0 -Wall -fPIC -c -Wno-deprecated -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	$(CXX) $(INC_DIRS) -std=c++11 -g -O0 -Wall -fPIC -c -Wno-deprecated -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
 	@echo 'Finished building: $<'
 	@echo ' '

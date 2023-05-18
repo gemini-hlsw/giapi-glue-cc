@@ -26,16 +26,18 @@ void ServicesUtilImpl::systemLog(log::Level level, const std::string &msg)
 	throw (CommunicationException) {
 
 	_logProducer->postLog(level, msg);
-
-	switch (level) {
-	case log::INFO:LOG4CXX_INFO(logger, msg)
+        switch (level) {
+	case log::INFO:
+                LOG4CXX_INFO(logger, msg);
 		break;
-	case log::WARNING:LOG4CXX_WARN(logger, msg)
+	case log::WARNING:
+                LOG4CXX_WARN(logger, msg);
 		break;
-	case log::SEVERE:LOG4CXX_ERROR(logger, msg)
+	case log::SEVERE:
+                LOG4CXX_ERROR(logger, msg);
 		break;
 	default:
-		return; //do nothing.
+              LOG4CXX_WARN(logger, "You are providing a giapi::log::Level that is not defined. Please you should see the level availables");
 	}
 }
 

@@ -171,7 +171,7 @@ int StatusDatabase::clearAlarm(const std::string &name) {
 	return status::OK;
 }
 
-const vector<pStatusItem>& StatusDatabase::getStatusItems() {
+const std::vector<pStatusItem>& StatusDatabase::getStatusItems() {
 	return _statusItemList;
 }
 

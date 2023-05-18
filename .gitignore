@@ -1,3 +1,9 @@
 *.d
 *.o
+*.swo
+*.swp
+install/
 libgiapi*
+.cproject
+apr-util/
+apr/

@@ -1,3 +1,4 @@
+#include <algorithm>
 #include "JmsUtil.h"
 #include "GMPKeys.h"
 

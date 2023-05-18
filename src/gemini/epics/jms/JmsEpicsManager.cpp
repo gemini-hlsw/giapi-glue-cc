@@ -27,7 +27,7 @@ JmsEpicsManager::JmsEpicsManager() throw (CommunicationException) {
 		throw CommunicationException("Trouble initializing request producer :"
 				+ e.getMessage());
 	} catch (TimeoutException &e) {
-		LOG4CXX_WARN(logger, "Can't get valid epics channel names, trying later...")
+		LOG4CXX_WARN(logger, "Can't get valid epics channel names, trying later...");
 	}
 }
 
@@ -43,7 +43,7 @@ void JmsEpicsManager::cleanup() {
 }
 
 JmsEpicsManager::~JmsEpicsManager() {
-	LOG4CXX_DEBUG(logger, "Destroying JMS Epics Manager")
+	LOG4CXX_DEBUG(logger, "Destroying JMS Epics Manager");
 	//cleaning epics maps
 	_epicsConsumersMap.clear();
 }
