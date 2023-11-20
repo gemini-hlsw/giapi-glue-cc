@@ -12,6 +12,7 @@
 
 
 #include <giapi/CommandUtil.h>
+#include "ApplyHandler.h"
 #include <giapi/SequenceCommandHandler.h>
 #include <giapi/giapi.h>
 #include "ObsGdsHandler.h"
@@ -45,6 +46,9 @@ int main(int argc, char **argv) {
 			pSequenceCommandHandler handler = ObsGdsHandler::create();
 			CommandUtil::subscribeSequenceCommand(OBSERVE, SET_PRESET_START_CANCEL,
 					handler);
+		pSequenceCommandHandler handler2 = ApplyHandler::create();
+
+		CommandUtil::subscribeApply("ig2", command::SET_PRESET_START, handler2);
 
 
 		//Wait until is killed

@@ -18,7 +18,7 @@ using namespace giapi;
  * A worker thread to be used inside the apply sequence
  * command handler implementation below
  */
-class WorkerThread: public Runnable {
+class AppWorkerThread: public Runnable {
 private:
 
   int numMessages;
@@ -28,16 +28,14 @@ private:
   giapi::command::ActionId id;
 public:
 
-  WorkerThread(int totalMessages = 10, int waitTime = 500) {
-    this->numMessages = 0;
-    this->totalMessages = totalMessages;
-    this->waitTime = waitTime;
-    this->id = 0;
-  }
+	AppWorkerThread() {
+		this->numMessages = 0;
+		this->id = 0;
+	}
 
-  virtual ~WorkerThread() {
-    cleanup();
-  }
+	virtual ~AppWorkerThread() {
+		cleanup();
+	}
 
   void setId(giapi::command::ActionId id) {
     this->id = id;
@@ -68,8 +66,8 @@ private:
 class ApplyHandler: public giapi::SequenceCommandHandler {
 
 private:
-  WorkerThread * worker;
-  Thread* thread;
+	AppWorkerThread * worker;
+	Thread* thread;
 
 public:
 
@@ -115,10 +113,10 @@ public:
   }
 
 private:
-  ApplyHandler() {
-    worker = new WorkerThread();
-    thread = NULL;
-  }
+	ApplyHandler() {
+		worker = new AppWorkerThread();
+		thread = NULL;
+	}
 };
 
 #endif /*APPLYHANDLER_H_*/

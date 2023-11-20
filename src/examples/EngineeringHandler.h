@@ -1,13 +1,14 @@
-#ifndef GENERICHANDLER_H_
-#define GENERICHANDLER_H_
+#ifndef ENGINEERING_HANDLER_H
+#define ENGINEERING_HANDLER_H
 
 #include <iostream>
+#include <stdio.h>
 #include <giapi/giapi.h>
 #include <giapi/SequenceCommandHandler.h>
 #include <decaf/lang/Thread.h>
 #include <decaf/lang/Runnable.h>
 #include <decaf/util/concurrent/CountDownLatch.h>
-#include "ApplyHandler.h"
+#include "MyHandler.h"
 
 using namespace decaf::util::concurrent;
 using namespace decaf::util;
@@ -95,7 +96,6 @@ private:
 	EngineeringHandler() {
 		worker = new WorkerThread();
 		thread = NULL;
-        srandom(time(NULL));
 	}
 };
 

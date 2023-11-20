@@ -34,6 +34,9 @@ obsevent: obsevent.o
 epicsget: epicsget.o
 	$(CXX) $(LIB_DIRS) $(LIBS) -o $@  $<
 
+engineering: engineering.o
+	$(CXX) $(LIB_DIRS) $(LIBS) -o $@  $<
+
 fileevents: fileevents.o
 	$(CXX) $(LIB_DIRS) $(LIBS) -o $@  $<
 
@@ -64,6 +67,9 @@ engineering: engineering.o
 igrins2obssimulator: igrins2obssimulator.o
 	$(CXX) $(LIB_DIRS) $(LIBS) -o $@  $<
 
+igrins2obssimulator: igrins2obssimulator.o
+	$(CXX) $(LIB_DIRS) $(LIBS) -o $@  $<
+
 gpim1zernikes: gpim1zernikes.o
 	$(CXX) $(LIB_DIRS) $(LIBS) -o $@  $<
 
@@ -85,7 +91,6 @@ epicssubscription: epicssubscription.o EpicsHandlerDemo.o
 
 clean:
 	-$(RM) *.o *.d stresstest seq-command pcsupdater tcscontext obsevent epicssubscription pcsupdater logging fileevents status services apply-command any-command obsacq gpim1zernikes gipsimulatior gpiobssimulator engineering ghost-split-command igrins2obssimulator
-=======
 run:
 	@echo $(LD_LIBRARY_PATH)
 
