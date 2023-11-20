@@ -1,10 +1,11 @@
 /**
- * Example application to evaluate the performance of observations with many items 
+ * Example application to evaluate the performance of observations with many items
  */
 
 #include <iostream>
 #include <fstream>
 #include <signal.h>
+#include <string.h>
 #include <sys/time.h>
 
 #include <decaf/util/concurrent/CountDownLatch.h>
@@ -235,17 +236,17 @@ int main(int argc, char **argv) {
             postXMLRequest(dataLabel, storeKeyword);
             gettimeofday (&end, NULL);
             double dif = (end.tv_sec - start.tv_sec) * 1000.0 + (end.tv_usec - start.tv_usec) / 1000.0;
-            
+
             cout << endl << "time to post xmlrpc req:" << dif << " [ms]" << endl;
-            
+
             string dataLocation = ServicesUtil::getProperty("DHS_SCIENCE_DATA_PATH", 1000);
-            
+
             /*for (int i = 0; i <= STATUS_ITEMS_COUNT; i++) {
                 std::stringstream ss;
                 ss << "S" << i;
                 StatusUtil::createStatusItem(ss.str(), type::INT);
             }
-                
+
             for (int i = 0; i <= STATUS_ITEMS_COUNT; i++) {
                     std::stringstream ss;
                     ss << "S" << i;
@@ -262,7 +263,7 @@ int main(int argc, char **argv) {
             postEvent(data::OBS_START_DSET_WRITE, 200, dataLabel);
             postEvent(data::OBS_END_DSET_WRITE, 1, dataLabel);
             postXMLRequest(dataLabel, closeObservation);
-            
+
 
     } catch (GmpException &e) {
             std::cerr << e.getMessage() <<  ". Is the GMP up?" << std::endl;
