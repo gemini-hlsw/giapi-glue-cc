@@ -87,6 +87,48 @@ public:
 	 */
 	static int getTcsContext(TcsContext& ctx, long timeout) throw (GiapiException);
 
+       /** Function that allows an offset to be applied to the TCS. There are two types 
+	 * of the offsets that instruments should indicate. For example, offsets applied
+	 * during the acquisition and offsets applied during the Slow Guiding Correction. 
+	 * 
+	 * @param p value of the P offset. The unit must to be in arcsecs. 
+         * @param q value of the Q offset. The unit must to be in arcsecs. 
+         * @param offsetType Type of the offset to be applied. 
+         *                      0 -> Adquistion. 
+         *                      1 -> Slow Guiding Correction. 
+	 * @param timeout time in milliseconds to wait for the TCS to execute the offset. 
+	 *
+	 * @return status::OK if the offset was applied properly.
+	 *         status::ERROR if there was an error applying the offset
+	 *
+	 * @throws GiapiException if there is an error accessing the GMP to apply the offset
+         *                           to the TCS, or a timeout occurs. 
+	 */
+	static int tcsApplyOffset(const double p, const double q, const OffsetType offsetType, const long timeout) throw (GiapiException);
+
+       /** Function that allows an offset to be applied to the TCS. There are two types 
+	 * of the offsets that instruments should indicate. For example, offsets applied
+	 * during the acquisition and offsets applied during the Slow Guiding Correction. 
+	 * 
+	 * @param p value of the P offset. The unit must to be in arcsecs. 
+         * @param q value of the Q offset. The unit must to be in arcsecs. 
+         * @param offsetType Type of the offset to be applied. 
+         *                      0 -> Adquistion. 
+         *                      1 -> Slow Guiding Correction.
+         * @param callbackOffset Callback pointer function to be called after 
+         *                        the TCS offset has been applied 
+	 * @param timeout time in milliseconds to wait for the TCS to execute the offset. 
+	 *
+	 * @return status::OK if the offset was applied properly.
+	 *         status::ERROR if there was an error applying the offset
+	 *
+	 * @throws GiapiException if there is an error accessing the GMP to apply the offset
+         *                           to the TCS, or a timeout occurs. 
+	 */
+	static int tcsApplyOffset(const double p, const double q,
+                              const OffsetType offsetType, const long timeout,
+                              void (*callbackOffset)(int, std::string)) throw (GiapiException);
+
 	/**
 	 * Provides a pointer to an EpicsStatus item containing the latest channel
 	 * information available
@@ -107,6 +149,9 @@ private:
 	GeminiUtil();
 	virtual ~GeminiUtil();
 };
+
+// Pointer callback function declaration. 
+typedef void (*callbackOffset)(int, std::string);
 
 }
 

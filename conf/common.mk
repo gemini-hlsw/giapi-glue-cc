@@ -87,6 +87,6 @@ TMP_DIST_DIR := /tmp/$(DIST_PACKAGE_NAME)
 %.o: %.cpp
 	@echo 'Building file: $<'
 	@echo 'Invoking $(OS) C++ Compiler'
-	$(CXX) $(INC_DIRS) -std=c++11 -g -O0 -Wall -fPIC -c -Wno-deprecated -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	$(CXX) $(INC_DIRS) -pthread -std=c++11 -g -O0 -Wall -fPIC -c -Wno-deprecated -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
 	@echo 'Finished building: $<'
 	@echo ' '
