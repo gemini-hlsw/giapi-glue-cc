@@ -115,7 +115,7 @@ public:
          * @param offsetType Type of the offset to be applied. 
          *                      0 -> Adquistion. 
          *                      1 -> Slow Guiding Correction.
-         * @param callbackOffset Callback pointer function to be called after 
+         * @param callbackOffset Callback function to be called after 
          *                        the TCS offset has been applied 
 	 * @param timeout time in milliseconds to wait for the TCS to execute the offset. 
 	 *

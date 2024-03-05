@@ -33,7 +33,6 @@ JmsApplyOffset::JmsApplyOffset() throw (CommunicationException) :
 }
 
 JmsApplyOffset::~JmsApplyOffset() {
-	// TODO Auto-generated destructor stub
 }
 
 
@@ -56,10 +55,7 @@ void JmsApplyOffset::callback(void (*callbackOffset)(int, std::string),
 		const TextMessage* textMessage = dynamic_cast<const TextMessage*> (reply);
 		if (textMessage == NULL)
 		msg = "Error. Empty message was received ";
-
-		//it gets if the offset was applied
 		std::string text = textMessage->getText();
-
 		std::string::size_type posResult = text.find('|');
 		if (posResult != std::string::npos) {
 		   status = std::stoi(text.substr(0, posResult));

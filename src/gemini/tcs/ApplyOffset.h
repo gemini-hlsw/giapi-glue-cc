@@ -47,7 +47,7 @@ public:
 	 *                        or SLOWGUINDING (tiny offset sent during the integration).
 	 * @param timeout       : timeout in millisecond for the request to complete.
 	 *                        If not specified, the call will block until the GMP replies back.
-         * @param callbackOffset: Callback pointer function to be called after TCS offset has been applied
+         * @param callbackOffset: Callback function to be called after TCS offset has been applied
          *                    
 	 * @return status::OK if the Offset was applied properly.
 	 *         status::ERROR if there was an error applying the offset
