@@ -88,6 +88,9 @@ public:
 
 	//Gemini Service Key - TCS Context
 	const static std::string GMP_TCS_CONTEXT_DESTINATION;
+	
+        //Gemini Service Key - TCS Offset
+	const static std::string GMP_TCS_OFFSET_DESTINATION;
 
 	//Gemini Service Key - EPICS get
 	const static std::string GMP_GEMINI_EPICS_GET_DESTINATION;

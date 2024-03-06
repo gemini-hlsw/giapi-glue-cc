@@ -21,6 +21,8 @@
 #include <curlpp/Easy.hpp>
 #include <curlpp/Options.hpp>
 #include <curlpp/Exception.hpp>
+#include <cstring>
+#include<unistd.h>
 
 #define STATUS_ITEMS_COUNT 500
 

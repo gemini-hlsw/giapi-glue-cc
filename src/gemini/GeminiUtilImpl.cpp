@@ -3,6 +3,7 @@
 #include <gemini/epics/jms/JmsEpicsManager.h>
 #include <gemini/pcs/jms/JmsPcsUpdater.h>
 #include <gemini/tcs/jms/JmsTcsFetcher.h>
+#include <gemini/tcs/jms/JmsApplyOffset.h>
 #include <gemini/epics/jms/JmsEpicsFetcher.h>
 
 namespace giapi {
@@ -15,6 +16,7 @@ GeminiUtilImpl::GeminiUtilImpl() throw (GiapiException) {
 	_epicsMgr = JmsEpicsManager::create();
 	_pcsUpdater = gemini::pcs::jms::JmsPcsUpdater::create();
 	_tcsFetcher = gemini::tcs::jms::JmsTcsFetcher::create();
+         _tcsApplyOffset = gemini::tcs::jms::JmsApplyOffset::create();
 	_epicsFetcher = gemini::epics::JmsEpicsFetcher::create();
 }
 
@@ -59,6 +61,17 @@ int GeminiUtilImpl::postPcsUpdate(double zernikes[], int size) {
 
 int GeminiUtilImpl::getTcsContext(TcsContext& ctx, long timeout) const throw (GiapiException) {
 	return _tcsFetcher->fetch(ctx, timeout);
+}
+
+int GeminiUtilImpl::tcsApplyOffset(const double p, const double q,
+		                           const OffsetType offsetType, const long timeout)const throw (GiapiException) {
+	return _tcsApplyOffset->sendOffset(p, q, offsetType,timeout);
+}
+
+int GeminiUtilImpl::tcsApplyOffset(const double p, const double q,
+                                   const OffsetType offsetType, const long timeout,
+                                   void (*callbackOffset)(int, std::string))const throw (GiapiException) {
+	return _tcsApplyOffset->sendOffset(p, q, offsetType, timeout, callbackOffset );
 }
 
 pEpicsStatusItem GeminiUtilImpl::getChannel(const std::string &name, long timeout) throw (GiapiException)  {

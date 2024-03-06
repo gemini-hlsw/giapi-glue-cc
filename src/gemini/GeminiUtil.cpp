@@ -31,6 +31,18 @@ int GeminiUtil::getTcsContext(TcsContext& ctx, long timeout) throw (GiapiExcepti
 	return GeminiUtilImpl::Instance()->getTcsContext(ctx, timeout);
 }
 
+int GeminiUtil::tcsApplyOffset(const double p, const double q, const OffsetType offsetType, const long timeout) throw (GiapiException) {
+	return GeminiUtilImpl::Instance()->tcsApplyOffset(p, q, offsetType, timeout);
+}
+
+int GeminiUtil::tcsApplyOffset(const double p, const double q,
+                              const OffsetType offsetType, const long timeout,
+                              void (*callbackOffset)(int, std::string)) throw (GiapiException) {
+
+	return GeminiUtilImpl::Instance()->tcsApplyOffset(p, q, offsetType, timeout, callbackOffset);
+
+}
+
 pEpicsStatusItem GeminiUtil::getChannel(const std::string &name, long timeout) throw (GiapiException)  {
   return GeminiUtilImpl::Instance()->getChannel(name, timeout);
 }
