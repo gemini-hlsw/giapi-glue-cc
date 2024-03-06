@@ -25,3 +25,5 @@ src/examples/status
 src/examples/tcsApplyOffset
 src/examples/tcsApplyOffsetCallback
 src/examples/tcscontext
+src/examples/observe-simulator
+src/examples/epicsget

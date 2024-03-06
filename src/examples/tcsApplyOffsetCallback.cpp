@@ -13,11 +13,10 @@ using namespace std;
 
 bool wasOffsetApplied=false;
 
-void receiveMsg(int wasOffsetAplied, string msg) {
-	string res = (wasOffsetAplied) ? "was applied " : " was NOT APPLIED. ";
+void receiveMsg(int wasAplied, string msg) {
+	string res = (wasAplied) ? "was applied " : " was not applied. ";
 	cout << "the offset : " << res  << msg << endl;
         wasOffsetApplied=true;
-
 }
 
 

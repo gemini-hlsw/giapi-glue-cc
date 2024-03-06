@@ -51,7 +51,7 @@ int main(int argc, char **argv) {
 		cout<<"Was the TCS OFFSET applied: " << (status == 1) << endl;
 
 	} catch (GiapiException &e) {
-		cout << "exceptionnnn " << endl;
+		cout << "exception " << endl;
 		cerr << e.what() << endl;
 	}
 	return 0;

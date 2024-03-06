@@ -94,8 +94,8 @@ public:
 	 * @param p value of the P offset. The unit must to be in arcsecs. 
          * @param q value of the Q offset. The unit must to be in arcsecs. 
          * @param offsetType Type of the offset to be applied. 
-         *                      0 -> Adquistion. 
-         *                      1 -> Slow Guiding Correction. 
+         *                      ACQ(0)         -> Adquistion. 
+         *                      SLOWGUIDING(1) -> Slow Guiding Correction.
 	 * @param timeout time in milliseconds to wait for the TCS to execute the offset. 
 	 *
 	 * @return status::OK if the offset was applied properly.
@@ -113,8 +113,8 @@ public:
 	 * @param p value of the P offset. The unit must to be in arcsecs. 
          * @param q value of the Q offset. The unit must to be in arcsecs. 
          * @param offsetType Type of the offset to be applied. 
-         *                      0 -> Adquistion. 
-         *                      1 -> Slow Guiding Correction.
+         *                      ACQ(0)         -> Adquistion. 
+         *                      SLOWGUIDING(1) -> Slow Guiding Correction.
          * @param callbackOffset Callback function to be called after 
          *                        the TCS offset has been applied 
 	 * @param timeout time in milliseconds to wait for the TCS to execute the offset. 
