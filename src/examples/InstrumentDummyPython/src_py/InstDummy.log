@@ -1,0 +1,136 @@
+2024-04-08 12:10:05,483 -INFO- InstSeq is sbuscribed to ABORT command
+2024-04-08 12:10:05,503 -INFO- InstSeq is sbuscribed to APPLY command
+2024-04-08 12:10:05,506 -INFO- InstSeq is sbuscribed to CONTINUE command
+2024-04-08 12:10:05,510 -INFO- InstSeq is sbuscribed to DATUM command
+2024-04-08 12:10:05,513 -INFO- InstSeq is sbuscribed to END_GUIDE command
+2024-04-08 12:10:05,516 -INFO- InstSeq is sbuscribed to END_OBSERVE command
+2024-04-08 12:10:05,519 -INFO- InstSeq is sbuscribed to END_VERIFY command
+2024-04-08 12:10:05,525 -INFO- InstSeq is sbuscribed to ENGINEERING command
+2024-04-08 12:10:05,529 -INFO- InstSeq is sbuscribed to GUIDE command
+2024-04-08 12:10:05,533 -INFO- InstSeq is sbuscribed to INIT command
+2024-04-08 12:10:05,535 -INFO- InstSeq is sbuscribed to OBSERVE command
+2024-04-08 12:10:05,537 -INFO- InstSeq is sbuscribed to PARK command
+2024-04-08 12:10:05,539 -INFO- InstSeq is sbuscribed to PAUSE command
+2024-04-08 12:10:05,541 -INFO- InstSeq is sbuscribed to REBOOT command
+2024-04-08 12:10:05,543 -INFO- InstSeq is sbuscribed to STOP command
+2024-04-08 12:10:05,546 -INFO- InstSeq is sbuscribed to STOP_CYCLE command
+2024-04-08 12:10:05,547 -INFO- InstSeq is sbuscribed to TEST command
+2024-04-08 12:10:05,550 -INFO- InstSeq is sbuscribed to VERIFY command
+2024-04-08 12:10:10,039 -INFO- 2 command received 3 1
+2024-04-08 12:10:10,045 -INFO- FW1-Executing the None                                  actionID: 3
+2024-04-08 12:10:10,048 -INFO- Searching limit switch. currentPos: 183.75
+2024-04-08 12:10:10,048 -INFO- Time to find the homming switch 15
+2024-04-08 12:10:10,061 -INFO- DC1-Executing the None.                             actionID: 3
+2024-04-08 12:10:10,063 -INFO- DC1-Sending to Detector Controller                         the initialization. For example MACIE_Init()
+2024-04-08 12:10:10,165 -INFO- DC1-Sending the GetAvailableMACIEs to the DC.                         To know how many card is ready 
+2024-04-08 12:10:10,252 -INFO- Searching limit switch. currentPos: 184.5
+2024-04-08 12:10:10,266 -INFO- DC1-Loading the MACIE Firmware (MACIE store                          the firmware in the EEPROM). Sending MACIE_loadMACIEFirmware
+2024-04-08 12:10:10,453 -INFO- Searching limit switch. currentPos: 185.25
+2024-04-08 12:10:10,655 -INFO- Searching limit switch. currentPos: 186.0
+2024-04-08 12:10:10,857 -INFO- Searching limit switch. currentPos: 186.75
+2024-04-08 12:10:11,050 -INFO- tSleepHomingSwitch: 15 - 1
+2024-04-08 12:10:11,059 -INFO- Searching limit switch. currentPos: 187.5
+2024-04-08 12:10:11,278 -INFO- Searching limit switch. currentPos: 188.25
+2024-04-08 12:10:11,481 -INFO- Searching limit switch. currentPos: 189.0
+2024-04-08 12:10:11,683 -INFO- Searching limit switch. currentPos: 189.75
+2024-04-08 12:10:11,885 -INFO- Searching limit switch. currentPos: 190.5
+2024-04-08 12:10:12,055 -INFO- tSleepHomingSwitch: 15 - 2
+2024-04-08 12:10:12,088 -INFO- Searching limit switch. currentPos: 191.25
+2024-04-08 12:10:12,278 -INFO- DC1-Sending the MACIE_DownloadMACIEFile. Used                          to initialize the MACIE card and power up the ASIC
+2024-04-08 12:10:12,291 -INFO- Searching limit switch. currentPos: 192.0
+2024-04-08 12:10:12,494 -INFO- Searching limit switch. currentPos: 192.75
+2024-04-08 12:10:12,703 -INFO- Searching limit switch. currentPos: 193.5
+2024-04-08 12:10:12,908 -INFO- Searching limit switch. currentPos: 194.25
+2024-04-08 12:10:13,057 -INFO- tSleepHomingSwitch: 15 - 3
+2024-04-08 12:10:13,111 -INFO- Searching limit switch. currentPos: 195.0
+2024-04-08 12:10:13,314 -INFO- Searching limit switch. currentPos: 195.75
+2024-04-08 12:10:13,517 -INFO- Searching limit switch. currentPos: 196.5
+2024-04-08 12:10:13,722 -INFO- Searching limit switch. currentPos: 197.25
+2024-04-08 12:10:13,928 -INFO- Searching limit switch. currentPos: 198.0
+2024-04-08 12:10:14,060 -INFO- tSleepHomingSwitch: 15 - 4
+2024-04-08 12:10:14,130 -INFO- Searching limit switch. currentPos: 198.75
+2024-04-08 12:10:14,338 -INFO- Searching limit switch. currentPos: 199.5
+2024-04-08 12:10:14,541 -INFO- Searching limit switch. currentPos: 200.25
+2024-04-08 12:10:14,744 -INFO- Searching limit switch. currentPos: 201.0
+2024-04-08 12:10:14,947 -INFO- Searching limit switch. currentPos: 201.75
+2024-04-08 12:10:15,064 -INFO- tSleepHomingSwitch: 15 - 5
+2024-04-08 12:10:15,149 -INFO- Searching limit switch. currentPos: 202.5
+2024-04-08 12:10:15,351 -INFO- Searching limit switch. currentPos: 203.25
+2024-04-08 12:10:15,564 -INFO- Searching limit switch. currentPos: 204.0
+2024-04-08 12:10:15,766 -INFO- Searching limit switch. currentPos: 204.75
+2024-04-08 12:10:15,974 -INFO- Searching limit switch. currentPos: 205.5
+2024-04-08 12:10:16,066 -INFO- tSleepHomingSwitch: 15 - 6
+2024-04-08 12:10:16,184 -INFO- Searching limit switch. currentPos: 206.25
+2024-04-08 12:10:16,385 -INFO- Searching limit switch. currentPos: 207.0
+2024-04-08 12:10:16,588 -INFO- Searching limit switch. currentPos: 207.75
+2024-04-08 12:10:16,793 -INFO- Searching limit switch. currentPos: 208.5
+2024-04-08 12:10:16,999 -INFO- Searching limit switch. currentPos: 209.25
+2024-04-08 12:10:17,068 -INFO- tSleepHomingSwitch: 15 - 7
+2024-04-08 12:10:17,207 -INFO- Searching limit switch. currentPos: 210.0
+2024-04-08 12:10:17,409 -INFO- Searching limit switch. currentPos: 210.75
+2024-04-08 12:10:17,611 -INFO- Searching limit switch. currentPos: 211.5
+2024-04-08 12:10:17,816 -INFO- Searching limit switch. currentPos: 212.25
+2024-04-08 12:10:18,017 -INFO- Searching limit switch. currentPos: 213.0
+2024-04-08 12:10:18,071 -INFO- tSleepHomingSwitch: 15 - 8
+2024-04-08 12:10:18,219 -INFO- Searching limit switch. currentPos: 213.75
+2024-04-08 12:10:18,424 -INFO- Searching limit switch. currentPos: 214.5
+2024-04-08 12:10:18,627 -INFO- Searching limit switch. currentPos: 215.25
+2024-04-08 12:10:18,840 -INFO- Searching limit switch. currentPos: 216.0
+2024-04-08 12:10:19,044 -INFO- Searching limit switch. currentPos: 216.75
+2024-04-08 12:10:19,073 -INFO- tSleepHomingSwitch: 15 - 9
+2024-04-08 12:10:19,248 -INFO- Searching limit switch. currentPos: 217.5
+2024-04-08 12:10:19,450 -INFO- Searching limit switch. currentPos: 218.25
+2024-04-08 12:10:19,652 -INFO- Searching limit switch. currentPos: 219.0
+2024-04-08 12:10:19,860 -INFO- Searching limit switch. currentPos: 219.75
+2024-04-08 12:10:20,063 -INFO- Searching limit switch. currentPos: 220.5
+2024-04-08 12:10:20,078 -INFO- tSleepHomingSwitch: 15 - 10
+2024-04-08 12:10:20,265 -INFO- Searching limit switch. currentPos: 221.25
+2024-04-08 12:10:20,467 -INFO- Searching limit switch. currentPos: 222.0
+2024-04-08 12:10:20,674 -INFO- Searching limit switch. currentPos: 222.75
+2024-04-08 12:10:20,878 -INFO- Searching limit switch. currentPos: 223.5
+2024-04-08 12:10:21,087 -INFO- Searching limit switch. currentPos: 224.25
+2024-04-08 12:10:21,088 -INFO- tSleepHomingSwitch: 15 - 11
+2024-04-08 12:10:21,297 -INFO- Searching limit switch. currentPos: 225.0
+2024-04-08 12:10:21,500 -INFO- Searching limit switch. currentPos: 225.75
+2024-04-08 12:10:21,702 -INFO- Searching limit switch. currentPos: 226.5
+2024-04-08 12:10:21,907 -INFO- Searching limit switch. currentPos: 227.25
+2024-04-08 12:10:22,091 -INFO- tSleepHomingSwitch: 15 - 12
+2024-04-08 12:10:22,109 -INFO- Searching limit switch. currentPos: 228.0
+2024-04-08 12:10:22,315 -INFO- Searching limit switch. currentPos: 228.75
+2024-04-08 12:10:22,518 -INFO- Searching limit switch. currentPos: 229.5
+2024-04-08 12:10:22,720 -INFO- Searching limit switch. currentPos: 230.25
+2024-04-08 12:10:22,922 -INFO- Searching limit switch. currentPos: 231.0
+2024-04-08 12:10:23,101 -INFO- tSleepHomingSwitch: 15 - 13
+2024-04-08 12:10:23,124 -INFO- Searching limit switch. currentPos: 231.75
+2024-04-08 12:10:23,326 -INFO- Searching limit switch. currentPos: 232.5
+2024-04-08 12:10:23,528 -INFO- Searching limit switch. currentPos: 233.25
+2024-04-08 12:10:23,734 -INFO- Searching limit switch. currentPos: 234.0
+2024-04-08 12:10:23,939 -INFO- Searching limit switch. currentPos: 234.75
+2024-04-08 12:10:24,104 -INFO- tSleepHomingSwitch: 15 - 14
+2024-04-08 12:10:24,143 -INFO- Searching limit switch. currentPos: 235.5
+2024-04-08 12:10:24,345 -INFO- Searching limit switch. currentPos: 236.25
+2024-04-08 12:10:24,549 -INFO- Searching limit switch. currentPos: 237.0
+2024-04-08 12:10:24,758 -INFO- Searching limit switch. currentPos: 237.75
+2024-04-08 12:10:24,964 -INFO- Searching limit switch. currentPos: 238.5
+2024-04-08 12:10:25,106 -INFO- tSleepHomingSwitch: 15 - 15
+2024-04-08 12:10:25,108 -INFO- The FW1 is datumned, currentPosition: 10.5
+2024-04-08 12:10:25,115 -INFO- The actionID 3 was completed successfully
+2024-04-08 12:10:27,728 -INFO- 10 command received 4 1
+2024-04-08 12:10:27,763 -INFO- DC1-Executing the None.                             actionID: 4
+2024-04-08 12:10:27,765 -INFO- Integrating 
+2024-04-08 12:10:27,767 -INFO- .
+2024-04-08 12:10:28,771 -INFO- .
+2024-04-08 12:10:29,805 -INFO- New fits file created in ./images/example3.fits
+2024-04-08 12:10:29,811 -INFO- The actionID 4 was completed successfully
+2024-04-08 12:10:44,599 -INFO- 9 command received 5 1
+2024-04-08 12:10:44,655 -INFO- DC1-Executing the None.                             actionID: 5
+2024-04-08 12:10:44,656 -INFO- DC1-Sending to the detector the nreset: 1,                          numFowler: 2, groups: 1,  fowlerTime: 2.1.                             With H2RG would be using the MACIE_WriteASICReg
+2024-04-08 12:10:44,658 -INFO- FW1-Executing the None                                  actionID: 5
+2024-04-08 12:10:44,661 -INFO- Moving to U filter position. (15.0, 'U') degrees
+2024-04-08 12:10:44,662 -INFO- moving to 15.0 and currentPosition: 11.25 degrees
+2024-04-08 12:10:44,763 -INFO- moving to 15.0 and currentPosition: 12.0 degrees
+2024-04-08 12:10:44,876 -INFO- moving to 15.0 and currentPosition: 12.75 degrees
+2024-04-08 12:10:44,979 -INFO- moving to 15.0 and currentPosition: 13.5 degrees
+2024-04-08 12:10:45,083 -INFO- moving to 15.0 and currentPosition: 14.25 degrees
+2024-04-08 12:10:45,187 -INFO- moving to 15.0 and currentPosition: 15.0 degrees
+2024-04-08 12:10:45,297 -INFO- The actionID 5 was completed successfully
