@@ -11,10 +11,17 @@ LIBS= -lgiapi-glue-cc -lactivemq-cpp -llog4cxx -lapr-1 -lcurlpp -lcurl
 
 LD_LIBRARY_PATH := ../../:$(LOG4CXX_LIB):$(CPPUNIT_LIB):$(ACTIVEMQ_LIB):$(APR_LIB):$(APRUTIL_LIB):$(CURLPP_LIB):$(CURLPP_LIB64)
 
-all: seq-command tcscontext pcsupdater obsevent epicssubscription epicsget logging fileevents status services apply-command any-command observe-simulator 
+all: tcsApplyOffset tcsApplyOffsetCallback seq-command tcscontext pcsupdater obsevent epicssubscription epicsget logging fileevents status services apply-command any-command observe-simulator gpiobssimulator
 
 
 seq-command: seq-command.o
+
+
+tcsApplyOffsetCallback: tcsApplyOffsetCallback.o
+	$(CXX) $(LIB_DIRS) $(LIBS) -o $@  $<
+
+tcsApplyOffset: tcsApplyOffset.o
+	$(CXX) $(LIB_DIRS) $(LIBS) -o $@  $<
 
 tcscontext: tcscontext.o
 	$(CXX) $(LIB_DIRS) $(LIBS) -o $@  $<
