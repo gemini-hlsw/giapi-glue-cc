@@ -11,8 +11,7 @@ LIBS= -lgiapi-glue-cc -lactivemq-cpp -llog4cxx -lapr-1 -lcurlpp -lcurl
 
 LD_LIBRARY_PATH := ../../:$(LOG4CXX_LIB):$(CPPUNIT_LIB):$(ACTIVEMQ_LIB):$(APR_LIB):$(APRUTIL_LIB):$(CURLPP_LIB):$(CURLPP_LIB64)
 
-all: tcsApplyOffset tcsApplyOffsetCallback seq-command tcscontext pcsupdater obsevent epicssubscription epicsget logging fileevents status services apply-command any-command observe-simulator gpiobssimulator
-
+all: tcsApplyOffset tcsApplyOffsetCallback seq-command tcscontext pcsupdater obsevent epicssubscription epicsget logging fileevents status services apply-command any-command observe-simulator igrins2obssimulator
 
 seq-command: seq-command.o
 
@@ -59,16 +58,10 @@ any-command: any-command.o
 engineering: engineering.o
 	$(CXX) $(LIB_DIRS) $(LIBS) -o $@  $<
 
-gpisimulator: gpisimulator.o
+igrins2obssimulator: igrins2obssimulator.o
 	$(CXX) $(LIB_DIRS) $(LIBS) -o $@  $<
 
 gpim1zernikes: gpim1zernikes.o
-	$(CXX) $(LIB_DIRS) $(LIBS) -o $@  $<
-
-gpiobssimulator: gpiobssimulator.o
-	$(CXX) $(LIB_DIRS) $(LIBS) -o $@  $<
-
-obshighcount: obshighcount.o
 	$(CXX) $(LIB_DIRS) $(LIBS) -o $@  $<
 
 observe-simulator: observe-simulator.o
@@ -87,5 +80,5 @@ epicssubscription: epicssubscription.o EpicsHandlerDemo.o
 %: %.o
 	$(CXX) $(LIB_DIRS) $(LIBS) -o $@  $<
 
-clean: 
-	-$(RM) *.o *.d stresstest seq-command pcsupdater tcscontext obsevent epicssubscription pcsupdater logging fileevents status services apply-command any-command obsacq gpim1zernikes gpisimulator gpiobssimulator engineering
+clean:
+	-$(RM) *.o *.d stresstest seq-command pcsupdater tcscontext obsevent epicssubscription pcsupdater logging fileevents status services apply-command any-command obsacq gpim1zernikes engineering igrins2obssimulator
