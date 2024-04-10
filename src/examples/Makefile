@@ -87,9 +87,5 @@ epicssubscription: epicssubscription.o EpicsHandlerDemo.o
 %: %.o
 	$(CXX) $(LIB_DIRS) $(LIBS) -o $@  $<
 
-run: 
-	@echo $(LD_LIBRARY_PATH)
-
-
 clean: 
 	-$(RM) *.o *.d stresstest seq-command pcsupdater tcscontext obsevent epicssubscription pcsupdater logging fileevents status services apply-command any-command obsacq gpim1zernikes gpisimulator gpiobssimulator engineering

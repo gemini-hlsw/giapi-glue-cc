@@ -160,7 +160,7 @@ class InstSeq():
         for key in config.getKeys():
             valk = config.getValue(key).c_str()
             lkey = key.split(':')
-            # Basically it is checked the follwoing expressiong
+            # Basically the following expression is verified
             # <instName>:[dc|cc]:<componentName>
             if len(lkey) > 1 and lkey[0] != INSTSEQNAME and \
                 lkey[1] != CC_STR  and lkey[1] != DC_STR:
@@ -281,7 +281,6 @@ class ManageGIAPIres:
     
     # pylint: disable=C0103 
     def __checkAndSetResponse(self, actRes):
-        
         if actRes.resData:
             for k in actRes.resData:
                 match k:
