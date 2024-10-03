@@ -11,7 +11,7 @@ LIBS= -lgiapi-glue-cc -lactivemq-cpp -llog4cxx -lapr-1 -lcurlpp -lcurl
 
 LD_LIBRARY_PATH := ../../:$(LOG4CXX_LIB):$(CPPUNIT_LIB):$(ACTIVEMQ_LIB):$(APR_LIB):$(APRUTIL_LIB):$(CURLPP_LIB):$(CURLPP_LIB64)
 
-all: tcsApplyOffset tcsApplyOffsetCallback seq-command tcscontext pcsupdater obsevent epicssubscription epicsget logging fileevents status services apply-command any-command observe-simulator igrins2obssimulator
+all: tcsApplyOffset tcsApplyOffsetCallback seq-command tcscontext pcsupdater obsevent epicssubscription epicsget logging fileevents status services apply-command any-command observe-simulator ghost-split-command igrins2obssimulator
 
 seq-command: seq-command.o
 
@@ -52,6 +52,9 @@ services: services.o
 apply-command: apply-command.o
 	$(CXX) $(LIB_DIRS) $(LIBS) -o $@  $<
 
+ghost-split-command: ghost-split-command.o
+	$(CXX) $(LIB_DIRS) $(LIBS) -o $@  $<
+
 any-command: any-command.o
 	$(CXX) $(LIB_DIRS) $(LIBS) -o $@  $<
 
@@ -81,4 +84,8 @@ epicssubscription: epicssubscription.o EpicsHandlerDemo.o
 	$(CXX) $(LIB_DIRS) $(LIBS) -o $@  $<
 
 clean:
-	-$(RM) *.o *.d stresstest seq-command pcsupdater tcscontext obsevent epicssubscription pcsupdater logging fileevents status services apply-command any-command obsacq gpim1zernikes engineering igrins2obssimulator
+	-$(RM) *.o *.d stresstest seq-command pcsupdater tcscontext obsevent epicssubscription pcsupdater logging fileevents status services apply-command any-command obsacq gpim1zernikes gipsimulatior gpiobssimulator engineering ghost-split-command igrins2obssimulator
+=======
+run:
+	@echo $(LD_LIBRARY_PATH)
+
