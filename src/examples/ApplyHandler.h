@@ -21,44 +21,44 @@ using namespace giapi;
 class WorkerThread: public Runnable {
 private:
 
-	int numMessages;
-	int totalMessages;
-	int waitTime;
+  int numMessages;
+  int totalMessages;
+  int waitTime;
 
-	giapi::command::ActionId id;
+  giapi::command::ActionId id;
 public:
 
-	WorkerThread(int totalMessages = 10, int waitTime = 500) {
-		this->numMessages = 0;
-		this->totalMessages = totalMessages;
-		this->waitTime = waitTime;
-		this->id = 0;
-	}
+  WorkerThread(int totalMessages = 10, int waitTime = 500) {
+    this->numMessages = 0;
+    this->totalMessages = totalMessages;
+    this->waitTime = waitTime;
+    this->id = 0;
+  }
 
-	virtual ~WorkerThread() {
-		cleanup();
-	}
+  virtual ~WorkerThread() {
+    cleanup();
+  }
 
-	void setId(giapi::command::ActionId id) {
-		this->id = id;
-		numMessages = 0;
-	}
+  void setId(giapi::command::ActionId id) {
+    this->id = id;
+    numMessages = 0;
+  }
 
-	virtual void run() {
-		printf("Worker Thread started!\n");
+  virtual void run() {
+    printf("Worker Thread started!\n");
     while (numMessages < this->totalMessages) {
       printf("Messages processed = %d \n", numMessages++);
       CountDownLatch lock(1);
       lock.await(this->waitTime);
     }
     CommandUtil::postCompletionInfo(id, HandlerResponse::create(HandlerResponse::COMPLETED));
-	}
+  }
 
 private:
 
-	void cleanup() {
-		printf("Destroying Worker Thread");
-	}
+  void cleanup() {
+    printf("Destroying Worker Thread");
+  }
 };
 
 
@@ -68,57 +68,57 @@ private:
 class ApplyHandler: public giapi::SequenceCommandHandler {
 
 private:
-	WorkerThread * worker;
-	Thread* thread;
+  WorkerThread * worker;
+  Thread* thread;
 
 public:
 
-	virtual giapi::pHandlerResponse handle(giapi::command::ActionId id,
-			giapi::command::SequenceCommand sequenceCommand,
-			giapi::command::Activity activity, giapi::pConfiguration config) {
+  virtual giapi::pHandlerResponse handle(giapi::command::ActionId id,
+      giapi::command::SequenceCommand sequenceCommand,
+      giapi::command::Activity activity, giapi::pConfiguration config) {
 
-		if (config != NULL) {
-			std::vector<std::string> keys = config->getKeys();
-			std::vector<std::string>::iterator it = keys.begin();
-			printf("Configuration\n");
-			for (; it < keys.end(); it++) {
-				std::cout << "{" << *it << " : " << config->getValue(*it)
-						<< "}" << std::endl;
-			}
-		}
+    if (config != NULL) {
+      std::vector<std::string> keys = config->getKeys();
+      std::vector<std::string>::iterator it = keys.begin();
+      printf("Configuration\n");
+      for (; it < keys.end(); it++) {
+        std::cout << "{" << *it << " : " << config->getValue(*it)
+            << "}" << std::endl;
+      }
+    }
 
-		printf("Starting worker thread on id %i\n", id);
+    printf("Starting worker thread on id %i\n", id);
 
-		if (thread != NULL) {
-			thread->join();// this is where  code must be smarter than
-			//this, or else the invoker won't receive answers while
-			//this thread is processing.
-			delete thread;
-		}
-		thread = new Thread( worker );
-		worker->setId(id);
-		thread->start();
-		return HandlerResponse::create(HandlerResponse::STARTED);
-	}
+    if (thread != NULL) {
+      thread->join();// this is where  code must be smarter than
+      //this, or else the invoker won't receive answers while
+      //this thread is processing.
+      delete thread;
+    }
+    thread = new Thread( worker );
+    worker->setId(id);
+    thread->start();
+    return HandlerResponse::create(HandlerResponse::STARTED);
+  }
 
-	static giapi::pSequenceCommandHandler create() {
-		pSequenceCommandHandler handler(new ApplyHandler());
-		return handler;
-	}
+  static giapi::pSequenceCommandHandler create() {
+    pSequenceCommandHandler handler(new ApplyHandler());
+    return handler;
+  }
 
-	virtual ~ApplyHandler() {
-		delete worker;
-		if (thread != NULL) {
-			thread->join();
-			delete thread;
-		}
-	}
+  virtual ~ApplyHandler() {
+    delete worker;
+    if (thread != NULL) {
+      thread->join();
+      delete thread;
+    }
+  }
 
 private:
-	ApplyHandler() {
-		worker = new WorkerThread();
-		thread = NULL;
-	}
+  ApplyHandler() {
+    worker = new WorkerThread();
+    thread = NULL;
+  }
 };
 
 #endif /*APPLYHANDLER_H_*/
