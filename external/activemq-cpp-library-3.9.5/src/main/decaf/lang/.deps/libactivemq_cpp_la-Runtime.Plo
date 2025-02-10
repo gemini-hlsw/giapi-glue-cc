@@ -1,0 +1,8 @@
+decaf/lang/libactivemq_cpp_la-Runtime.lo: decaf/lang/Runtime.cpp \
+ /usr/include/stdc-predef.h decaf/lang/Runtime.h decaf/util/Config.h \
+ /usr/lib/gcc/x86_64-redhat-linux/11/include/stddef.h ../../config.h
+/usr/include/stdc-predef.h:
+decaf/lang/Runtime.h:
+decaf/util/Config.h:
+/usr/lib/gcc/x86_64-redhat-linux/11/include/stddef.h:
+../../config.h:

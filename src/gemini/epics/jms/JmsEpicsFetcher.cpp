@@ -13,16 +13,19 @@ namespace giapi {
 namespace gemini {
 namespace epics {
 
-JmsEpicsFetcher::JmsEpicsFetcher() throw (CommunicationException) :
+JmsEpicsFetcher::JmsEpicsFetcher() noexcept(false) :
+//Fixed for exception handling in the C++20 version.
   JmsProducer(GMPKeys::GMP_GEMINI_EPICS_GET_DESTINATION) {
 }
 
-pEpicsFetcher JmsEpicsFetcher::create() throw (CommunicationException) {
+pEpicsFetcher JmsEpicsFetcher::create() noexcept(false) {
+  //Fixed for exception handling in the C++20 version.
   pEpicsFetcher fetcher(new JmsEpicsFetcher());
   return fetcher;
 }
 
-pEpicsStatusItem JmsEpicsFetcher::getChannel(const std::string &name, long timeout) throw (GiapiException) {
+pEpicsStatusItem JmsEpicsFetcher::getChannel(const std::string &name, long timeout) noexcept(false) {
+  //Fixed for exception handling in the C++20 version.
   Message * request = NULL;
   try {
     //an empty message to make the request. We don't need to provide any data.

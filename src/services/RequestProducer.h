@@ -22,6 +22,9 @@
 
 #include <log4cxx/logger.h>
 
+#include <stdexcept>
+//Required for exception handling
+
 using namespace cms;
 using namespace gmp;
 
@@ -34,17 +37,35 @@ typedef std::auto_ptr<RequestProducer> pRequestProducer;
 /**
  * This class is in charge of producing JMS Messages to
  * send service requests to the GMP
+ * @throw CommunicationException
+ * If there is an issue establishing
+ * a connection with the GMP, creating a session, or initializing
+ * the message producer.
+ *
+ * @throw TimeoutException
+ * If a request sent to the GMP does not
+ * receive a response within the specified timeout period.
+ *
  */
 class RequestProducer {
 public:
 
 	virtual ~RequestProducer();
 
-	static pRequestProducer create() throw (CommunicationException);
+	/**
+	 * @throw CommunicationException If the producer fails to initialize
+	 * due to connection issues or session creation failure.
+	 */
+	static pRequestProducer create() noexcept(false);
 
 
+	/**
+	 * @throw TimeoutException If the request times out before receiving a response.
+	 *
+	 * @throw PostException If there is an issue sending the utility request.
+	 */
 	std::string getProperty(const std::string &key, long timeout = 0)
-		throw (CommunicationException, TimeoutException);
+		noexcept(false);
 
 private:
 
@@ -82,8 +103,11 @@ private:
 
 	/**
 	 * Constructor
+	 * @throw CommunicationException
+	 * If the producer fails to
+	 * initialize due to connection issues or session creation failure.
 	 */
-	RequestProducer() throw (CommunicationException);
+	RequestProducer() noexcept(false);
 
 };
 

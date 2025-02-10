@@ -11,6 +11,9 @@
 #include <gemini/tcs/TcsFetcher.h>
 #include "tcs/ApplyOffset.h"
 
+#include <stdexcept>
+//Required for exception handling
+
 namespace giapi {
 
 /**
@@ -27,24 +30,54 @@ class GeminiUtilImpl {
 	static log4cxx::LoggerPtr logger;
 
 public:
-	static pGeminiUtilImpl Instance() throw (GiapiException);
+	/**
+ 	* @throw GiapiException
+	* If there is an error initializing the GeminiUtil instance,
+ 	*        typically due to issues with the EPICS Manager, PCS Updater, or TCS Fetcher initialization.
+ 	*/
+	static pGeminiUtilImpl Instance() noexcept(false);
 
-	int subscribeEpicsStatus(const std::string &name, pEpicsStatusHandler handler) throw (GiapiException);
+	/**
+ 	* @throw GiapiException
+	* If subscribing to the EPICS status channel fails,
+ 	*        possibly due to connection issues or invalid channel names.
+ 	*/
+	int subscribeEpicsStatus(const std::string &name, pEpicsStatusHandler handler) noexcept(false);
 
 	int unsubscribeEpicsStatus(const std::string &name);
 
 	int postPcsUpdate(double zernikes[], int size);
 
-	int getTcsContext(TcsContext& ctx, long timeout) const throw (GiapiException);
+	/**
+ 	* @throw GiapiException
+	* If there is an error retrieving the TCS context,
+ 	*        possibly due to a timeout or connection failure.
+ 	*/
+	int getTcsContext(TcsContext& ctx, long timeout) const noexcept(false);
 
+	/**
+ 	* @throw GiapiException
+	* If there is an error applying the telescope offset,
+ 	*        potentially due to communication issues with the TCS system.
+ 	*/
 	int tcsApplyOffset(const double p, const double q,
-			           const OffsetType offsetType, const long timeout)const throw (GiapiException);
+			           const OffsetType offsetType, const long timeout)const noexcept(false);
 
+	/**
+ 	* @throw GiapiException
+	* If there is an error applying the telescope offset with a callback,
+ 	*        possibly due to a timeout or connection failure.
+ 	*/
 	int tcsApplyOffset(const double p, const double q,
 		               const OffsetType offsetType, const long timeout,
-		               void (*callbackOffset)(int, std::string)) const throw (GiapiException);
+		               void (*callbackOffset)(int, std::string)) const noexcept(false);
 
-	pEpicsStatusItem getChannel(const std::string &name, long timeout) throw (GiapiException);
+	/**
+ 	* @throw GiapiException
+	* If there is an issue retrieving the EPICS channel data,
+ 	*        typically due to a timeout or communication failure.
+ 	*/
+	pEpicsStatusItem getChannel(const std::string &name, long timeout) noexcept(false);
 
 	virtual ~GeminiUtilImpl();
 private:
@@ -72,7 +105,11 @@ private:
 	 */
 	gemini::epics::pEpicsFetcher _epicsFetcher;
 
-	GeminiUtilImpl() throw (GiapiException);
+	/**
+ 	* @throw GiapiException
+	* EXPLICAR AQUI
+ 	*/
+	GeminiUtilImpl() noexcept(false);
 
 };
 

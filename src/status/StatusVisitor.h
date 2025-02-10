@@ -9,6 +9,10 @@
 #define STATUSVISITOR_H_
 
 #include <exception>
+
+#include <stdexcept>
+//Required for exception handling
+
 namespace giapi {
 
 //forward declarations.
@@ -26,18 +30,24 @@ public:
 
 	/**
 	 * Defines an operation over the StatusItem
+	 * @throw std::exception
+	 * If an error occurs while processing the status item.
 	 */
-	virtual void visitStatusItem(StatusItem * item) throw (std::exception) = 0;
+	virtual void visitStatusItem(StatusItem * item) noexcept(false)=0;
 
 	/**
 	 * Defines an operation over the Alarms
+	 * @throw std::exception
+	 * If an error occurs while processing the alarm status item.
 	 */
-	virtual void visitAlarmItem(AlarmStatusItem * item) throw (std::exception) = 0;
+	virtual void visitAlarmItem(AlarmStatusItem * item) noexcept(false)=0;
 
 	/**
 	 * Defines an operation over Health Status item
+	 * @throw std::exception
+	 * If an error occurs while processing the health status item.
 	 */
-	virtual void visitHealthItem(HealthStatusItem * item) throw (std::exception) = 0;
+	virtual void visitHealthItem(HealthStatusItem * item) noexcept(false)=0;
 
 protected:
 	StatusVisitor();

@@ -1,0 +1,9 @@
+decaf/security/libactivemq_cpp_la-Security.lo: \
+ decaf/security/Security.cpp /usr/include/stdc-predef.h \
+ decaf/security/Security.h decaf/util/Config.h \
+ /usr/lib/gcc/x86_64-redhat-linux/11/include/stddef.h ../../config.h
+/usr/include/stdc-predef.h:
+decaf/security/Security.h:
+decaf/util/Config.h:
+/usr/lib/gcc/x86_64-redhat-linux/11/include/stddef.h:
+../../config.h:

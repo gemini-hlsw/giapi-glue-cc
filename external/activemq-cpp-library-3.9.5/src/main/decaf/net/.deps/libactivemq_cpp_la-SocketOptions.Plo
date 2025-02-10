@@ -1,0 +1,9 @@
+decaf/net/libactivemq_cpp_la-SocketOptions.lo: \
+ decaf/net/SocketOptions.cpp /usr/include/stdc-predef.h \
+ decaf/net/SocketOptions.h decaf/util/Config.h \
+ /usr/lib/gcc/x86_64-redhat-linux/11/include/stddef.h ../../config.h
+/usr/include/stdc-predef.h:
+decaf/net/SocketOptions.h:
+decaf/util/Config.h:
+/usr/lib/gcc/x86_64-redhat-linux/11/include/stddef.h:
+../../config.h:

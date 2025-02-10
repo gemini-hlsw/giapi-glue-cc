@@ -1,0 +1,5 @@
+decaf/util/logging/libactivemq_cpp_la-LoggerHierarchy.lo: \
+ decaf/util/logging/LoggerHierarchy.cpp /usr/include/stdc-predef.h \
+ decaf/util/logging/LoggerHierarchy.h
+/usr/include/stdc-predef.h:
+decaf/util/logging/LoggerHierarchy.h:

@@ -1,0 +1,11 @@
+decaf/util/concurrent/locks/libactivemq_cpp_la-AbstractOwnableSynchronizer.lo: \
+ decaf/util/concurrent/locks/AbstractOwnableSynchronizer.cpp \
+ /usr/include/stdc-predef.h \
+ decaf/util/concurrent/locks/AbstractOwnableSynchronizer.h \
+ decaf/util/Config.h /usr/lib/gcc/x86_64-redhat-linux/11/include/stddef.h \
+ ../../config.h
+/usr/include/stdc-predef.h:
+decaf/util/concurrent/locks/AbstractOwnableSynchronizer.h:
+decaf/util/Config.h:
+/usr/lib/gcc/x86_64-redhat-linux/11/include/stddef.h:
+../../config.h:

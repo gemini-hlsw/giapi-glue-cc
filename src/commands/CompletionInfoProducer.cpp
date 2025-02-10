@@ -6,7 +6,8 @@
 namespace gmp {
 log4cxx::LoggerPtr CompletionInfoProducer::logger(log4cxx::Logger::getLogger("gmp.CompletionInfoProducer"));
 
-CompletionInfoProducer::CompletionInfoProducer() throw (CommunicationException) {
+CompletionInfoProducer::CompletionInfoProducer() noexcept(false) {
+//Fixed for exception handling in the C++20 version.
 	try {
 		_connectionManager = ConnectionManager::Instance();
 		//create an auto-acknowledged session
@@ -28,7 +29,8 @@ CompletionInfoProducer::~CompletionInfoProducer() {
 	cleanup();
 }
 
-pCompletionInfoProducer CompletionInfoProducer::create() throw (CommunicationException) {
+pCompletionInfoProducer CompletionInfoProducer::create() noexcept(false){
+//Fixed for exception handling in the C++20 version.
 	pCompletionInfoProducer producer(new CompletionInfoProducer());
 	return producer;
 }
@@ -48,8 +50,8 @@ void CompletionInfoProducer::cleanup() {
 }
 
 int CompletionInfoProducer::postCompletionInfo(command::ActionId id,
-		pHandlerResponse response) throw (PostException) {
-
+		pHandlerResponse response) noexcept(false){
+//Fixed for exception handling in the C++20 version.
 	MapMessage * reply = NULL;
 
 	try {

@@ -17,6 +17,9 @@
 
 #include <gmp/ConnectionManager.h>
 
+#include <stdexcept>
+//Required for exception handling
+
 using namespace giapi;
 using namespace cms;
 
@@ -50,14 +53,19 @@ public:
 	 * id.
 	 * @return giapi::status::OK if the post succeeds. Otherwise, it
 	 *         returns giapi::status::ERROR.
+	 * @throw PostException
+	 * If there is a problem posting the completion information to the GMP.
 	 */
 	int postCompletionInfo(command::ActionId id,
-			pHandlerResponse response) throw (PostException);
+			pHandlerResponse response) noexcept(false);
+
 
 	/**
 	 * Static factory to instantiate producers referenced via smart pointers
+	 * @throw CommunicationException
+	 * If the producer cannot be created due to connection issues.
 	 */
-	static pCompletionInfoProducer create() throw (CommunicationException);
+	static pCompletionInfoProducer create() noexcept(false);
 
 private:
 
@@ -89,8 +97,10 @@ private:
 
 	/**
 	 * Private Constructor
+	 * @throw CommunicationException
+	 * If there is an issue initializing the producer.
 	 */
-	CompletionInfoProducer() throw (CommunicationException);
+	CompletionInfoProducer() noexcept(false);
 
 };
 

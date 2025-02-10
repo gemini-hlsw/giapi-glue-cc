@@ -18,6 +18,9 @@
 #include <cms/BytesMessage.h>
 #include <cms/CMSException.h>
 
+#include <stdexcept>
+//Required for exception handling
+
 namespace giapi {
 
 using namespace cms;
@@ -52,8 +55,11 @@ private:
 	 * value. The offset is used when coding the
 	 * message to distinguish the different types of
 	 * status when reconstructing.
+	 * @throw CMSException
+	 * If an error occurs while writing data
+	 * to the JMS message.
 	 */
-	void writeHeader(int offset, StatusItem *item) throw (CMSException);
+	void writeHeader(int offset, StatusItem *item) noexcept(false);
 
 public:
 	StatusSerializerVisitor(BytesMessage *msg);
@@ -61,18 +67,27 @@ public:
 
 	/**
 	 * Serialize a Status Item into the JMS message
+	 * @throw CMSException
+	 * If an error occurs while writing data
+	 * to the JMS message.
 	 */
-	void visitStatusItem(StatusItem * item) throw (CMSException);
+	void visitStatusItem(StatusItem * item) noexcept(false);
 
 	/**
 	 * Serialize the Alarm Status Item into the JMS message
+	 * @throw CMSException
+	 * If an error occurs while writing alarm
+	 * data to the JMS message.
 	 */
-	void visitAlarmItem(AlarmStatusItem * item) throw (CMSException);
+	void visitAlarmItem(AlarmStatusItem * item) noexcept(false);
 
 	/**
 	 * Serialize the Health into the JMS Message
+	 * @throw CMSException
+	 * If an error occurs while writing health
+	 * data to the JMS message.
 	 */
-	void visitHealthItem(HealthStatusItem * item) throw (CMSException);
+	void visitHealthItem(HealthStatusItem * item) noexcept(false);
 };
 
 }

@@ -1,0 +1,9 @@
+activemq/threads/libactivemq_cpp_la-TaskRunner.lo: \
+ activemq/threads/TaskRunner.cpp /usr/include/stdc-predef.h \
+ activemq/threads/TaskRunner.h activemq/util/Config.h ../../config.h \
+ activemq/threads/Task.h
+/usr/include/stdc-predef.h:
+activemq/threads/TaskRunner.h:
+activemq/util/Config.h:
+../../config.h:
+activemq/threads/Task.h:

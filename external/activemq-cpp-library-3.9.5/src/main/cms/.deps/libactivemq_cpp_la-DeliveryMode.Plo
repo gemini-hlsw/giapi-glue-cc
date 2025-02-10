@@ -1,0 +1,5 @@
+cms/libactivemq_cpp_la-DeliveryMode.lo: cms/DeliveryMode.cpp \
+ /usr/include/stdc-predef.h cms/DeliveryMode.h cms/Config.h
+/usr/include/stdc-predef.h:
+cms/DeliveryMode.h:
+cms/Config.h:

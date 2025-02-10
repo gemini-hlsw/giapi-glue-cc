@@ -17,9 +17,12 @@ LogStatusSender::~LogStatusSender() {
 }
 
 int LogStatusSender::postStatus(pStatusItem statusItem) const
-		throw (PostException) {
+		noexcept(false){
+		//Fixed for exception handling in the C++20 version.
 	LOG4CXX_INFO(logger, "Post Status Item " << statusItem->getName());
 	return status::OK;
 }
 
 }
+
+

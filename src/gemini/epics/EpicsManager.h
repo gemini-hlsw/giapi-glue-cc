@@ -6,6 +6,9 @@
 #include <giapi/giapiexcept.h>
 #include <giapi/EpicsStatusHandler.h>
 
+#include <stdexcept>
+//Required for exception handling
+
 namespace giapi {
 
 /**
@@ -17,11 +20,22 @@ class EpicsManager {
 
 public:
 
+	/**
+ 	* @throw GiapiException
+	* Thrown if there is an error while subscribing to the EPICS channel,
+        * such as an invalid channel name, communication failure, or if the
+        * handler is not valid.
+ 	*/
 	virtual int subscribeEpicsStatus(const std::string &name,
-			pEpicsStatusHandler handler) throw (GiapiException) = 0;
+			pEpicsStatusHandler handler) noexcept(false)=0;
 
+	/**
+ 	* @throw GiapiException
+ 	* Thrown if there is an error while unsubscribing from the EPICS channel,
+	* such as if the channel is not found or there is no active subscription.
+ 	*/
 	virtual int unsubscribeEpicsStatus(const std::string &name)
-			throw (GiapiException) = 0;
+			noexcept(false)=0;
 
 	EpicsManager() {}
 	virtual ~EpicsManager() {}

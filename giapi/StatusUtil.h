@@ -4,6 +4,10 @@
 
 #include <giapi/giapi.h>
 #include <giapi/giapiexcept.h>
+
+#include <stdexcept>
+//Required for exception handling
+
 //$Id$
 namespace giapi {
 
@@ -71,7 +75,7 @@ public:
 	 * @throws GiapiException in case there is a problem with the underlying
 	 *         mechanisms to execute the post.
 	 */
-	static int postStatus() throw (GiapiException);
+	static int postStatus() noexcept(false);
 
 	/**
 	 * Post the specified status item to Gemini. The status will be sent only
@@ -88,7 +92,7 @@ public:
 	 * @throws GiapiException in case there is a problem with the underlying
 	 *         mechanisms to execute the post.
 	 */
-	static int postStatus(const std::string &name) throw (GiapiException);
+	static int postStatus(const std::string &name) noexcept(false);
 
 	/**
 	 * Set the value of the given status item to the provided

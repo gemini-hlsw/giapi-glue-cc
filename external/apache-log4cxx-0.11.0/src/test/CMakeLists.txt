@@ -1,5 +1,0 @@
-find_package(Java COMPONENTS Development)
-if(Java_Development_FOUND)
-  add_subdirectory(java)
-endif(Java_Development_FOUND)
-add_subdirectory(cpp)

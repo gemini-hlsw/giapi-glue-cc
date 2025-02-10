@@ -15,7 +15,8 @@ JmsEpicsConfiguration::~JmsEpicsConfiguration() {
 
 }
 
-void JmsEpicsConfiguration::init() throw (CommunicationException, TimeoutException)  {
+void JmsEpicsConfiguration::init() noexcept(false) {
+//Fixed for exception handling in the C++20 version.
 	//request the channles
 	requestChannels(1000);
 }
@@ -34,8 +35,8 @@ pEpicsConfiguration JmsEpicsConfiguration::create(pSession session) {
 	return conf;
 }
 
-void JmsEpicsConfiguration::requestChannels(long timeout) throw (CommunicationException, TimeoutException) {
-
+void JmsEpicsConfiguration::requestChannels(long timeout) noexcept(false){
+//Fixed for exception handling in the C++20 version.
 	Message *request= NULL;
 
 	try {
@@ -92,4 +93,3 @@ void JmsEpicsConfiguration::requestChannels(long timeout) throw (CommunicationEx
 	}
 }
 }
-

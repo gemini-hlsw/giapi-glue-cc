@@ -20,7 +20,8 @@ AbstractStatusSender::~AbstractStatusSender() {
 }
 
 int AbstractStatusSender::postStatus(const std::string &name) const
-		throw (PostException) {
+		noexcept(false) {
+		//Fixed for exception handling in the C++20 version.
 
 	pStatusItem statusItem = StatusDatabase::Instance()->getStatusItem(name);
 
@@ -32,7 +33,17 @@ int AbstractStatusSender::postStatus(const std::string &name) const
 	return doPost(statusItem);
 }
 
-int AbstractStatusSender::postStatus() const throw (PostException) {
+/*
+ * TODO. This is necessary to stdc++20 and we have to put the logic
+ * in this rutime. @std_work
+ */
+
+int AbstractStatusSender::postStatus(pStatusItem item) const noexcept(false) {
+    return 0;
+}
+
+int AbstractStatusSender::postStatus() const noexcept(false) {
+	//Fixed for exception handling in the C++20 version.
 	//get the status items
 	const std::vector<pStatusItem> items =
 			StatusDatabase::Instance()->getStatusItems();
@@ -45,7 +56,9 @@ int AbstractStatusSender::postStatus() const throw (PostException) {
 	return status::OK;
 }
 
-int AbstractStatusSender::doPost(pStatusItem statusItem) const throw (PostException) {
+
+int AbstractStatusSender::doPost(pStatusItem statusItem) const noexcept(false) {
+	//Fixed for exception handling in the C++20 version.
 	if (statusItem.get() == 0)
 		return giapi::status::ERROR;
 

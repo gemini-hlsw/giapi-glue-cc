@@ -1,2 +1,0 @@
-add_executable(patternparsertestcase patternparsertestcase.cpp num343patternconverter.cpp)
-set(ALL_LOG4CXX_TESTS ${ALL_LOG4CXX_TESTS} patternparsertestcase PARENT_SCOPE)

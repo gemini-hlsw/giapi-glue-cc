@@ -1,0 +1,6 @@
+cms/libactivemq_cpp_la-MessageAvailableListener.lo: \
+ cms/MessageAvailableListener.cpp /usr/include/stdc-predef.h \
+ cms/MessageAvailableListener.h cms/Config.h
+/usr/include/stdc-predef.h:
+cms/MessageAvailableListener.h:
+cms/Config.h:

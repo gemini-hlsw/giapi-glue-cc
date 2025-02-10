@@ -14,7 +14,8 @@ GiapiUtil::~GiapiUtil() {
 }
 
 void GiapiUtil::registerGmpErrorHandler(giapi_error_handler handler)
-		throw (CommunicationException) {
+		noexcept(false) {
+			//Fixed for exception handling in the C++20 version.
 
 	try {
 		pConnectionManager manager = ConnectionManager::Instance();
@@ -29,7 +30,8 @@ void GiapiUtil::registerGmpErrorHandler(giapi_error_handler handler)
 
 
 void GiapiUtil::registerGmpErrorHandler(pGiapiErrorHandler handler)
-		throw (CommunicationException) {
+		noexcept(false) {
+			//Fixed for exception handling in the C++20 version.
 
 	try {
 		pConnectionManager manager = ConnectionManager::Instance();

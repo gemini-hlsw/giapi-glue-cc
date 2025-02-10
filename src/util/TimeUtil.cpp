@@ -16,7 +16,8 @@ namespace giapi {
             running=true;
             done=false;
         }
-        void TimeUtil::stopTimer()throw(std::logic_error){
+        void TimeUtil::stopTimer()noexcept(false){
+            //Fixed for exception handling in the C++20 version.
             if(!running){
                 throw new std::logic_error("You must call TimeUtil::startTimer before TimeUtil::stopTimer");
             }
@@ -24,7 +25,8 @@ namespace giapi {
             running=false;
             done=true;
         }
-        unsigned long long TimeUtil::getElapsedTime(TimeUnit unit)throw(std::logic_error){
+        unsigned long long TimeUtil::getElapsedTime(TimeUnit unit)noexcept(false){
+            //Fixed for exception handling in the C++20 version.
             if(!done){
                 throw new std::logic_error("You must call TimeUtil::startTimer and TimeUtil::stopTimer before asking for the elapsed time");
             }
@@ -40,13 +42,16 @@ namespace giapi {
             }
             throw new std::logic_error("Unknown units");
         }
-        unsigned long long TimeUtil::getElapsedUSecs()throw(std::logic_error){
+        unsigned long long TimeUtil::getElapsedUSecs()noexcept(false){
+            //Fixed for exception handling in the C++20 version.
             return getElapsedTime(USEC);
         }
-        unsigned long long TimeUtil::getElapsedMSecs()throw(std::logic_error){
+        unsigned long long TimeUtil::getElapsedMSecs()noexcept(false){
+            //Fixed for exception handling in the C++20 version.
             return getElapsedTime(MSEC);
         }
-        unsigned long long TimeUtil::getElapsedSecs()throw(std::logic_error){
+        unsigned long long TimeUtil::getElapsedSecs()noexcept(false){
+            //Fixed for exception handling in the C++20 version.
             return getElapsedTime(SEC);
         }
     }

@@ -16,6 +16,9 @@
 #include <util/JmsSmartPointers.h>
 #include <gmp/ConnectionManager.h>
 
+#include <stdexcept>
+//Required for exception handling
+
 using namespace gmp;
 
 namespace giapi {
@@ -34,11 +37,21 @@ class JmsStatusSender: public AbstractStatusSender {
 		HEALTH_OFFSET = 20
 	};
 
+
 public:
-	JmsStatusSender() throw (CommunicationException);
+	/**
+	 * @throw CommunicationException
+	 * If the sender fails to establish a connection
+	 * or initialize the message producer.
+	 */
+	JmsStatusSender() noexcept(false);
 	virtual ~JmsStatusSender();
 protected:
-	virtual int postStatus(pStatusItem item) const throw (PostException);
+	/**
+	 * @throw PostException
+	 * If an error occurs while sending the message.
+	 */
+	virtual int postStatus(pStatusItem item) const noexcept(false);
 
 private:
 	/**

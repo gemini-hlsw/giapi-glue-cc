@@ -1,0 +1,5 @@
+cms/libactivemq_cpp_la-MessageTransformer.lo: cms/MessageTransformer.cpp \
+ /usr/include/stdc-predef.h cms/MessageTransformer.h cms/Config.h
+/usr/include/stdc-predef.h:
+cms/MessageTransformer.h:
+cms/Config.h:

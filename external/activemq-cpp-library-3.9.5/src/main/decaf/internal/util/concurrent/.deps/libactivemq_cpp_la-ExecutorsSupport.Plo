@@ -1,0 +1,6 @@
+decaf/internal/util/concurrent/libactivemq_cpp_la-ExecutorsSupport.lo: \
+ decaf/internal/util/concurrent/ExecutorsSupport.cpp \
+ /usr/include/stdc-predef.h \
+ decaf/internal/util/concurrent/ExecutorsSupport.h
+/usr/include/stdc-predef.h:
+decaf/internal/util/concurrent/ExecutorsSupport.h:

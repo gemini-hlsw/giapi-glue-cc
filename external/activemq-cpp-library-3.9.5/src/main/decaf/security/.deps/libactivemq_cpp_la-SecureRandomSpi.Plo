@@ -1,0 +1,11 @@
+decaf/security/libactivemq_cpp_la-SecureRandomSpi.lo: \
+ decaf/security/SecureRandomSpi.cpp /usr/include/stdc-predef.h \
+ decaf/security/SecureRandomSpi.h decaf/util/Config.h \
+ /usr/lib/gcc/x86_64-redhat-linux/11/include/stddef.h ../../config.h \
+ decaf/security/SecuritySpi.h
+/usr/include/stdc-predef.h:
+decaf/security/SecureRandomSpi.h:
+decaf/util/Config.h:
+/usr/lib/gcc/x86_64-redhat-linux/11/include/stddef.h:
+../../config.h:
+decaf/security/SecuritySpi.h:
