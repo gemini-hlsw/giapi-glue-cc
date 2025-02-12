@@ -1,9 +1,0 @@
-activemq/threads/libactivemq_cpp_la-CompositeTask.lo: \
- activemq/threads/CompositeTask.cpp /usr/include/stdc-predef.h \
- activemq/threads/CompositeTask.h activemq/util/Config.h ../../config.h \
- activemq/threads/Task.h
-/usr/include/stdc-predef.h:
-activemq/threads/CompositeTask.h:
-activemq/util/Config.h:
-../../config.h:
-activemq/threads/Task.h:

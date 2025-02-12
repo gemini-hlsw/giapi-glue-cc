@@ -1,9 +1,0 @@
-decaf/net/libactivemq_cpp_la-SocketImplFactory.lo: \
- decaf/net/SocketImplFactory.cpp /usr/include/stdc-predef.h \
- decaf/net/SocketImplFactory.h decaf/util/Config.h \
- /usr/lib/gcc/x86_64-redhat-linux/11/include/stddef.h ../../config.h
-/usr/include/stdc-predef.h:
-decaf/net/SocketImplFactory.h:
-decaf/util/Config.h:
-/usr/lib/gcc/x86_64-redhat-linux/11/include/stddef.h:
-../../config.h:

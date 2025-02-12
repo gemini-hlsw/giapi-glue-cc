@@ -1,9 +1,0 @@
-decaf/security/libactivemq_cpp_la-SecuritySpi.lo: \
- decaf/security/SecuritySpi.cpp /usr/include/stdc-predef.h \
- decaf/security/SecuritySpi.h decaf/util/Config.h \
- /usr/lib/gcc/x86_64-redhat-linux/11/include/stddef.h ../../config.h
-/usr/include/stdc-predef.h:
-decaf/security/SecuritySpi.h:
-decaf/util/Config.h:
-/usr/lib/gcc/x86_64-redhat-linux/11/include/stddef.h:
-../../config.h:

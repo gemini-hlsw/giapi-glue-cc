@@ -1,8 +1,0 @@
-decaf/net/libactivemq_cpp_la-Proxy.lo: decaf/net/Proxy.cpp \
- /usr/include/stdc-predef.h decaf/net/Proxy.h decaf/util/Config.h \
- /usr/lib/gcc/x86_64-redhat-linux/11/include/stddef.h ../../config.h
-/usr/include/stdc-predef.h:
-decaf/net/Proxy.h:
-decaf/util/Config.h:
-/usr/lib/gcc/x86_64-redhat-linux/11/include/stddef.h:
-../../config.h:

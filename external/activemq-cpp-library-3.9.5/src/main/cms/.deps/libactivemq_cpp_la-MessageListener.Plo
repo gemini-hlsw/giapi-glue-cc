@@ -1,5 +1,0 @@
-cms/libactivemq_cpp_la-MessageListener.lo: cms/MessageListener.cpp \
- /usr/include/stdc-predef.h cms/MessageListener.h cms/Config.h
-/usr/include/stdc-predef.h:
-cms/MessageListener.h:
-cms/Config.h:

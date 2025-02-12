@@ -1,8 +1,0 @@
-decaf/util/libactivemq_cpp_la-MapEntry.lo: decaf/util/MapEntry.cpp \
- /usr/include/stdc-predef.h decaf/util/MapEntry.h decaf/util/Config.h \
- /usr/lib/gcc/x86_64-redhat-linux/11/include/stddef.h ../../config.h
-/usr/include/stdc-predef.h:
-decaf/util/MapEntry.h:
-decaf/util/Config.h:
-/usr/lib/gcc/x86_64-redhat-linux/11/include/stddef.h:
-../../config.h:

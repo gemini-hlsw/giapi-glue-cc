@@ -1,7 +1,0 @@
-activemq/threads/libactivemq_cpp_la-Task.lo: activemq/threads/Task.cpp \
- /usr/include/stdc-predef.h activemq/threads/Task.h \
- activemq/util/Config.h ../../config.h
-/usr/include/stdc-predef.h:
-activemq/threads/Task.h:
-activemq/util/Config.h:
-../../config.h:

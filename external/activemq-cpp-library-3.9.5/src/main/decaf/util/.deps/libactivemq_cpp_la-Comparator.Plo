@@ -1,8 +1,0 @@
-decaf/util/libactivemq_cpp_la-Comparator.lo: decaf/util/Comparator.cpp \
- /usr/include/stdc-predef.h decaf/util/Comparator.h decaf/util/Config.h \
- /usr/lib/gcc/x86_64-redhat-linux/11/include/stddef.h ../../config.h
-/usr/include/stdc-predef.h:
-decaf/util/Comparator.h:
-decaf/util/Config.h:
-/usr/lib/gcc/x86_64-redhat-linux/11/include/stddef.h:
-../../config.h:
