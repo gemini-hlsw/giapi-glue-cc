@@ -1,9 +1,0 @@
-#! /bin/sh
-#
-# Created by configure
-
-"./configure" \
-"--with-apr=/opt/scorpio/giapi-glue-cc/external/apr" \
-"--prefix=/opt/scorpio/giapi-glue-cc/external/apr-util" \
-"--without-expat" \
-"$@"

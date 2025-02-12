@@ -1,7 +1,0 @@
-#! /bin/sh
-#
-# Created by configure
-
-"./configure" \
-"--prefix=/opt/scorpio/giapi-glue-cc/external/apr" \
-"$@"

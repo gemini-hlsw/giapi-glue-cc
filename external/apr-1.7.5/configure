@@ -36080,10 +36080,7 @@ printf "%s\n" "$as_me: executing $ac_file commands" >&6;}
 
     cfgfile=${ofile}T
     trap "$RM \"$cfgfile\"; exit 1" 1 2 15
-    # The line below was commented because we had the error "rm: cannot remove 'libtoolT': No such file or directory"
-    #  and we had to add the -f option to the RM command
-    #$RM "$cfgfile"
-    $RM -f "$cfgfile"
+    $RM "$cfgfile"
 
     cat <<_LT_EOF >> "$cfgfile"
 #! $SHELL
