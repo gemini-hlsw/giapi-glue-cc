@@ -64,6 +64,7 @@ RUN cd $GIAPI_ROOT/external/apache-log4cxx-1.3.1 && \
     cmake -S ./ -B ./install/ -DCMAKE_INSTALL_PREFIX=$GIAPI_ROOT/external/log4cxx \
     -DAPR_ROOT=$GIAPI_ROOT/external/apr \
     -DAPRUTIL_ROOT=$GIAPI_ROOT/external/apr-util \
+    -DEXPAT_ROOT=$GIAPI_ROOT/external/expat \
     -DCMAKE_CXX_STANDARD=20 && \
     cd install && \
     make -j 4 && make install
