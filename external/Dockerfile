@@ -59,6 +59,7 @@ RUN cd $GIAPI_ROOT/external/activemq-cpp-library-3.9.5 && \
 
 ## log4cxx
 RUN cd $GIAPI_ROOT/external/apache-log4cxx-1.3.1 && \
+    autoreconf -fi && \
     PKG_CONFIG_PATH=$GIAPI_ROOT/external/apr/lib/pkgconfig:$GIAPI_ROOT/external/apr-util/lib/pkconfig \
     cmake -S ./ -B ./install/ -DCMAKE_INSTALL_PREFIX=$GIAPI_ROOT/external/log4cxx \
     -DAPR_ROOT=$GIAPI_ROOT/external/apr \
