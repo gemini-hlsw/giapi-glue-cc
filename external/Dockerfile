@@ -34,7 +34,7 @@ RUN cd $GIAPI_ROOT/external/apr-1.7.5 && \
 
 
 ## Expat
-RUN cd $GIAPI_ROOT/external/expat/expat-2.6.4 && \
+RUN cd $GIAPI_ROOT/external/expat-2.6.4 && \
     ./buildconf.sh && \
     ./configure --prefix=$GIAPI_ROOT/external/expat && \
     make -j 4 && make install
