@@ -33,18 +33,18 @@ RUN cd $GIAPI_ROOT/external/apr-1.7.5 && \
     make -j 4 && make install && ln -s $GIAPI_ROOT/external/apr-1.7.5 apr-1
 
 
+## Expat
+RUN cd $GIAPI_ROOT/external/expat/expat-2.6.4 && \
+    ./configure --prefix=$GIAPI_ROOT/external/expat && \
+    make -j 4 && make install
+
+
 ## APR-util 
 RUN cd $GIAPI_ROOT/external/apr-util-1.6.3 && \
     ./configure --with-apr=$GIAPI_ROOT/external/apr \
     --with-expat=$GIAPI_ROOT/external/expat \
     --prefix=$GIAPI_ROOT/external/apr-util && \
     make -j 4 && make install 
-
-
-## Expat
-RUN cd $GIAPI_ROOT/external/expat/expat-2.6.4 && \
-    ./configure --prefix=$GIAPI_ROOT/external/expat && \
-    make -j 4 && make install
 
 
 ## ActiveMQ
