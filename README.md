@@ -31,8 +31,6 @@ The following are tools used to build the GIAPI C++ API:
 |GNU automake | 1.16.2   |
 |cmake        | 3.26.5 |
 
-////// CHANGE????? ///////////
-
 # External libraries
 The external libraries required by the GIAPI are:
 * Apache Active MQ CMS (C++ Messaging system) version 3.9.5. [activemq](external/activemq-cpp-library-3.9.5)
