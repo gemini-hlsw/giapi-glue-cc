@@ -51,10 +51,10 @@ The steps performed from GEMINI to compile the library on CENTOS 7 and CENTOS 8 
       source ./defineGiapiglueEnv.sh
    ```
 * Compile the apr library. Follow the actions listed in [link](external/apr-1.7.5)
-* Compile the apr-util library. Follow the actions listed in this [link](external/apr-util-1.6.3)
-* Compile the activemq library. Follow the actions listed in this [link](external/activemq-cpp-library-3.9.5)
 * Compile the expat library. Follow the actions listed in [link](external/expat-2.6.4) 
+* Compile the apr-util library. Follow the actions listed in this [link](external/apr-util-1.6.3)
 * Compile the log4cxx library. Follow the actions listed in this [link](external/apache-log4cxx-1.3.1) 
+* Compile the activemq library. Follow the actions listed in this [link](external/activemq-cpp-library-3.9.5)
 * Compile the libCurl library. Follow the actions listed in this [link](external/curl-8.11.1) 
 * Compile the libCurlpp library. Follow the actions listed in this [link](external/curlpp-0.8.1)
 * Compile the giapi-glue library. Execute the following commands.
