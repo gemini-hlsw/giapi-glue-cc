@@ -39,15 +39,6 @@ RUN cd $GIAPI_ROOT/external/apache-log4cxx-1.3.1 && \
     make -j 4 && make install
 
 
-## ActiveMQ
-RUN cd $GIAPI_ROOT/external/activemq-cpp-library-3.9.5 && \
-    autoreconf -fi && \
-    ./configure --prefix=$GIAPI_ROOT/external/activemq-cpp \
-    --with-apr=$GIAPI_ROOT/external/apr \
-    --without-openssl && \
-    make -j 4 && make install
-
-
 ## curl library
 RUN cd $GIAPI_ROOT/external/curl-8.11.1/ && \
     autoreconf -fi && \
@@ -62,4 +53,13 @@ RUN cd $GIAPI_ROOT/external/curlpp-0.8.1/ && \
     cmake -S ./ -B ./install/ -DCMAKE_INSTALL_PREFIX=$GIAPI_ROOT/external/curlpp \
     -DCMAKE_INSTALL_LIBDIR=lib && \
     cd install && \
+    make -j 4 && make install
+
+
+## ActiveMQ
+RUN cd $GIAPI_ROOT/external/activemq-cpp-library-3.9.5 && \
+    autoreconf -fi && \
+    ./configure --prefix=$GIAPI_ROOT/external/activemq-cpp \
+    --with-apr=$GIAPI_ROOT/external/apr \
+    --without-openssl && \
     make -j 4 && make install
