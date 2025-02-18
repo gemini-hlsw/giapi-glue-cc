@@ -6,5 +6,5 @@ Execute configure to set the environment.
 Compile and install the library. 
 
 ```
-make -j 4 && make install
+make && make install
 ```
