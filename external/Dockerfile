@@ -63,6 +63,3 @@ RUN cd $GIAPI_ROOT/external/curlpp-0.8.1/ && \
     -DCMAKE_INSTALL_LIBDIR=lib && \
     cd install && \
     make -j 4 && make install
-
-
-ENTRYPOINT ["/bin/sh", "-c", "while true; do sleep 1000; done"]
