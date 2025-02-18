@@ -44,7 +44,7 @@ The external libraries required by the GIAPI are:
 To compile GIAPI-GLUE from source code, it is necessary to first compile the external libraries 
 located in the external directory. 
 
-The steps performed from GEMINI to compile the library on CENTOS 7 and CENTOS 8 are described below. 
+The steps performed from GEMINI to compile the library on Rocky 9 are described below. 
 
 * Create the GIAPI_ROOT and BOOST_ROOT enviroment variables. It is possible executing the following command.
    ```
