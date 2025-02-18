@@ -23,8 +23,6 @@ and expanded standard library capabilities. The GIAPI library can be compiled wi
 version of the GCC 10 compiler, which was among the first to fully implement C++20.
 Currently, Gemini is using GIAPI on Rocky 9 with GCC 11.5.0.
 
-////// CHANGE?????? ///////////
-
 The following are tools used to build the GIAPI C++ API:
 |             | Rocky 9 |
 |    :---:    |  :---:   |
