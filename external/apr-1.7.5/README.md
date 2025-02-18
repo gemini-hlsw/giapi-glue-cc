@@ -6,5 +6,5 @@ Execute configure to set the environment.
 Compile and install the library. 
 
 ```
-make -j 4 && make install && ln -s $GIAPI_ROOT/external/apr-1.7.5 apr-1
+make && make install && ln -s $GIAPI_ROOT/external/apr-1.7.5 apr-1
 ```
