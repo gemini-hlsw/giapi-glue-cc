@@ -24,12 +24,12 @@ version of the GCC 10 compiler, which was among the first to fully implement C++
 Currently, Gemini is using GIAPI on Rocky 9 with GCC 11.5.0.
 
 The following are tools used to build the GIAPI C++ API:
-|             | Rocky 9 |
-|    :---:    |  :---:   |
-|g++ (GCC)    | 11.5.0    |
-|GNU Make     | 4.3     |
-|GNU automake | 1.16.2   |
-|cmake        | 3.26.5 |
+|             | Rocky 9 | Rocky 8 |
+|    :---:    |  :---:   |  :---:   |
+|g++ (GCC)    | 11.5.0    | 8.5.0    |
+|GNU Make     | 4.3     | 4.2.1   |
+|GNU automake | 1.16.2   | 1.16.1   |
+|cmake        | 3.26.5 | 3.26.5 |
 
 # External libraries
 The external libraries required by the GIAPI are:
