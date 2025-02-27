@@ -12,7 +12,8 @@ log4cxx::LoggerPtr EpicsConsumer::logger(log4cxx::Logger::getLogger(
 		"giapi::gemini::EpicsConsumer"));
 
 EpicsConsumer::EpicsConsumer(const std::string &channelName,
-		pEpicsStatusHandler handler) throw (CommunicationException) {
+		pEpicsStatusHandler handler) noexcept(false){
+			//Fixed for exception handling in the C++20 version.
 	_handler = handler;
 	_channelName = channelName;
 	try {
@@ -42,14 +43,16 @@ EpicsConsumer::EpicsConsumer(const std::string &channelName,
 }
 
 pEpicsConsumer EpicsConsumer::create(const std::string &channelName,
-		pEpicsStatusHandler handler) throw (CommunicationException) {
+		pEpicsStatusHandler handler) noexcept(false){
+			//Fixed for exception handling in the C++20 version.
 
 	pEpicsConsumer consumer(new EpicsConsumer(channelName, handler));
 	return consumer;
 
 }
 
-EpicsConsumer::~EpicsConsumer() throw() {
+EpicsConsumer::~EpicsConsumer() noexcept{
+//Fixed for exception handling in the C++20 version.
 	LOG4CXX_DEBUG(logger, "Destroying EPICS Consumer for channel " << _channelName);
 	cleanup();
 }
@@ -78,7 +81,8 @@ void EpicsConsumer::cleanup() {
 	//destruction of the objects is automatic since we are using smart pointers
 }
 
-void EpicsConsumer::onMessage(const cms::Message * message) throw() {
+void EpicsConsumer::onMessage(const cms::Message * message) noexcept(false){
+//Fixed for exception handling in the C++20 version.
 
 	const BytesMessage* bytesMessage =
 			dynamic_cast< const BytesMessage* >( message );

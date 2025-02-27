@@ -15,6 +15,9 @@
 
 #include <util/giapiMaps.h>
 
+#include <stdexcept>
+//Required for exception handling
+
 namespace giapi {
 
 /**
@@ -105,26 +108,44 @@ class JmsCommandUtil {
 
 public:
 
+	/**
+	 * @throw CommunicationException
+	 * If an error occurs while establishing the subscription.
+	 */
 	int subscribeSequenceCommand(command::SequenceCommand id,
 			command::ActivitySet activities,
-			pSequenceCommandHandler handler) throw (CommunicationException);
+			pSequenceCommandHandler handler) noexcept(false);
 
+	/**
+	 * @throw CommunicationException
+	 * If an error occurs while establishing the subscription.
+	 */
 	int subscribeApply(const std::string & prefix, command::ActivitySet activities,
-			pSequenceCommandHandler handler) throw (CommunicationException);
+			pSequenceCommandHandler handler) noexcept(false);
 
+	/**
+	 * @throw PostException
+	 * If the completion info cannot be sent successfully.
+	 */
 	int postCompletionInfo(command::ActionId id,
-			pHandlerResponse response) throw (PostException);
+			pHandlerResponse response) noexcept(false);
 
-	static pJmsCommandUtil Instance() throw (CommunicationException);
+	/**
+	 * @throw CommunicationException
+	 * If an error occurs while creating the instance.
+	 */
+	static pJmsCommandUtil Instance() noexcept(false);
 
 	virtual ~JmsCommandUtil();
 
 private:
 	/**
 	 * Internal instance of this utility class
+	 * @throw CommunicationException
+	 * If an error occurs while creating the instance.
 	 */
 	static pJmsCommandUtil INSTANCE;
-	JmsCommandUtil() throw (CommunicationException);
+	JmsCommandUtil() noexcept(false);
 
 	typedef std::unordered_map<const std::string, ActivityHolder *, hash<std::string>, util::eqstr>
 			CommandHolderMap;

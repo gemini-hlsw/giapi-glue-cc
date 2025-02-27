@@ -9,15 +9,18 @@ ServicesUtil::~ServicesUtil() {
 }
 
 void ServicesUtil::systemLog(log::Level level,
-		const std::string &msg) throw (GiapiException) {
+		const std::string &msg) noexcept(false){
+		//Fixed for exception handling in the C++20 version.
 	ServicesUtilImpl::Instance()->systemLog(level, msg);
 }
 
-long64 ServicesUtil::getObservatoryTime() throw (GiapiException) {
+long64 ServicesUtil::getObservatoryTime() noexcept(false){
+	//Fixed for exception handling in the C++20 version.
 	return ServicesUtilImpl::Instance()->getObservatoryTime();
 }
 
-const std::string ServicesUtil::getProperty(const std::string &key, long timeout) throw (GiapiException) {
+const std::string ServicesUtil::getProperty(const std::string &key, long timeout) noexcept(false){
+	//Fixed for exception handling in the C++20 version.
 	return ServicesUtilImpl::Instance()->getProperty(key, timeout);
 }
 

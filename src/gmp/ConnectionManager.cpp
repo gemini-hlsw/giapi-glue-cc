@@ -49,8 +49,8 @@ void ConnectionManager::registerHandler(pGiapiErrorHandler handler) {
 }
 
 
-void ConnectionManager::startup() throw (GmpException) {
-
+void ConnectionManager::startup() /*throw (GmpException)*/ noexcept(false) {
+//Now with noexcept for c++20 issues
     std::string hostname = giapi::util::PropertiesUtil::Instance().getProperty("gmp.hostname");
     if(giapi::util::StringUtil::isEmpty(hostname)){
         hostname = std::string("localhost");
@@ -82,7 +82,8 @@ void ConnectionManager::startup() throw (GmpException) {
 	}
 }
 
-pConnectionManager ConnectionManager::Instance() throw (GmpException) {
+pConnectionManager ConnectionManager::Instance() /*throw (GmpException)*/ noexcept(false) {
+//Now with noexcept for c++20 issues
 	//if not connected, try to reconnect:
 	if (INSTANCE->_connection.get() == 0) {
 		INSTANCE->startup();
@@ -118,7 +119,7 @@ void ConnectionManager::onException(const CMSException & ex) {
 	}
 
 	LOG4CXX_INFO(logger, "Connection recovered. Invoking user provided error handlers");
-
+/*
 	//functions first...
 	std::set<giapi_error_handler>::const_iterator it = _errorHandlersFunctions.begin();
 
@@ -138,11 +139,21 @@ void ConnectionManager::onException(const CMSException & ex) {
 		handler->onError();
 		itObject++;
 	}
+*/
+
+	for (const auto &handler : _errorHandlersFunctions) {
+		handler();
+	}
+
+	// Invoke object-based error handlers
+	for (const auto &handlerObject : _errorHandlerObjects) {
+		handlerObject->onError();
+	}
 
 }
 
-pSession ConnectionManager::createSession() throw (CMSException ) {
-
+pSession ConnectionManager::createSession() /*throw (CMSException )*/ noexcept(false) {
+//Now with noexcept for c++20 issues
 	pSession session(_connection->createSession(Session::AUTO_ACKNOWLEDGE));
 	return session;
 }

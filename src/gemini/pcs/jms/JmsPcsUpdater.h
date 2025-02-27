@@ -6,6 +6,9 @@
 #include <gemini/pcs/PcsUpdater.h>
 #include <util/jms/JmsProducer.h>
 
+#include <stdexcept>
+//Required for exception handling
+
 namespace giapi {
 namespace gemini {
 namespace pcs {
@@ -20,18 +23,28 @@ class JmsPcsUpdater: public PcsUpdater,  util::jms::JmsProducer {
 public:
 	virtual ~JmsPcsUpdater();
 
-	int postPcsUpdate(double zernikes[], int size) throw (GiapiException);
+	/**
+ 	* @throw GiapiException
+	* If the update fails due to internal errors.
+ 	*/
+	int postPcsUpdate(double zernikes[], int size) noexcept(false);
 
 	/**
 	 * Static factory method to instantiate a new JmsPcsUpdater object
 	 * and obtain a smart pointer to access it.
+	 * @throw CommunicationException
+	 * If the creation of the updater fails due
+	 *        to an issue with the GMP communication setup.
 	 */
-	static pPcsUpdater create() throw (CommunicationException);
+	static pPcsUpdater create() noexcept(false);
 private:
 	/**
 	 * Private Constructor.
+	 * @throw CommunicationException
+	 * If the initialization fails due to
+	 *        a communication error with the GMP.
 	 */
-	JmsPcsUpdater() throw (CommunicationException);
+	JmsPcsUpdater() noexcept(false);
 };
 
 }

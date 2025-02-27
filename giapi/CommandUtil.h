@@ -45,8 +45,8 @@ public:
 	 */
 	static int subscribeSequenceCommand(command::SequenceCommand id,
 			command::ActivitySet activities,
-			pSequenceCommandHandler handler) throw (GiapiException);
-
+			pSequenceCommandHandler handler) /*throw (GiapiException)*/ noexcept(false);
+//Now using noexcept(false)
 	/**
 	 * Associates the given handler to the configuration prefix specified and
 	 * array of Activity elements.
@@ -80,8 +80,8 @@ public:
 	 */
 	static int subscribeApply(const std::string & prefix,
 			command::ActivitySet activities,
-			pSequenceCommandHandler handler) throw (GiapiException);
-
+			pSequenceCommandHandler handler) /*throw (GiapiException)*/ noexcept(false);
+//Now using noexcept(false)
 	/**
 	 * Post completion information to the GMP for actions that do not complete
 	 * immediately. This case is triggered when a {@link SequenceCommandHandler}
@@ -102,8 +102,8 @@ public:
 	 *         this operation
 	 */
 	static int postCompletionInfo(command::ActionId id,
-			pHandlerResponse response) throw (GiapiException);
-
+			pHandlerResponse response) /*throw (GiapiException)*/ noexcept(false);
+//Now using noexcept(false)
 private:
 	CommandUtil();
 	virtual ~CommandUtil();

@@ -13,6 +13,9 @@
 #include <status/senders/StatusSender.h>
 #include <status/StatusItem.h>
 
+#include <stdexcept>
+//Required for exception handling
+
 
 
 namespace giapi {
@@ -39,15 +42,19 @@ public:
 	 * Post all the dirty items. Look for the dirty items in
 	 * the internal database that holds all the status information,
 	 * and post them
+	 * @throw PostException
+	 * If an error occurs while posting the status items.
 	 */
-	virtual int postStatus() const throw (PostException);
+	virtual int postStatus() const noexcept(false);
 
 	/**
 	 * Post the specific status item, identified by name. The
 	 * status item will be sent only if it has been modified
 	 * since the last time it was posted.
+	 * @throw PostException
+	 * If an error occurs while posting the status item.
 	 */
-	virtual int postStatus(const std::string &name) const throw (PostException);
+	virtual int postStatus(const std::string &name) const noexcept(false);
 
 protected:
 	/**
@@ -59,8 +66,10 @@ protected:
 	 * The Status Item argument is validated at the time this method is
 	 * invoked so implementors can assume the Status Item can be posted
 	 * immediately.
+	 * @throw PostException
+	 * If an error occurs while posting the status item.
 	 */
-	virtual int postStatus(pStatusItem item) const throw (PostException) = 0;
+	virtual int postStatus(pStatusItem item) const noexcept(false);
 
 private:
 	/**
@@ -68,8 +77,10 @@ private:
 	 * changed since the last post. If so, it will mark the item as  "clean",
 	 * and will send it to the underlying post mechanism defined by
 	 * implementing classes of the postStatus(StatusItem *item) method.
+	 * @throw PostException
+	 * If an error occurs while posting the status item.
 	 */
-	int doPost(pStatusItem item) const throw (PostException);
+	int doPost(pStatusItem item) const noexcept(false);
 	/*
 	 * Logging facility
 	 */

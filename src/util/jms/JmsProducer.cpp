@@ -17,7 +17,8 @@ log4cxx::LoggerPtr JmsProducer::logger(log4cxx::Logger::getLogger(
 		"giapi.JmsProducer"));
 
 
-JmsProducer::JmsProducer(const std::string& queueName) throw (CommunicationException){
+JmsProducer::JmsProducer(const std::string& queueName) noexcept(false){
+//Fixed for exception handling in the C++20 version.
 
 	try {
 		_connectionManager = ConnectionManager::Instance();

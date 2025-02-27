@@ -6,6 +6,10 @@
 #include <giapi/giapi.h>
 #include <giapi/giapiexcept.h>
 
+#include <stdexcept>
+//Required for exception handling
+
+
 namespace giapi {
 /**
  * Provides the mechanisms for the instrument to interact with other
@@ -34,7 +38,7 @@ public:
 	 *         subscribe this handler to monitor the given EPICS channel item
 	 */
 	static int subscribeEpicsStatus(const std::string &name,
-			pEpicsStatusHandler handler) throw (GiapiException);
+			pEpicsStatusHandler handler) noexcept(false);
 
 	/**
 	 * Unregister any handlers that might be associated to the given EPICS
@@ -49,7 +53,7 @@ public:
 	 * @throws GiapiException if there is an error accessing the GMP to
 	 *         unregister to receive updates for the given epics status item.
 	 */
-	static int unsubscribeEpicsStatus(const std::string &name) throw (GiapiException);
+	static int unsubscribeEpicsStatus(const std::string &name) noexcept(false);
 
 	/**
 	 * Offload wavefront corrections to the Primary Control System (PCS).
@@ -65,7 +69,7 @@ public:
 	 * @throws GiapiException if there is an error accessing the GMP to
 	 *         post the PCS update
 	 */
-	static int postPcsUpdate(double zernikes[], int size) throw (GiapiException);
+	static int postPcsUpdate(double zernikes[], int size) noexcept(false);
 
 	/**
 	 * Provides the TCS Context information at the time of the call.
@@ -85,7 +89,7 @@ public:
 	 * @throws GiapiException if there is an error accessing the GMP to
 	 *         obtain the TCS Context, or a timeout occurs.
 	 */
-	static int getTcsContext(TcsContext& ctx, long timeout) throw (GiapiException);
+	static int getTcsContext(TcsContext& ctx, long timeout) noexcept(false);
 
        /** Function that allows an offset to be applied to the TCS. There are two types 
 	 * of the offsets that instruments should indicate. For example, offsets applied
@@ -104,7 +108,7 @@ public:
 	 * @throws GiapiException if there is an error accessing the GMP to apply the offset
          *                           to the TCS, or a timeout occurs. 
 	 */
-	static int tcsApplyOffset(const double p, const double q, const OffsetType offsetType, const long timeout) throw (GiapiException);
+	static int tcsApplyOffset(const double p, const double q, const OffsetType offsetType, const long timeout) noexcept(false);
 
        /** Function that allows an offset to be applied to the TCS. There are two types 
 	 * of the offsets that instruments should indicate. For example, offsets applied
@@ -127,7 +131,7 @@ public:
 	 */
 	static int tcsApplyOffset(const double p, const double q,
                               const OffsetType offsetType, const long timeout,
-                              void (*callbackOffset)(int, std::string)) throw (GiapiException);
+                              void (*callbackOffset)(int, std::string)) noexcept(false);
 
 	/**
 	 * Provides a pointer to an EpicsStatus item containing the latest channel
@@ -143,7 +147,7 @@ public:
 	 * @throws GiapiException if there is an error accessing the GMP
 	 *         or a timeout occurs.
 	 */
-	static pEpicsStatusItem getChannel(const std::string &name, long timeout) throw (GiapiException);
+	static pEpicsStatusItem getChannel(const std::string &name, long timeout) noexcept(false);
 
 private:
 	GeminiUtil();

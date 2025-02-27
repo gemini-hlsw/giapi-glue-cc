@@ -11,16 +11,17 @@ LIBS= -lgiapi-glue-cc -lactivemq-cpp -llog4cxx -lapr-1 -lcurlpp -lcurl
 
 LD_LIBRARY_PATH := ../../:$(LOG4CXX_LIB):$(CPPUNIT_LIB):$(ACTIVEMQ_LIB):$(APR_LIB):$(APRUTIL_LIB):$(CURLPP_LIB):$(CURLPP_LIB64)
 
-all: tcsApplyOffset tcsApplyOffsetCallback seq-command tcscontext pcsupdater obsevent epicssubscription epicsget logging fileevents status services apply-command any-command observe-simulator ghost-split-command igrins2obssimulator
+#all: tcsApplyOffset tcsApplyOffsetCallback seq-command tcscontext pcsupdater obsevent epicssubscription epicsget logging fileevents status services apply-command any-command observe-simulator ghost-split-command igrins2obssimulator
+all: seq-command tcscontext pcsupdater obsevent epicssubscription epicsget logging fileevents status services apply-command any-command observe-simulator ghost-split-command igrins2obssimulator
 
 seq-command: seq-command.o
 
 
-tcsApplyOffsetCallback: tcsApplyOffsetCallback.o
-	$(CXX) $(LIB_DIRS) $(LIBS) -o $@  $<
+#tcsApplyOffsetCallback: tcsApplyOffsetCallback.o
+#	$(CXX) $(LIB_DIRS) $(LIBS) -o $@  $<
 
-tcsApplyOffset: tcsApplyOffset.o
-	$(CXX) $(LIB_DIRS) $(LIBS) -o $@  $<
+#tcsApplyOffset: tcsApplyOffset.o
+#	$(CXX) $(LIB_DIRS) $(LIBS) -o $@  $<
 
 tcscontext: tcscontext.o
 	$(CXX) $(LIB_DIRS) $(LIBS) -o $@  $<
@@ -76,7 +77,7 @@ epicssubscription: epicssubscription.o EpicsHandlerDemo.o
 %.o: %.cpp
 	@echo 'Building file: $<'
 	@echo 'Invoking $(OS) C++ Compiler'
-	$(CXX) $(INC_DIRS) -std=c++11 -g -O0 -Wall -fPIC -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	$(CXX) $(INC_DIRS) -g -O0 -std=c++20 -Wall -fPIC -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
 	@echo 'Finished building: $<'
 	@echo ' '
 

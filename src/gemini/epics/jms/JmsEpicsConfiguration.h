@@ -11,6 +11,9 @@
 #include <set>
 #include <string>
 
+#include <stdexcept>
+//Required for exception handling
+
 namespace giapi {
 
 
@@ -29,8 +32,15 @@ public:
 	/**
 	 * Initialize the configuration. This requires access to the
 	 * GMP to get the values.
+	 * @throw CommunicationException
+	 * If there is an issue establishing communication with the GMP.
+	 *
+	 * @throw TimeoutException
+	 * If the request to fetch the EPICS channels exceeds the
+	 * allowed timeout.
+	 *
 	 */
-	void init() throw (CommunicationException, TimeoutException);
+	void init() noexcept(false);
 
 
 	/**
@@ -68,9 +78,14 @@ private:
 	/**
 	 * Request the valid epics channels to the GMP, and stores
 	 * them internally for later reference
+	 * @throw CommunicationException
+	 * If there is an error in the communication with the GMP.
+	 *
+	 * @throw TimeoutException
+	 * If the request to retrieve the EPICS channels times out.
+	 *
 	 */
-	void requestChannels(long timeout) throw (CommunicationException,
-			TimeoutException);
+	void requestChannels(long timeout) noexcept(false);
 
 	/**
 	 * The JMS Session associated to this producer.

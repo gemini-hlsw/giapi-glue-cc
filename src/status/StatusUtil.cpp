@@ -12,12 +12,14 @@ StatusUtil::StatusUtil() {
 StatusUtil::~StatusUtil() {
 }
 
-int StatusUtil::postStatus(const std::string &name) throw (GiapiException) {
+int StatusUtil::postStatus(const std::string &name) noexcept(false) {
+	//Fixed for exception handling in the C++20 version.
 	pStatusSender sender = StatusSenderFactory::Instance()->getStatusSender();
 	return sender->postStatus(name);
 }
 
-int StatusUtil::postStatus() throw (GiapiException) {
+int StatusUtil::postStatus() noexcept(false) {
+	//Fixed for exception handling in the C++20 version.
 	pStatusSender sender = StatusSenderFactory::Instance()->getStatusSender();
 	return sender->postStatus();
 }
@@ -77,3 +79,4 @@ int StatusUtil::clearAlarm(const std::string & name) {
 
 
 }
+

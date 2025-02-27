@@ -12,6 +12,9 @@
 #include <services/RequestProducer.h>
 #include <services/JmsLogProducer.h>
 
+#include <stdexcept>
+//Required for exception handling
+
 namespace giapi {
 
 class ServicesUtilImpl;
@@ -28,14 +31,20 @@ public:
 
 	/**
 	 * Get the singleton instance of the ServiceUtil implementation
+	 * @throw CommunicationException
+	 * If an error occurs while initializing
+	 * the instance, such as failure in connecting to GMP services.
 	 */
-	static pServicesUtilImpl Instance() throw (CommunicationException) ;
+	static pServicesUtilImpl Instance() noexcept(false);
 
 	/**
 	 * Sends the logging information to the GMP
+	 * @throw CommunicationException
+	 * If there is an issue sending the log
+	 * message, such as connection failure or session errors.
 	 */
 	void systemLog(log::Level level, const std::string &msg)
-		throw (CommunicationException);
+		noexcept(false);
 
 	long64 getObservatoryTime();
 
@@ -43,9 +52,14 @@ public:
 	 * Returns the property value for the given key. If there
 	 * are no value associated to that key, an empty string
 	 * is returned.
+	 * @throw CommunicationException
+	 * If an error occurs while sending the request
+	 * or receiving the response.
+	 * @throw TimeoutException
+	 * If the request times out before receiving a response.
 	 */
 	const std::string getProperty(const std::string &key, long timeout)
-			throw (CommunicationException, TimeoutException);
+			noexcept(false);
 
 	/**
 	 * Destructor
@@ -57,8 +71,11 @@ private:
 
 	/**
 	 * Private constructor
+	 * @throw CommunicationException
+	 * If an error occurs during initialization,
+	 * such as failure in establishing connections.
 	 */
-	ServicesUtilImpl() throw (CommunicationException) ;
+	ServicesUtilImpl() noexcept(false);
 
 	/**
 	 * Smart pointer to the RequestProducer object

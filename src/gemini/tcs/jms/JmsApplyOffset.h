@@ -13,6 +13,9 @@
 #include "../ApplyOffset.h"
 #include <gemini/tcs/ApplyOffset.h>
 
+#include <stdexcept>
+//Required for exception handling
+
 namespace giapi {
 
    namespace gemini {
@@ -23,15 +26,33 @@ namespace giapi {
          
             class JmsApplyOffset: public ApplyOffset, util::jms::JmsProducer {
             public:
-            
-            	static pTcsOffset create() throw (CommunicationException);
-            
+
+               /**
+                * @throw CommunicationException
+                * If there is an issue establishing the connection
+                *        with the TCS system.
+                */
+            	static pTcsOffset create() noexcept(false);
+
+               /**
+                * @throw CommunicationException
+                * If there is an issue sending the request to the TCS system.
+                * @throw TimeoutException
+                * If the response from the TCS system is not received within the timeout period.
+                */
             	int sendOffset(const double p, const double q,
-            				   const OffsetType offsetType, const long timeout) throw (CommunicationException, TimeoutException);
+            				   const OffsetType offsetType, const long timeout) noexcept(false);
             
+
+               /**
+                * @throw CommunicationException
+                * If there is an issue sending the request to the TCS system.
+                * @throw TimeoutException
+                * If the response from the TCS system is not received within the timeout period.
+                */
             	int sendOffset(const double p, const double q,
             		           const OffsetType offsetType, const long timeout,
-            		           void (*callbackOffset)(int, std::string)) throw (CommunicationException, TimeoutException);
+            		           void (*callbackOffset)(int, std::string)) noexcept(false);
             
             	static void callback(void (*callbackOffset)(int, std::string), MessageConsumer *tmpConsumer, TemporaryQueue * tmpQueue, int timeout);
             
@@ -39,7 +60,11 @@ namespace giapi {
             
             
             private:
-            	JmsApplyOffset() throw (CommunicationException);
+               /**
+                * @throw CommunicationException
+                * If the initialization fails due to a connection error.
+                */
+            	JmsApplyOffset() noexcept(false);
             	std::string instName;
             
             };
@@ -50,4 +75,5 @@ namespace giapi {
 }
 
 #endif /* SRC_GEMINI_TCS_JMS_JMSAPPLYOFFSET_H_ */
+
 

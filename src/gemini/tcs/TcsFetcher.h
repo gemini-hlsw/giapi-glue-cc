@@ -5,6 +5,9 @@
 
 #include <giapi/giapi.h>
 
+#include <stdexcept>
+//Required for exception handling
+
 namespace giapi {
 
 namespace gemini {
@@ -32,7 +35,7 @@ public:
 	 *         obtain the TCS Context, or a timeout occurs.
 	 *
 	 */
-	virtual int fetch(TcsContext &ctx, long timeout) throw (GiapiException) = 0;
+	virtual int fetch(TcsContext &ctx, long timeout) noexcept(false) = 0;
 
 	/**
 	 * Destructor
