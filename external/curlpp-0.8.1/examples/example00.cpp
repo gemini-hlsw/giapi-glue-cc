@@ -15,14 +15,11 @@ int main(int, char **)
 {
 	try
 	{
-		// That's all that is needed to do cleanup of used resources (RAII style).
-		curlpp::Cleanup myCleanup;
-
 		// Our request to be sent.
 		curlpp::Easy myRequest;
 
 		// Set the URL.
-		myRequest.setOpt<Url>("http://example.com");
+		myRequest.setOpt<curlpp::options::Url>("http://example.com");
 
 		// Send request and get a result.
 		// By default the result goes to standard output.

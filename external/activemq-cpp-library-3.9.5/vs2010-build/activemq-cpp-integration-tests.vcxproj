@@ -1,0 +1,796 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="DebugDLL|Win32">
+      <Configuration>DebugDLL</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="DebugDLL|x64">
+      <Configuration>DebugDLL</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="DebugSSL-DLL|Win32">
+      <Configuration>DebugSSL-DLL</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="DebugSSL-DLL|x64">
+      <Configuration>DebugSSL-DLL</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="DebugSSL|Win32">
+      <Configuration>DebugSSL</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="DebugSSL|x64">
+      <Configuration>DebugSSL</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="ReleaseDLL|Win32">
+      <Configuration>ReleaseDLL</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="ReleaseDLL|x64">
+      <Configuration>ReleaseDLL</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="ReleaseSSL-DLL|Win32">
+      <Configuration>ReleaseSSL-DLL</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="ReleaseSSL-DLL|x64">
+      <Configuration>ReleaseSSL-DLL</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="ReleaseSSL|Win32">
+      <Configuration>ReleaseSSL</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="ReleaseSSL|x64">
+      <Configuration>ReleaseSSL</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\test-integration\activemq\test\AsyncSenderTest.cpp" />
+    <ClCompile Include="..\src\test-integration\activemq\test\BulkMessageTest.cpp" />
+    <ClCompile Include="..\src\test-integration\activemq\test\CmsConnectionStartStopTest.cpp" />
+    <ClCompile Include="..\src\test-integration\activemq\test\CmsSendWithAsyncCallbackTest.cpp" />
+    <ClCompile Include="..\src\test-integration\activemq\test\CmsTemplateTest.cpp" />
+    <ClCompile Include="..\src\test-integration\activemq\test\DurableTest.cpp" />
+    <ClCompile Include="..\src\test-integration\activemq\test\ExpirationTest.cpp" />
+    <ClCompile Include="..\src\test-integration\activemq\test\JmsMessageGroupsTest.cpp" />
+    <ClCompile Include="..\src\test-integration\activemq\test\MapMessageTest.cpp" />
+    <ClCompile Include="..\src\test-integration\activemq\test\MessageCompressionTest.cpp" />
+    <ClCompile Include="..\src\test-integration\activemq\test\MessagePriorityTest.cpp" />
+    <ClCompile Include="..\src\test-integration\activemq\test\openwire\OpenwireAdvisorysTest.cpp" />
+    <ClCompile Include="..\src\test-integration\activemq\test\openwire\OpenwireAsyncSenderTest.cpp" />
+    <ClCompile Include="..\src\test-integration\activemq\test\openwire\OpenwireClientAckTest.cpp" />
+    <ClCompile Include="..\src\test-integration\activemq\test\openwire\OpenwireCmsConnectionStartStopTest.cpp" />
+    <ClCompile Include="..\src\test-integration\activemq\test\openwire\OpenWireCmsSendWithAsyncCallbackTest.cpp" />
+    <ClCompile Include="..\src\test-integration\activemq\test\openwire\OpenwireCmsTemplateTest.cpp" />
+    <ClCompile Include="..\src\test-integration\activemq\test\openwire\OpenwireDurableTest.cpp" />
+    <ClCompile Include="..\src\test-integration\activemq\test\openwire\OpenwireEnhancedConnectionTest.cpp" />
+    <ClCompile Include="..\src\test-integration\activemq\test\openwire\OpenwireExpirationTest.cpp" />
+    <ClCompile Include="..\src\test-integration\activemq\test\openwire\OpenwireIndividualAckTest.cpp" />
+    <ClCompile Include="..\src\test-integration\activemq\test\openwire\OpenwireJmsMessageGroupsTest.cpp" />
+    <ClCompile Include="..\src\test-integration\activemq\test\openwire\OpenwireJmsRecoverTest.cpp" />
+    <ClCompile Include="..\src\test-integration\activemq\test\openwire\OpenwireMapMessageTest.cpp" />
+    <ClCompile Include="..\src\test-integration\activemq\test\openwire\OpenwireMessageCompressionTest.cpp" />
+    <ClCompile Include="..\src\test-integration\activemq\test\openwire\OpenWireMessageListenerRedeliveryTest.cpp" />
+    <ClCompile Include="..\src\test-integration\activemq\test\openwire\OpenwireMessagePriorityTest.cpp" />
+    <ClCompile Include="..\src\test-integration\activemq\test\openwire\OpenwireNonBlockingRedeliveryTest.cpp" />
+    <ClCompile Include="..\src\test-integration\activemq\test\openwire\OpenwireOptimizedAckTest.cpp" />
+    <ClCompile Include="..\src\test-integration\activemq\test\openwire\OpenwireQueueBrowserTest.cpp" />
+    <ClCompile Include="..\src\test-integration\activemq\test\openwire\OpenWireRedeliveryPolicyTest.cpp" />
+    <ClCompile Include="..\src\test-integration\activemq\test\openwire\OpenwireSimpleRollbackTest.cpp" />
+    <ClCompile Include="..\src\test-integration\activemq\test\openwire\OpenwireSimpleTest.cpp" />
+    <ClCompile Include="..\src\test-integration\activemq\test\openwire\OpenwireSlowListenerTest.cpp" />
+    <ClCompile Include="..\src\test-integration\activemq\test\openwire\OpenwireTempDestinationTest.cpp" />
+    <ClCompile Include="..\src\test-integration\activemq\test\openwire\OpenwireTransactionTest.cpp" />
+    <ClCompile Include="..\src\test-integration\activemq\test\openwire\OpenwireVirtualTopicTest.cpp" />
+    <ClCompile Include="..\src\test-integration\activemq\test\openwire\OpenwireXATransactionsTest.cpp" />
+    <ClCompile Include="..\src\test-integration\activemq\test\QueueBrowserTest.cpp" />
+    <ClCompile Include="..\src\test-integration\activemq\test\SimpleRollbackTest.cpp" />
+    <ClCompile Include="..\src\test-integration\activemq\test\SimpleTest.cpp" />
+    <ClCompile Include="..\src\test-integration\activemq\test\SlowListenerTest.cpp" />
+    <ClCompile Include="..\src\test-integration\activemq\test\stomp\StompAsyncSenderTest.cpp" />
+    <ClCompile Include="..\src\test-integration\activemq\test\stomp\StompBulkMessageTest.cpp" />
+    <ClCompile Include="..\src\test-integration\activemq\test\stomp\StompCmsConnectionStartStopTest.cpp" />
+    <ClCompile Include="..\src\test-integration\activemq\test\stomp\StompCmsTemplateTest.cpp" />
+    <ClCompile Include="..\src\test-integration\activemq\test\stomp\StompDurableTest.cpp" />
+    <ClCompile Include="..\src\test-integration\activemq\test\stomp\StompExpirationTest.cpp" />
+    <ClCompile Include="..\src\test-integration\activemq\test\stomp\StompJmsMessageGroupsTest.cpp" />
+    <ClCompile Include="..\src\test-integration\activemq\test\stomp\StompSimpleRollbackTest.cpp" />
+    <ClCompile Include="..\src\test-integration\activemq\test\stomp\StompSimpleTest.cpp" />
+    <ClCompile Include="..\src\test-integration\activemq\test\stomp\StompSlowListenerTest.cpp" />
+    <ClCompile Include="..\src\test-integration\activemq\test\stomp\StompTransactionTest.cpp" />
+    <ClCompile Include="..\src\test-integration\activemq\test\TransactionTest.cpp" />
+    <ClCompile Include="..\src\test-integration\activemq\test\VirtualTopicTest.cpp" />
+    <ClCompile Include="..\src\test-integration\activemq\util\CMSListener.cpp" />
+    <ClCompile Include="..\src\test-integration\activemq\util\CMSProvider.cpp" />
+    <ClCompile Include="..\src\test-integration\activemq\util\IntegrationCommon.cpp" />
+    <ClCompile Include="..\src\test-integration\main.cpp" />
+    <ClCompile Include="..\src\test-integration\TestRegistry.cpp" />
+    <ClCompile Include="..\src\test-integration\util\teamcity\TeamCityProgressListener.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\src\test-integration\activemq\test\AsyncSenderTest.h" />
+    <ClInclude Include="..\src\test-integration\activemq\test\BulkMessageTest.h" />
+    <ClInclude Include="..\src\test-integration\activemq\test\CmsConnectionStartStopTest.h" />
+    <ClInclude Include="..\src\test-integration\activemq\test\CmsSendWithAsyncCallbackTest.h" />
+    <ClInclude Include="..\src\test-integration\activemq\test\CmsTemplateTest.h" />
+    <ClInclude Include="..\src\test-integration\activemq\test\CMSTestFixture.h" />
+    <ClInclude Include="..\src\test-integration\activemq\test\DurableTest.h" />
+    <ClInclude Include="..\src\test-integration\activemq\test\ExpirationTest.h" />
+    <ClInclude Include="..\src\test-integration\activemq\test\JmsMessageGroupsTest.h" />
+    <ClInclude Include="..\src\test-integration\activemq\test\MapMessageTest.h" />
+    <ClInclude Include="..\src\test-integration\activemq\test\MessageCompressionTest.h" />
+    <ClInclude Include="..\src\test-integration\activemq\test\MessagePriorityTest.h" />
+    <ClInclude Include="..\src\test-integration\activemq\test\openwire\OpenwireAdvisorysTest.h" />
+    <ClInclude Include="..\src\test-integration\activemq\test\openwire\OpenwireAsyncSenderTest.h" />
+    <ClInclude Include="..\src\test-integration\activemq\test\openwire\OpenwireClientAckTest.h" />
+    <ClInclude Include="..\src\test-integration\activemq\test\openwire\OpenwireCmsConnectionStartStopTest.h" />
+    <ClInclude Include="..\src\test-integration\activemq\test\openwire\OpenWireCmsSendWithAsyncCallbackTest.h" />
+    <ClInclude Include="..\src\test-integration\activemq\test\openwire\OpenwireCmsTemplateTest.h" />
+    <ClInclude Include="..\src\test-integration\activemq\test\openwire\OpenwireDurableTest.h" />
+    <ClInclude Include="..\src\test-integration\activemq\test\openwire\OpenwireEnhancedConnectionTest.h" />
+    <ClInclude Include="..\src\test-integration\activemq\test\openwire\OpenwireExpirationTest.h" />
+    <ClInclude Include="..\src\test-integration\activemq\test\openwire\OpenwireIndividualAckTest.h" />
+    <ClInclude Include="..\src\test-integration\activemq\test\openwire\OpenwireJmsMessageGroupsTest.h" />
+    <ClInclude Include="..\src\test-integration\activemq\test\openwire\OpenwireJmsRecoverTest.h" />
+    <ClInclude Include="..\src\test-integration\activemq\test\openwire\OpenwireMapMessageTest.h" />
+    <ClInclude Include="..\src\test-integration\activemq\test\openwire\OpenwireMessageCompressionTest.h" />
+    <ClInclude Include="..\src\test-integration\activemq\test\openwire\OpenWireMessageListenerRedeliveryTest.h" />
+    <ClInclude Include="..\src\test-integration\activemq\test\openwire\OpenwireMessagePriorityTest.h" />
+    <ClInclude Include="..\src\test-integration\activemq\test\openwire\OpenwireNonBlockingRedeliveryTest.h" />
+    <ClInclude Include="..\src\test-integration\activemq\test\openwire\OpenwireOptimizedAckTest.h" />
+    <ClInclude Include="..\src\test-integration\activemq\test\openwire\OpenwireQueueBrowserTest.h" />
+    <ClInclude Include="..\src\test-integration\activemq\test\openwire\OpenWireRedeliveryPolicyTest.h" />
+    <ClInclude Include="..\src\test-integration\activemq\test\openwire\OpenwireSimpleRollbackTest.h" />
+    <ClInclude Include="..\src\test-integration\activemq\test\openwire\OpenwireSimpleTest.h" />
+    <ClInclude Include="..\src\test-integration\activemq\test\openwire\OpenwireSlowListenerTest.h" />
+    <ClInclude Include="..\src\test-integration\activemq\test\openwire\OpenwireTempDestinationTest.h" />
+    <ClInclude Include="..\src\test-integration\activemq\test\openwire\OpenwireTransactionTest.h" />
+    <ClInclude Include="..\src\test-integration\activemq\test\openwire\OpenwireVirtualTopicTest.h" />
+    <ClInclude Include="..\src\test-integration\activemq\test\openwire\OpenwireXATransactionsTest.h" />
+    <ClInclude Include="..\src\test-integration\activemq\test\QueueBrowserTest.h" />
+    <ClInclude Include="..\src\test-integration\activemq\test\SimpleRollbackTest.h" />
+    <ClInclude Include="..\src\test-integration\activemq\test\SimpleTest.h" />
+    <ClInclude Include="..\src\test-integration\activemq\test\SlowListenerTest.h" />
+    <ClInclude Include="..\src\test-integration\activemq\test\stomp\StompAsyncSenderTest.h" />
+    <ClInclude Include="..\src\test-integration\activemq\test\stomp\StompBulkMessageTest.h" />
+    <ClInclude Include="..\src\test-integration\activemq\test\stomp\StompCmsConnectionStartStopTest.h" />
+    <ClInclude Include="..\src\test-integration\activemq\test\stomp\StompCmsTemplateTest.h" />
+    <ClInclude Include="..\src\test-integration\activemq\test\stomp\StompDurableTest.h" />
+    <ClInclude Include="..\src\test-integration\activemq\test\stomp\StompExpirationTest.h" />
+    <ClInclude Include="..\src\test-integration\activemq\test\stomp\StompJmsMessageGroupsTest.h" />
+    <ClInclude Include="..\src\test-integration\activemq\test\stomp\StompSimpleRollbackTest.h" />
+    <ClInclude Include="..\src\test-integration\activemq\test\stomp\StompSimpleTest.h" />
+    <ClInclude Include="..\src\test-integration\activemq\test\stomp\StompSlowListenerTest.h" />
+    <ClInclude Include="..\src\test-integration\activemq\test\stomp\StompTransactionTest.h" />
+    <ClInclude Include="..\src\test-integration\activemq\test\TransactionTest.h" />
+    <ClInclude Include="..\src\test-integration\activemq\test\VirtualTopicTest.h" />
+    <ClInclude Include="..\src\test-integration\activemq\util\CMSListener.h" />
+    <ClInclude Include="..\src\test-integration\activemq\util\CMSProvider.h" />
+    <ClInclude Include="..\src\test-integration\activemq\util\IntegrationCommon.h" />
+    <ClInclude Include="..\src\test-integration\util\teamcity\TeamCityProgressListener.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="activemq-cpp.vcxproj">
+      <Project>{5e5a9e11-9f2f-4819-ae41-cca7d6029197}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{C3ADFAF2-12C2-4915-ADBE-F36D6905F82E}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>activemqcppintegrationtests</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DebugSSL|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DebugDLL|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DebugSSL-DLL|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DebugSSL|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DebugDLL|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DebugSSL-DLL|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseSSL|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseSSL-DLL|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseSSL|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseSSL-DLL|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='DebugSSL|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='DebugDLL|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='DebugSSL-DLL|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='DebugSSL|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='DebugDLL|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='DebugSSL-DLL|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseSSL|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseSSL-DLL|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseSSL|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseSSL-DLL|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(SolutionDir)\$(PlatformName)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)\$(PlatformName)\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DebugSSL|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(SolutionDir)\$(PlatformName)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)\$(PlatformName)\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DebugDLL|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(SolutionDir)\$(PlatformName)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)\$(PlatformName)\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DebugSSL-DLL|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(SolutionDir)\$(PlatformName)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)\$(PlatformName)\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(SolutionDir)\$(PlatformName)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)\$(PlatformName)\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DebugSSL|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(SolutionDir)\$(PlatformName)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)\$(PlatformName)\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DebugDLL|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(SolutionDir)\$(PlatformName)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)\$(PlatformName)\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DebugSSL-DLL|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(SolutionDir)\$(PlatformName)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)\$(PlatformName)\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>$(SolutionDir)\$(PlatformName)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)\$(PlatformName)\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseSSL|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>$(SolutionDir)\$(PlatformName)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)\$(PlatformName)\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>$(SolutionDir)\$(PlatformName)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)\$(PlatformName)\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseSSL-DLL|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>$(SolutionDir)\$(PlatformName)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)\$(PlatformName)\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>$(SolutionDir)\$(PlatformName)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)\$(PlatformName)\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseSSL|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>$(SolutionDir)\$(PlatformName)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)\$(PlatformName)\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>$(SolutionDir)\$(PlatformName)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)\$(PlatformName)\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseSSL-DLL|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>$(SolutionDir)\$(PlatformName)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)\$(PlatformName)\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;WIN32_LEAN_AND_MEAN;_CRT_SECURE_NO_DEPRECATE;NOMINMAX;HAVE_WINSOCK2_H;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <AdditionalIncludeDirectories>..\src\test-integration;..\src\main;$(APR_DIST)\$(PlatformName)\include;$(CPPUNIT_DIST)\$(PlatformName)\include;$(PLATFORM_SDK)\include</AdditionalIncludeDirectories>
+      <DisableSpecificWarnings>4101</DisableSpecificWarnings>
+      <PrecompiledHeaderFile>
+      </PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>
+      </PrecompiledHeaderOutputFile>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>ws2_32.lib;cppunitd.lib;libapr-1.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(APR_DIST)\$(PlatformName)\lib;$(APR_DIST)\$(PlatformName)\bin;$(CPPUNIT_DIST)\$(PlatformName)\lib;$(PLATFORM_SDK)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='DebugSSL|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;WIN32_LEAN_AND_MEAN;_CRT_SECURE_NO_DEPRECATE;NOMINMAX;HAVE_WINSOCK2_H;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <AdditionalIncludeDirectories>..\src\test-integration;..\src\main;$(APR_DIST)\$(PlatformName)\include;$(CPPUNIT_DIST)\$(PlatformName)\include;$(PLATFORM_SDK)\include</AdditionalIncludeDirectories>
+      <DisableSpecificWarnings>4101</DisableSpecificWarnings>
+      <PrecompiledHeaderFile>
+      </PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>
+      </PrecompiledHeaderOutputFile>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>ws2_32.lib;cppunitd.lib;libapr-1.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(APR_DIST)\$(PlatformName)\lib;$(APR_DIST)\$(PlatformName)\bin;$(CPPUNIT_DIST)\$(PlatformName)\lib;$(OPENSSL_DIST)\$(PlatformName)\lib;$(PLATFORM_SDK)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='DebugDLL|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;WIN32_LEAN_AND_MEAN;_CRT_SECURE_NO_DEPRECATE;NOMINMAX;HAVE_WINSOCK2_H;CMS_DLL;AMQCPP_DLL;DECAF_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <AdditionalIncludeDirectories>..\src\test-integration;..\src\main;$(APR_DIST)\$(PlatformName)\include;$(CPPUNIT_DIST)\$(PlatformName)\include;$(PLATFORM_SDK)\include</AdditionalIncludeDirectories>
+      <DisableSpecificWarnings>4101</DisableSpecificWarnings>
+      <PrecompiledHeaderFile>
+      </PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>
+      </PrecompiledHeaderOutputFile>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>ws2_32.lib;cppunitd.lib;apr-1.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(APR_DIST)\$(PlatformName)\lib;$(APR_DIST)\$(PlatformName)\bin;$(CPPUNIT_DIST)\$(PlatformName)\lib;$(PLATFORM_SDK)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='DebugSSL-DLL|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;WIN32_LEAN_AND_MEAN;_CRT_SECURE_NO_DEPRECATE;NOMINMAX;HAVE_WINSOCK2_H;CMS_DLL;AMQCPP_DLL;DECAF_DLL</PreprocessorDefinitions>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <AdditionalIncludeDirectories>..\src\test-integration;..\src\main;$(APR_DIST)\$(PlatformName)\include;$(CPPUNIT_DIST)\$(PlatformName)\include;$(PLATFORM_SDK)\include</AdditionalIncludeDirectories>
+      <DisableSpecificWarnings>4101</DisableSpecificWarnings>
+      <PrecompiledHeaderFile>
+      </PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>
+      </PrecompiledHeaderOutputFile>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>ws2_32.lib;cppunitd.lib;apr-1.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(APR_DIST)\$(PlatformName)\lib;$(APR_DIST)\$(PlatformName)\bin;$(CPPUNIT_DIST)\$(PlatformName)\lib;$(OPENSSL_DIST)\$(PlatformName)\lib;$(PLATFORM_SDK)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;WIN32_LEAN_AND_MEAN;_CRT_SECURE_NO_DEPRECATE;NOMINMAX;HAVE_WINSOCK2_H;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <AdditionalIncludeDirectories>..\src\test-integration;..\src\main;$(APR_DIST)\$(PlatformName)\include;$(CPPUNIT_DIST)\$(PlatformName)\include;$(PLATFORM_SDK)\include</AdditionalIncludeDirectories>
+      <DisableSpecificWarnings>4101</DisableSpecificWarnings>
+      <PrecompiledHeaderFile>
+      </PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>
+      </PrecompiledHeaderOutputFile>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>ws2_32.lib;cppunitd.lib;libapr-1.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(APR_DIST)\$(PlatformName)\lib;$(APR_DIST)\$(PlatformName)\bin;$(CPPUNIT_DIST)\$(PlatformName)\lib;$(PLATFORM_SDK)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='DebugSSL|x64'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;WIN32_LEAN_AND_MEAN;_CRT_SECURE_NO_DEPRECATE;NOMINMAX;HAVE_WINSOCK2_H;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <AdditionalIncludeDirectories>..\src\test-integration;..\src\main;$(APR_DIST)\$(PlatformName)\include;$(CPPUNIT_DIST)\$(PlatformName)\include;$(PLATFORM_SDK)\include</AdditionalIncludeDirectories>
+      <DisableSpecificWarnings>4101</DisableSpecificWarnings>
+      <PrecompiledHeaderFile>
+      </PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>
+      </PrecompiledHeaderOutputFile>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>ws2_32.lib;cppunitd.lib;libapr-1.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(APR_DIST)\$(PlatformName)\lib;$(APR_DIST)\$(PlatformName)\bin;$(CPPUNIT_DIST)\$(PlatformName)\lib;$(OPENSSL_DIST)\$(PlatformName)\lib;$(PLATFORM_SDK)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='DebugDLL|x64'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;WIN32_LEAN_AND_MEAN;_CRT_SECURE_NO_DEPRECATE;NOMINMAX;HAVE_WINSOCK2_H;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <AdditionalIncludeDirectories>..\src\test-integration;..\src\main;$(APR_DIST)\$(PlatformName)\include;$(CPPUNIT_DIST)\$(PlatformName)\include;$(PLATFORM_SDK)\include</AdditionalIncludeDirectories>
+      <DisableSpecificWarnings>4101</DisableSpecificWarnings>
+      <PrecompiledHeaderFile>
+      </PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>
+      </PrecompiledHeaderOutputFile>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>ws2_32.lib;cppunitd.lib;libapr-1.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(APR_DIST)\$(PlatformName)\lib;$(APR_DIST)\$(PlatformName)\bin;$(CPPUNIT_DIST)\$(PlatformName)\lib;$(PLATFORM_SDK)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='DebugSSL-DLL|x64'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;WIN32_LEAN_AND_MEAN;_CRT_SECURE_NO_DEPRECATE;NOMINMAX;HAVE_WINSOCK2_H;CMS_DLL;AMQCPP_DLL;DECAF_DLL</PreprocessorDefinitions>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <AdditionalIncludeDirectories>..\src\test-integration;..\src\main;$(APR_DIST)\$(PlatformName)\include;$(CPPUNIT_DIST)\$(PlatformName)\include;$(PLATFORM_SDK)\include</AdditionalIncludeDirectories>
+      <DisableSpecificWarnings>4101</DisableSpecificWarnings>
+      <PrecompiledHeaderFile>
+      </PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>
+      </PrecompiledHeaderOutputFile>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>ws2_32.lib;cppunitd.lib;libapr-1.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(APR_DIST)\$(PlatformName)\lib;$(APR_DIST)\$(PlatformName)\bin;$(CPPUNIT_DIST)\$(PlatformName)\lib;$(OPENSSL_DIST)\$(PlatformName)\lib;$(PLATFORM_SDK)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;WIN32_LEAN_AND_MEAN;_CONSOLE;_CRT_SECURE_NO_DEPRECATE;NOMINMAX;HAVE_WINSOCK2_H;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <AdditionalIncludeDirectories>..\src\test-integration;..\src\main;$(APR_DIST)\$(PlatformName)\include;$(CPPUNIT_DIST)\$(PlatformName)\include;$(PLATFORM_SDK)\include</AdditionalIncludeDirectories>
+      <DisableSpecificWarnings>4101</DisableSpecificWarnings>
+      <PrecompiledHeaderFile>
+      </PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>
+      </PrecompiledHeaderOutputFile>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>ws2_32.lib;cppunit.lib;libapr-1.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(APR_DIST)\$(PlatformName)\lib;$(APR_DIST)\$(PlatformName)\bin;$(CPPUNIT_DIST)\$(PlatformName)\lib;$(PLATFORM_SDK)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseSSL|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;WIN32_LEAN_AND_MEAN;_CONSOLE;_CRT_SECURE_NO_DEPRECATE;NOMINMAX;HAVE_WINSOCK2_H;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <AdditionalIncludeDirectories>..\src\test-integration;..\src\main;$(APR_DIST)\$(PlatformName)\include;$(CPPUNIT_DIST)\$(PlatformName)\include;$(PLATFORM_SDK)\include</AdditionalIncludeDirectories>
+      <DisableSpecificWarnings>4101</DisableSpecificWarnings>
+      <PrecompiledHeaderFile>
+      </PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>
+      </PrecompiledHeaderOutputFile>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>ws2_32.lib;cppunit.lib;libapr-1.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(APR_DIST)\$(PlatformName)\lib;$(APR_DIST)\$(PlatformName)\bin;$(CPPUNIT_DIST)\$(PlatformName)\lib;$(OPENSSL_DIST)\$(PlatformName)\lib;$(PLATFORM_SDK)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;WIN32_LEAN_AND_MEAN;_CONSOLE;_CRT_SECURE_NO_DEPRECATE;NOMINMAX;HAVE_WINSOCK2_H;CMS_DLL;AMQCPP_DLL;DECAF_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <AdditionalIncludeDirectories>..\src\test-integration;..\src\main;$(APR_DIST)\$(PlatformName)\include;$(CPPUNIT_DIST)\$(PlatformName)\include;$(PLATFORM_SDK)\include</AdditionalIncludeDirectories>
+      <DisableSpecificWarnings>4101</DisableSpecificWarnings>
+      <PrecompiledHeaderFile>
+      </PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>
+      </PrecompiledHeaderOutputFile>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>ws2_32.lib;cppunit.lib;apr-1.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(APR_DIST)\$(PlatformName)\lib;$(APR_DIST)\$(PlatformName)\bin;$(CPPUNIT_DIST)\$(PlatformName)\lib;$(PLATFORM_SDK)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseSSL-DLL|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;WIN32_LEAN_AND_MEAN;_CONSOLE;_CRT_SECURE_NO_DEPRECATE;NOMINMAX;HAVE_WINSOCK2_H;CMS_DLL;AMQCPP_DLL;DECAF_DLL</PreprocessorDefinitions>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <AdditionalIncludeDirectories>..\src\test-integration;..\src\main;$(APR_DIST)\$(PlatformName)\include;$(CPPUNIT_DIST)\$(PlatformName)\include;$(PLATFORM_SDK)\include</AdditionalIncludeDirectories>
+      <DisableSpecificWarnings>4101</DisableSpecificWarnings>
+      <PrecompiledHeaderFile>
+      </PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>
+      </PrecompiledHeaderOutputFile>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>ws2_32.lib;cppunit.lib;apr-1.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(APR_DIST)\$(PlatformName)\lib;$(APR_DIST)\$(PlatformName)\bin;$(CPPUNIT_DIST)\$(PlatformName)\lib;$(OPENSSL_DIST)\$(PlatformName)\lib;$(PLATFORM_SDK)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;WIN32_LEAN_AND_MEAN;_CONSOLE;_CRT_SECURE_NO_DEPRECATE;NOMINMAX;HAVE_WINSOCK2_H;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <AdditionalIncludeDirectories>..\src\test-integration;..\src\main;$(APR_DIST)\$(PlatformName)\include;$(CPPUNIT_DIST)\$(PlatformName)\include;$(PLATFORM_SDK)\include</AdditionalIncludeDirectories>
+      <DisableSpecificWarnings>4101</DisableSpecificWarnings>
+      <PrecompiledHeaderFile>
+      </PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>
+      </PrecompiledHeaderOutputFile>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>ws2_32.lib;cppunit.lib;libapr-1.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(APR_DIST)\$(PlatformName)\lib;$(APR_DIST)\$(PlatformName)\bin;$(CPPUNIT_DIST)\$(PlatformName)\lib;$(PLATFORM_SDK)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseSSL|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;WIN32_LEAN_AND_MEAN;_CONSOLE;_CRT_SECURE_NO_DEPRECATE;NOMINMAX;HAVE_WINSOCK2_H;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <AdditionalIncludeDirectories>..\src\test-integration;..\src\main;$(APR_DIST)\$(PlatformName)\include;$(CPPUNIT_DIST)\$(PlatformName)\include;$(PLATFORM_SDK)\include</AdditionalIncludeDirectories>
+      <DisableSpecificWarnings>4101</DisableSpecificWarnings>
+      <PrecompiledHeaderFile>
+      </PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>
+      </PrecompiledHeaderOutputFile>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>ws2_32.lib;cppunit.lib;libapr-1.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(APR_DIST)\$(PlatformName)\lib;$(APR_DIST)\$(PlatformName)\bin;$(CPPUNIT_DIST)\$(PlatformName)\lib;$(OPENSSL_DIST)\$(PlatformName)\lib;$(PLATFORM_SDK)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;WIN32_LEAN_AND_MEAN;_CONSOLE;_CRT_SECURE_NO_DEPRECATE;NOMINMAX;HAVE_WINSOCK2_H;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <AdditionalIncludeDirectories>..\src\test-integration;..\src\main;$(APR_DIST)\$(PlatformName)\include;$(CPPUNIT_DIST)\$(PlatformName)\include;$(PLATFORM_SDK)\include</AdditionalIncludeDirectories>
+      <DisableSpecificWarnings>4101</DisableSpecificWarnings>
+      <PrecompiledHeaderFile>
+      </PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>
+      </PrecompiledHeaderOutputFile>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>ws2_32.lib;cppunit.lib;libapr-1.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(APR_DIST)\$(PlatformName)\lib;$(APR_DIST)\$(PlatformName)\bin;$(CPPUNIT_DIST)\$(PlatformName)\lib;$(PLATFORM_SDK)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseSSL-DLL|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;WIN32_LEAN_AND_MEAN;_CONSOLE;_CRT_SECURE_NO_DEPRECATE;NOMINMAX;HAVE_WINSOCK2_H;CMS_DLL;AMQCPP_DLL;DECAF_DLL</PreprocessorDefinitions>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <AdditionalIncludeDirectories>..\src\test-integration;..\src\main;$(APR_DIST)\$(PlatformName)\include;$(CPPUNIT_DIST)\$(PlatformName)\include;$(PLATFORM_SDK)\include</AdditionalIncludeDirectories>
+      <DisableSpecificWarnings>4101</DisableSpecificWarnings>
+      <PrecompiledHeaderFile>
+      </PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>
+      </PrecompiledHeaderOutputFile>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>ws2_32.lib;cppunit.lib;libapr-1.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(APR_DIST)\$(PlatformName)\lib;$(APR_DIST)\$(PlatformName)\bin;$(CPPUNIT_DIST)\$(PlatformName)\lib;$(OPENSSL_DIST)\$(PlatformName)\lib;$(PLATFORM_SDK)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
