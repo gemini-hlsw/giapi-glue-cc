@@ -6,6 +6,8 @@
 #include <giapi/giapi.h>
 #include <giapi/giapiexcept.h>
 
+#include <stdexcept>
+
 namespace giapi {
 
 /**
@@ -34,7 +36,7 @@ public:
 	 *         the given Observation Event
 	 */
 	static int postObservationEvent(data::ObservationEvent event,
-			const std::string & datalabel) throw (GiapiException);
+			const std::string & datalabel) noexcept(false);
 
 	/**
 	 * Send an ancillary file event associated to the given datalabel
@@ -51,7 +53,7 @@ public:
 	 *         the given Ancillary File Event
 	 */
 	static int postAncillaryFileEvent(const std::string & filename,
-			const std::string & datalabel) throw (GiapiException);
+			const std::string & datalabel) noexcept(false);
 	/**
 	 * Send an intermediate file event associated to the given datalabel
 	 * to the GMP and with the given hint.
@@ -70,7 +72,7 @@ public:
 	 */
 	static int postIntermediateFileEvent(const std::string & filename,
 			const std::string & datalabel,
-			const std::string & hint) throw (GiapiException);
+			const std::string & hint) noexcept(false);
 
 private:
 	DataUtil();

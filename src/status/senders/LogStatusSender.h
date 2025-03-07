@@ -8,6 +8,8 @@
 #include <status/senders/AbstractStatusSender.h>
 #include <status/StatusItem.h>
 
+#include <stdexcept>
+
 namespace giapi {
 /**
  * A Status Sender that logs the post commands
@@ -23,7 +25,11 @@ public:
 	virtual ~LogStatusSender();
 
 protected:
-	virtual int postStatus(pStatusItem item) const throw (PostException);
+	/**
+ 	* @throw PostException
+	* If an error occurs while logging the status.
+ 	*/
+	virtual int postStatus(pStatusItem item) const noexcept(false);
 };
 
 }

@@ -12,6 +12,8 @@
 
 #include <giapi/giapi.h>
 
+#include <stdexcept>
+
 namespace giapi {
 
    namespace gemini {
@@ -21,7 +23,7 @@ namespace giapi {
          class ApplyOffset {
          
             public:
-            
+
             	/**
             	 * Apply P and Q offset in the TCS.
             	 * @param p         : Size of the P offset. Units in arcseconds.
@@ -37,7 +39,7 @@ namespace giapi {
             	 *
             	 */
             	virtual int sendOffset(const double p, const double q,
-            			               const OffsetType offsetType, const long timeout) throw (GiapiException) = 0;
+            			               const OffsetType offsetType, const long timeout) noexcept(false)=0;
             
                     /**
             	 * Apply P and Q offset in the TCS.
@@ -57,7 +59,7 @@ namespace giapi {
             	 */
             	virtual int sendOffset(const double p, const double q,
             	                       const OffsetType offsetType, const long timeout,
-            	                       void (*callbackOffset)(int, std::string)) throw (GiapiException) = 0;
+            	                       void (*callbackOffset)(int, std::string)) noexcept(false)=0;
             
             	/**
             	 * Destructor

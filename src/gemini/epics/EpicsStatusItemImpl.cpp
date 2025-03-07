@@ -57,7 +57,7 @@ type::Type EpicsStatusItemImpl::getType() const {
 
 
 const std::string  EpicsStatusItemImpl::getDataAsString(int index) const
-		throw (InvalidOperation) {
+		noexcept(false) {
 
 	if (_type != type::STRING)
 		throw InvalidOperation("EPICS status item does not contain string data");
@@ -72,7 +72,7 @@ const std::string  EpicsStatusItemImpl::getDataAsString(int index) const
 	return std::string((char *)_data + curpos);
 }
 
-int EpicsStatusItemImpl::getDataAsInt(int index) const throw (InvalidOperation) {
+int EpicsStatusItemImpl::getDataAsInt(int index) const noexcept(false) {
 	if (_type != type::INT)
 		throw InvalidOperation("EPICS status item does not contain integer data");
 
@@ -82,7 +82,7 @@ int EpicsStatusItemImpl::getDataAsInt(int index) const throw (InvalidOperation) 
 	return data[index];
 }
 
-float EpicsStatusItemImpl::getDataAsFloat(int index) const throw (InvalidOperation) {
+float EpicsStatusItemImpl::getDataAsFloat(int index) const noexcept(false) {
 	if (_type != type::FLOAT)
 		throw InvalidOperation("EPICS status item does not contain float data");
 
@@ -92,7 +92,7 @@ float EpicsStatusItemImpl::getDataAsFloat(int index) const throw (InvalidOperati
 	return data[index];
 }
 
-double EpicsStatusItemImpl::getDataAsDouble(int index) const throw (InvalidOperation) {
+double EpicsStatusItemImpl::getDataAsDouble(int index) const noexcept(false) {
 	if (_type != type::DOUBLE)
 		throw InvalidOperation("EPICS status item does not contain double data");
 
@@ -102,7 +102,7 @@ double EpicsStatusItemImpl::getDataAsDouble(int index) const throw (InvalidOpera
 	return data[index];
 }
 
-unsigned char EpicsStatusItemImpl::getDataAsByte(int index) const throw (InvalidOperation) {
+unsigned char EpicsStatusItemImpl::getDataAsByte(int index) const noexcept(false) {
 	if (_type != type::BYTE)
 		throw InvalidOperation("EPICS status item does not contain byte data");
 
@@ -116,7 +116,7 @@ unsigned char EpicsStatusItemImpl::getDataAsByte(int index) const throw (Invalid
 
 
 
-void EpicsStatusItemImpl::validateIndex(int index) const throw (InvalidOperation) {
+void EpicsStatusItemImpl::validateIndex(int index) const noexcept(false) {
 	if (index >= _nElements || index < 0)
 		throw InvalidOperation("Index out of range to get element from EPICS status item");
 }

@@ -5,6 +5,8 @@
 #include <giapi/giapiexcept.h>
 #include <giapi/giapi.h>
 
+#include <stdexcept>
+
 namespace giapi {
 
 namespace gemini {
@@ -33,7 +35,18 @@ public:
 	 *        the zernikes updates
 	 */
 	virtual int postPcsUpdate(double zernikes[], int size)
-			throw (GiapiException) = 0;
+			noexcept(false){
+	/**
+	* Implementation is missing...
+	* (It is defined this way only so that there are no errors when compiling with c++20)
+	*/
+	return 0;
+};
+
+
+
+
+
 };
 
 /**

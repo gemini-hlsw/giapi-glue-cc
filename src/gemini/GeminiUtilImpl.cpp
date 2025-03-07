@@ -12,7 +12,7 @@ log4cxx::LoggerPtr GeminiUtilImpl::logger(log4cxx::Logger::getLogger("giapi.Gemi
 
 pGeminiUtilImpl GeminiUtilImpl::INSTANCE(static_cast<GeminiUtilImpl *>(0));
 
-GeminiUtilImpl::GeminiUtilImpl() throw (GiapiException) {
+GeminiUtilImpl::GeminiUtilImpl() noexcept(false) {
 	_epicsMgr = JmsEpicsManager::create();
 	_pcsUpdater = gemini::pcs::jms::JmsPcsUpdater::create();
 	_tcsFetcher = gemini::tcs::jms::JmsTcsFetcher::create();
@@ -28,7 +28,7 @@ GeminiUtilImpl::~GeminiUtilImpl() {
 	_epicsFetcher.reset();
 }
 
-pGeminiUtilImpl GeminiUtilImpl::Instance() throw (GiapiException) {
+pGeminiUtilImpl GeminiUtilImpl::Instance() noexcept(false) {
 	if (INSTANCE.get() == 0) {
 		INSTANCE.reset(new GeminiUtilImpl());
 	}
@@ -36,7 +36,7 @@ pGeminiUtilImpl GeminiUtilImpl::Instance() throw (GiapiException) {
 }
 
 int GeminiUtilImpl::subscribeEpicsStatus(const std::string &name,
-		pEpicsStatusHandler handler) throw (GiapiException) {
+		pEpicsStatusHandler handler) noexcept(false) {
 	LOG4CXX_INFO(logger, "Subscribe epics status " << name);
 	return _epicsMgr->subscribeEpicsStatus(name, handler);
 }
@@ -59,22 +59,22 @@ int GeminiUtilImpl::postPcsUpdate(double zernikes[], int size) {
 	return _pcsUpdater->postPcsUpdate(zernikes, size);
 }
 
-int GeminiUtilImpl::getTcsContext(TcsContext& ctx, long timeout) const throw (GiapiException) {
+int GeminiUtilImpl::getTcsContext(TcsContext& ctx, long timeout) const noexcept(false) {
 	return _tcsFetcher->fetch(ctx, timeout);
 }
 
 int GeminiUtilImpl::tcsApplyOffset(const double p, const double q,
-		                           const OffsetType offsetType, const long timeout)const throw (GiapiException) {
+		                           const OffsetType offsetType, const long timeout)const noexcept(false) {
 	return _tcsApplyOffset->sendOffset(p, q, offsetType,timeout);
 }
 
 int GeminiUtilImpl::tcsApplyOffset(const double p, const double q,
                                    const OffsetType offsetType, const long timeout,
-                                   void (*callbackOffset)(int, std::string))const throw (GiapiException) {
+                                   void (*callbackOffset)(int, std::string))const noexcept(false) {
 	return _tcsApplyOffset->sendOffset(p, q, offsetType, timeout, callbackOffset );
 }
 
-pEpicsStatusItem GeminiUtilImpl::getChannel(const std::string &name, long timeout) throw (GiapiException)  {
+pEpicsStatusItem GeminiUtilImpl::getChannel(const std::string &name, long timeout) noexcept(false)  {
 	std::cout << "Destroying " << std::endl;
 	return _epicsFetcher->getChannel(name, timeout);
 }

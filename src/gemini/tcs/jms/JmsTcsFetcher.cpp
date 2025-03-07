@@ -21,18 +21,18 @@ namespace giapi {
             /* Size of the TCS Context */
             int const JmsTcsFetcher::TCS_CTX_SIZE = 39;
             
-            JmsTcsFetcher::JmsTcsFetcher() throw (CommunicationException) :
+            JmsTcsFetcher::JmsTcsFetcher() noexcept(false) :
             	JmsProducer(GMPKeys::GMP_TCS_CONTEXT_DESTINATION) {
             
             }
             
-            pTcsFetcher JmsTcsFetcher::create() throw (CommunicationException) {
+            pTcsFetcher JmsTcsFetcher::create() noexcept(false) {
             	pTcsFetcher fetcher(new JmsTcsFetcher());
             	return fetcher;
             }
             
             int JmsTcsFetcher::fetch(TcsContext & ctx, long timeout)
-            		throw (CommunicationException, TimeoutException) {
+            		noexcept(false) {
             
             	Message * request = NULL;
             	try {
@@ -75,7 +75,7 @@ namespace giapi {
             }
             
             int JmsTcsFetcher::_buildTcsContext(TcsContext &ctx, Message *message)
-            		throw (CMSException) {
+            		noexcept(false) {
             
             	const BytesMessage* bytesMessage =
             			dynamic_cast<const BytesMessage*> (message);

@@ -4,6 +4,9 @@
 #include <gemini/epics/EpicsFetcher.h>
 #include <util/jms/JmsProducer.h>
 
+#include <stdexcept>
+
+
 namespace giapi {
 namespace gemini {
 namespace epics {
@@ -15,17 +18,30 @@ public:
   /**
    * Static factory method to instantiate a new JmsEpicsFetcher object
    * and obtain a smart pointer to access it.
+   * @throw CommunicationException
+   * If there is an issue establishing communication
+   *        with the GMP when creating the fetcher instance.
    */
-  static pEpicsFetcher create() throw (CommunicationException);
+  static pEpicsFetcher create() noexcept(false);
 
-  virtual pEpicsStatusItem getChannel(const std::string &name, long timeout) throw (GiapiException);
+  /**
+   * @throw GiapiException
+   * If the response received from the GMP is not valid
+   *        or does not contain the expected data.
+   *
+   */
+  virtual pEpicsStatusItem getChannel(const std::string &name, long timeout) noexcept(false);
 
 private:
 
   /**
    * Private Constructor
+   * @throw CommunicationException
+   * If the initialization of the EPICS fetcher
+   *        fails due to communication issues.
+   *
    */
-  JmsEpicsFetcher() throw (CommunicationException);
+  JmsEpicsFetcher() noexcept(false);
 
 };
 

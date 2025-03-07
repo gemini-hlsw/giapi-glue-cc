@@ -8,7 +8,7 @@ namespace gemini {
 namespace pcs {
 namespace jms {
 
-JmsPcsUpdater::JmsPcsUpdater() throw (CommunicationException) :
+JmsPcsUpdater::JmsPcsUpdater() noexcept(false) :
 	JmsProducer(GMPKeys::GMP_PCS_UPDATE_DESTINATION) {
 
 }
@@ -16,13 +16,13 @@ JmsPcsUpdater::JmsPcsUpdater() throw (CommunicationException) :
 JmsPcsUpdater::~JmsPcsUpdater() {
 }
 
-pPcsUpdater JmsPcsUpdater::create() throw (CommunicationException) {
+pPcsUpdater JmsPcsUpdater::create() noexcept(false) {
 	pPcsUpdater updater(new JmsPcsUpdater());
 	return updater;
 }
 
 int JmsPcsUpdater::postPcsUpdate(double zernikes[], int size)
-		throw (GiapiException) {
+		noexcept(false) {
 
 	if (size <= 0)
 		return status::ERROR;

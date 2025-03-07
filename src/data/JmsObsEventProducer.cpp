@@ -9,7 +9,7 @@ namespace giapi {
 
 using namespace util;
 
-JmsObsEventProducer::JmsObsEventProducer() throw (CommunicationException) :
+JmsObsEventProducer::JmsObsEventProducer() noexcept(false) :
 	JmsProducer(GMPKeys::GMP_DATA_OBSEVENT_DESTINATION) {
 }
 
@@ -18,13 +18,13 @@ JmsObsEventProducer::~JmsObsEventProducer() {
 }
 
 pJmsObsEventProducer JmsObsEventProducer::create()
-		throw (CommunicationException) {
+		noexcept(false) {
 	pJmsObsEventProducer producer(new JmsObsEventProducer());
 	return producer;
 }
 
 int JmsObsEventProducer::postEvent(data::ObservationEvent event,
-		const std::string &dataLabel) throw (CommunicationException) {
+		const std::string &dataLabel) noexcept(false) {
 
 	std::string eventName = "UNKNOWN";
 

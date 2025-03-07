@@ -4,6 +4,7 @@
 #include <log4cxx/logger.h>
 #include <tr1/memory>
 #include <set>
+#include <stdexcept>
 
 #include <cms/Connection.h>
 #include <cms/Session.h>
@@ -52,8 +53,7 @@ public:
 	 *
 	 * @return The ConnectionManager singleton object
 	 */
-	static pConnectionManager Instance() throw (GmpException);
-
+	static pConnectionManager Instance() noexcept(false);
 	/**
 	 * Creates a new JMS Session for clients to interact with
 	 * the GMP broker. It does not keep ownership of the newly
@@ -62,8 +62,7 @@ public:
 	 *
 	 * @return A new Session object from the current connection.
 	 */
-	pSession createSession() throw (CMSException );
-
+	pSession createSession() noexcept(false);
 	/**
 	 * Handles the exceptions that might happen with the connection
 	 * to the broker
@@ -99,8 +98,7 @@ private:
 	/**
 	 * Initialize the communication to the broker
 	 */
-	void startup() throw (GmpException);
-
+	void startup() noexcept(false);
 	/**
 	 * Timeout to use to retry a connection to the GMP in
 	 * case the connection fails.

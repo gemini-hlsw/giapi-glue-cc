@@ -45,7 +45,7 @@ public:
 	 */
 	static int subscribeSequenceCommand(command::SequenceCommand id,
 			command::ActivitySet activities,
-			pSequenceCommandHandler handler) throw (GiapiException);
+			pSequenceCommandHandler handler) noexcept(false);
 
 	/**
 	 * Associates the given handler to the configuration prefix specified and
@@ -80,7 +80,7 @@ public:
 	 */
 	static int subscribeApply(const std::string & prefix,
 			command::ActivitySet activities,
-			pSequenceCommandHandler handler) throw (GiapiException);
+			pSequenceCommandHandler handler) noexcept(false);
 
 	/**
 	 * Post completion information to the GMP for actions that do not complete
@@ -102,8 +102,7 @@ public:
 	 *         this operation
 	 */
 	static int postCompletionInfo(command::ActionId id,
-			pHandlerResponse response) throw (GiapiException);
-
+			pHandlerResponse response) noexcept(false);
 private:
 	CommandUtil();
 	virtual ~CommandUtil();

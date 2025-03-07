@@ -18,6 +18,8 @@
 
 #include <log4cxx/logger.h>
 
+#include <stdexcept>
+
 using namespace gmp;
 
 namespace giapi {
@@ -33,8 +35,11 @@ public:
 protected:
 	/**
 	 * Constructor
+	 * @throw CommunicationException
+	 * If there is an issue initializing the producer,
+	 * such as connection failure or session creation errors.
 	 */
-	JmsProducer(const std::string & queueName) throw (CommunicationException);
+	JmsProducer(const std::string & queueName) noexcept(false);
 
 	/**
 	 * The JMS Session associated to this producer.

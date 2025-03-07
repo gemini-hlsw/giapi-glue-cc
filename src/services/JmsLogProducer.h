@@ -10,6 +10,8 @@
 #include <giapi/giapiexcept.h>
 #include <util/jms/JmsProducer.h>
 
+#include <stdexcept>
+
 
 namespace giapi {
 /**
@@ -31,21 +33,30 @@ public:
 	 * Factory method to create a new JmsLogProducer.
 	 * This factory returns a smart pointer object to
 	 * simplify the management.
+	 * @throw CommunicationException
+	 * If the producer cannot be created due to
+         * connection issues or session initialization failure.
 	 */
-	static pJmsLogProducer create() throw (CommunicationException);
+	static pJmsLogProducer create() noexcept(false);
 
 	/**
 	 * Sends the system logging information to the GMP.
+	 * @throw CommunicationException
+	 * If there is an issue sending the log
+	 * message, such as connection failure or session errors.
 	 */
 	void postLog(log::Level level, const std::string &msg)
-		throw (CommunicationException);
+		noexcept(false);
 
 	virtual ~JmsLogProducer();
 private:
 	/**
 	 * Private constructor.
+	 * @throw CommunicationException
+	 * If the producer fails to initialize due to
+	 * connection issues or session creation failure.
 	 */
-	JmsLogProducer() throw (CommunicationException) ;
+	JmsLogProducer() noexcept(false);
 };
 
 }

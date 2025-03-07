@@ -22,6 +22,8 @@
 
 #include <log4cxx/logger.h>
 
+#include <stdexcept>
+
 using namespace cms;
 using namespace gmp;
 
@@ -34,14 +36,34 @@ namespace giapi {
 class JmsEpicsManager: public EpicsManager {
 public:
 
+	/**
+ 	* @throw GiapiException
+ 	* If the subscription fails due to an invalid channel
+	*        or an internal error in the GMP.
+ 	*/
 	int subscribeEpicsStatus(const std::string &name,
-			pEpicsStatusHandler handler) throw (GiapiException);
+			pEpicsStatusHandler handler) noexcept(false);
 
-	int unsubscribeEpicsStatus(const std::string &name) throw (GiapiException);
+	/**
+ 	* @throw GiapiException
+ 	* If the unsubscription fails due to an invalid channel
+	*        or internal errors.
+ 	*/
+	int unsubscribeEpicsStatus(const std::string &name) noexcept(false);
 
-	static pEpicsManager create() throw (CommunicationException);
+	/**
+ 	* @throw CommunicationException
+ 	* If the creation of the manager fails due
+	*        to an issue with the GMP communication setup.
+ 	*/
+	static pEpicsManager create() noexcept(false);
 
-	JmsEpicsManager() throw (CommunicationException);
+	/**
+ 	* @throw CommunicationException
+ 	* If the initialization fails due to
+	*        a communication error with the GMP.
+ 	*/
+	JmsEpicsManager() noexcept(false);
 	virtual ~JmsEpicsManager();
 
 
@@ -87,3 +109,4 @@ private:
 }
 
 #endif /* JMSEPICSMANAGER_H_ */
+

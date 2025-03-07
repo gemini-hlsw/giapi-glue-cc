@@ -11,7 +11,7 @@ namespace giapi {
 log4cxx::LoggerPtr JmsStatusSender::logger(log4cxx::Logger::getLogger(
 		"giapi.JmsStatusSender"));
 
-JmsStatusSender::JmsStatusSender() throw (CommunicationException) {
+JmsStatusSender::JmsStatusSender() noexcept(false) {
 	LOG4CXX_DEBUG(logger, "Constructing JMS Status sender");
 	try {
 		_connectionManager = ConnectionManager::Instance();
@@ -37,7 +37,7 @@ JmsStatusSender::~JmsStatusSender() {
 }
 
 int JmsStatusSender::postStatus(pStatusItem statusItem) const
-		throw (PostException) {
+		noexcept(false) {
 	LOG4CXX_DEBUG(logger, "Post Status Item " << statusItem->getName());
 
 	BytesMessage *msg = NULL;

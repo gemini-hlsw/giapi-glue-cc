@@ -6,20 +6,20 @@ using namespace gmp;
 
 namespace giapi {
 
-JmsLogProducer::JmsLogProducer() throw (CommunicationException) :
+JmsLogProducer::JmsLogProducer() noexcept(false) :
 	JmsProducer(GMPKeys::GMP_SERVICES_LOG_DESTINATION) {
 }
 
 JmsLogProducer::~JmsLogProducer() {
 }
 
-pJmsLogProducer JmsLogProducer::create() throw (CommunicationException) {
+pJmsLogProducer JmsLogProducer::create() noexcept(false) {
 	pJmsLogProducer producer(new JmsLogProducer());
 	return producer;
 }
 
 void JmsLogProducer::postLog(log::Level level, const std::string &logMsg)
-		throw (CommunicationException) {
+		noexcept(false) {
 
 	TextMessage * msg = NULL;
 	try {

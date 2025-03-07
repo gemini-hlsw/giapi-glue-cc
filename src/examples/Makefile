@@ -76,7 +76,7 @@ epicssubscription: epicssubscription.o EpicsHandlerDemo.o
 %.o: %.cpp
 	@echo 'Building file: $<'
 	@echo 'Invoking $(OS) C++ Compiler'
-	$(CXX) $(INC_DIRS) -std=c++11 -g -O0 -Wall -fPIC -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	$(CXX) $(INC_DIRS) -g -O0 -std=c++14 -Wall -fPIC -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
 	@echo 'Finished building: $<'
 	@echo ' '
 
@@ -85,7 +85,6 @@ epicssubscription: epicssubscription.o EpicsHandlerDemo.o
 
 clean:
 	-$(RM) *.o *.d stresstest seq-command pcsupdater tcscontext obsevent epicssubscription pcsupdater logging fileevents status services apply-command any-command obsacq gpim1zernikes gipsimulatior gpiobssimulator engineering ghost-split-command igrins2obssimulator
-=======
 run:
 	@echo $(LD_LIBRARY_PATH)
 

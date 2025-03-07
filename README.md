@@ -17,45 +17,54 @@ ICD50 - GIAPI C++ Language Glue API.
 
 # Dependencies
 
-The GIAPI C++ API supports the C++11 standard. The C++11 is a major upgrade 
-over C++98/03, with performance and convenience features that make it feel 
-like a new language. The GIAPI library can be compiled from any version 
-of the gcc 4.8.1 compiler, which was the first to implement the C++11 language.
-Currently, Gemini is using the GIAPI on centos7 (gcc 4.8.5) and 
-rocky 8 (gcc 8.5.0). 
-
+The GIAPI C++ API now supports the C++20 standard. C++20 introduces significant
+improvements over C++11, including enhanced performance, modern syntactic features,
+and expanded standard library capabilities. The GIAPI library can be compiled with any
+version of the GCC 10 compiler, which was among the first to fully implement C++20.
+Currently, Gemini is using GIAPI on Rocky 9 with GCC 11.5.0.
 
 The following are tools used to build the GIAPI C++ API:
-|             | Centos 7 | Rocky 8|
-|    :---:    |  :---:   | :---:  |
-|g++ (GCC)    | 4.8.5    | 8.5.0  |
-|GNU Make     | 3.82     | 4.2.1  |
-|GNU automake | 1.16.1   | 1.16.1 |
-|cmake        | 2.8.12.2 | 3.20.2 |
+|             | Rocky 9 | Rocky 8 |
+|    :---:    |  :---:   |  :---:   |
+|g++ (GCC)    | 11.5.0    | 8.5.0    |
+|GNU Make     | 4.3     | 4.2.1   |
+|GNU automake | 1.16.2   | 1.16.1   |
+|cmake        | 3.26.5 | 3.26.5 |
+
+For this branch the necessaries modifications are made to force all the external libraries
+to the standard C++14.
+This decision was made considering that the "ActiveMQ" library, at the moment, only supports
+at most this version of C++. 
+
+It should be noted that, even so, GIAPI supports the standard of C++20 with all the modifications
+in the build configurations of the externals. Also, all the dockerfiles are using Rocky 9 by default,
+but changing for Rocky 8 it's also works.
 
 # External libraries
 The external libraries required by the GIAPI are:
-* Apache Active MQ CMS (C++ Messaging system) version 3.4.1. [activemq](external/activemq-cpp-library-3.4.1)
-* Apache Log4cxx version 0.11.0. [log4cxx](external/apache-log4cxx-0.11.0) 
-* libCurl version 7.21.6. [curl](external/curl-7.21.6) 
+* Apache Active MQ CMS (C++ Messaging system) version 3.9.5. [activemq](external/activemq-cpp-library-3.9.5)
+* Apache Log4cxx version 1.3.1. [log4cxx](external/apache-log4cxx-1.3.1) 
+* libCurl version 8.11.1. [curl](external/curl-8.11.1) 
 * curlpp version 0.8.1 [curlpp](external/curlpp-0.8.1) 
-* Apache Portable Runtime libraries (apr and apr-util). [apr](external/apr-1.3.12) and  [apr-util](external/apr-util-1.3.10)
+* Apache Portable Runtime libraries (apr and apr-util). [apr](external/apr-1.7.5) and  [apr-util](external/apr-util-1.6.3)
+* Expat version 2.6.4 [expat](external/expat-2.6.4) 
 
 ## Compile GIAPI-GLUE.
 To compile GIAPI-GLUE from source code, it is necessary to first compile the external libraries 
 located in the external directory. 
 
-The steps performed from GEMINI to compile the library on CENTOS 7 and CENTOS 8 are described below. 
+The steps performed from GEMINI to compile the library on Rocky 9 are described below. 
 
 * Create the GIAPI_ROOT and BOOST_ROOT enviroment variables. It is possible executing the following command.
    ```
       source ./defineGiapiglueEnv.sh
    ```
-* Compile the apr library. Follow the actions listed in [link](external/apr-1.3.12)
-* Compile the apr-util library. Follow the actions listed in this [link](external/apr-util-1.3.10)
-* Compile the activemq library. Follow the actions listed in this [link](external/activemq-cpp-library-3.4.1) 
-* Compile the log4cxx library. Follow the actions listed in this [link](external/apache-log4cxx-0.11.0) 
-* Compile the libCurl library. Follow the actions listed in this [link](external/curl-7.21.6) 
+* Compile the apr library. Follow the actions listed in [link](external/apr-1.7.5)
+* Compile the expat library. Follow the actions listed in [link](external/expat-2.6.4) 
+* Compile the apr-util library. Follow the actions listed in this [link](external/apr-util-1.6.3)
+* Compile the log4cxx library. Follow the actions listed in this [link](external/apache-log4cxx-1.3.1) 
+* Compile the activemq library. Follow the actions listed in this [link](external/activemq-cpp-library-3.9.5)
+* Compile the libCurl library. Follow the actions listed in this [link](external/curl-8.11.1) 
 * Compile the libCurlpp library. Follow the actions listed in this [link](external/curlpp-0.8.1)
 * Compile the giapi-glue library. Execute the following commands.
   ```
@@ -73,4 +82,5 @@ The steps performed from GEMINI to compile the library on CENTOS 7 and CENTOS 8 
 # History
 The first version of the giapi-glue dates from October 24, 2008. It was written by AN (Arturo Nunez). 
 During these years it has been maintained mainly by Carlos Quiroz, Ignacio Arriagada and Fran. Ramos. . 
+Migration to std=c++20/14 made by Pedro Arce.
 

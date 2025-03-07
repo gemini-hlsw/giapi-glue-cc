@@ -37,7 +37,7 @@ GIAPI_LIB_DIR := $(INSTALL_DIR)/lib
 #Log4cxx stuff
 LOG4CXX_BASE := $(EXTERNAL_LIB)/log4cxx
 LOG4CXX_INCLUDE := $(LOG4CXX_BASE)/include
-LOG4CXX_LIB := $(LOG4CXX_BASE)/lib
+LOG4CXX_LIB := $(LOG4CXX_BASE)/lib64
 
 #CPPUnit stuff
 CPPUNIT_BASE := $(EXTERNAL_LIB)/cppunit
@@ -46,7 +46,7 @@ CPPUNIT_LIB := $(CPPUNIT_BASE)/lib
 
 #ActiveMQ-cpp stuff
 ACTIVEMQ_BASE := $(EXTERNAL_LIB)/activemq-cpp
-ACTIVEMQ_INCLUDE := $(ACTIVEMQ_BASE)/include/activemq-cpp-3.4.1
+ACTIVEMQ_INCLUDE := $(ACTIVEMQ_BASE)/include/activemq-cpp-3.9.5
 # For OSX use 3.1.3
 #ACTIVEMQ_INCLUDE := $(ACTIVEMQ_BASE)/include/activemq-cpp-3.1.3
 ACTIVEMQ_LIB := $(ACTIVEMQ_BASE)/lib
@@ -87,6 +87,6 @@ TMP_DIST_DIR := /tmp/$(DIST_PACKAGE_NAME)
 %.o: %.cpp
 	@echo 'Building file: $<'
 	@echo 'Invoking $(OS) C++ Compiler'
-	$(CXX) $(INC_DIRS) -std=c++11 -g -O0 -Wall -fPIC -c -Wno-deprecated -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	$(CXX) $(INC_DIRS) -std=c++14 -g -O0 -Wall -fPIC -c -Wno-deprecated -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
 	@echo 'Finished building: $<'
 	@echo ' '

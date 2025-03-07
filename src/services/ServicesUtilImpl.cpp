@@ -6,7 +6,7 @@ log4cxx::LoggerPtr ServicesUtilImpl::logger(log4cxx::Logger::getLogger("giapi.Se
 
 pServicesUtilImpl ServicesUtilImpl::INSTANCE(static_cast<ServicesUtilImpl *>(0));
 
-ServicesUtilImpl::ServicesUtilImpl() throw (CommunicationException) {
+ServicesUtilImpl::ServicesUtilImpl() noexcept(false) {
 	_producer = RequestProducer::create();
 	_logProducer = JmsLogProducer::create();
 }
@@ -15,7 +15,7 @@ ServicesUtilImpl::~ServicesUtilImpl() {
 	LOG4CXX_DEBUG(logger, "Destroying Services Util");
 }
 
-pServicesUtilImpl ServicesUtilImpl::Instance() throw (CommunicationException) {
+pServicesUtilImpl ServicesUtilImpl::Instance() noexcept(false) {
 	if (INSTANCE.get() == 0) {
 		INSTANCE.reset(new ServicesUtilImpl());
 	}
@@ -23,7 +23,7 @@ pServicesUtilImpl ServicesUtilImpl::Instance() throw (CommunicationException) {
 }
 
 void ServicesUtilImpl::systemLog(log::Level level, const std::string &msg)
-	throw (CommunicationException) {
+	noexcept(false) {
 
 	_logProducer->postLog(level, msg);
         switch (level) {
@@ -56,7 +56,7 @@ long64 ServicesUtilImpl::getObservatoryTime() {
 }
 
 const std::string ServicesUtilImpl::getProperty(const std::string &key, long timeout)
-	throw (CommunicationException, TimeoutException) {
+	noexcept(false) {
 	LOG4CXX_INFO(logger, "Property requested for key: " << key);
 
 	return _producer->getProperty(key, timeout);

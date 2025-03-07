@@ -5,6 +5,8 @@
 #include <giapi/giapiexcept.h>
 #include <util/jms/JmsProducer.h>
 
+#include <stdexcept>
+
 namespace giapi {
 
 class JmsFileEventsProducer;
@@ -23,8 +25,10 @@ public:
 	 * Factory method to create a producer of File Events.
 	 * @return a smart pointer to the newly created file
 	 *         event producer
+	 * @throws CommunicationException If there is an issue establishing
+	 *        the connection to the GMP for file event messaging.
 	 */
-	static pJmsFileEventsProducer create() throw (CommunicationException);
+	static pJmsFileEventsProducer create() noexcept(false);
 
 	/**
 	 * Destructor
@@ -43,7 +47,7 @@ public:
 	 *         event to the GMP via JMS
 	 */
 	int postAncillaryFileEvent(const std::string & filename,
-			const std::string & dataLabel) throw (CommunicationException);
+			const std::string & dataLabel) noexcept(false);
 
 	/**
 	 * Post an Intermediate File Event to the GMP, associated with the
@@ -61,10 +65,14 @@ public:
 
 	int postIntermediateFileEvent(const std::string & filename,
 			const std::string & datalabel, const std::string & hint)
-			throw (CommunicationException);
+			noexcept(false);
 
 private:
-	JmsFileEventsProducer() throw (CommunicationException);
+	/**
+	 * @throws CommunicationException If the producer cannot be initialized
+	 *        properly due to connection failures or GMP communication issues.
+	 */
+	JmsFileEventsProducer() noexcept(false);
 
 	/**
 	 * A type for the different File Events supported.

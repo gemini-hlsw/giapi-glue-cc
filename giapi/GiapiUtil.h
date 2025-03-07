@@ -10,6 +10,8 @@
 #include <giapi/giapi.h>
 #include <giapi/GiapiErrorHandler.h>
 
+#include <stdexcept>
+
 namespace giapi {
 
 /**
@@ -36,9 +38,12 @@ public:
 	 *
 	 * @param handler a user specified function that will be
 	 * invoked when a connection to the GMP is re-established.
+	 * @throw CommunicationException
+	 * This exception is thrown if there is an issue accessing the GMP
+	 * or registering the error handler.
 	 */
 	static void registerGmpErrorHandler(giapi_error_handler handler)
-			throw (CommunicationException);
+			noexcept(false);
 
 	/**
 	 * Register an error handler object that will be invoked when a GMP
@@ -57,9 +62,12 @@ public:
 	 *
 	 * @param handler Smart pointer to an object representing the
 	 * error handler to be invoked.
+	 * @throw CommunicationException
+	 * This exception is thrown if there is an issue accessing the GMP
+	 * or registering the error handler object.
 	 */
 	static void registerGmpErrorHandler(pGiapiErrorHandler handler)
-			throw (CommunicationException);
+			noexcept(false);
 
 private:
 	GiapiUtil();

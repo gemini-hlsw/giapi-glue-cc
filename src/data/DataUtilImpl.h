@@ -8,6 +8,8 @@
 #include <data/JmsObsEventProducer.h>
 #include <data/JmsFileEventsProducer.h>
 
+#include <stdexcept>
+
 namespace giapi {
 
 class DataUtilImpl;
@@ -19,14 +21,30 @@ class DataUtilImpl {
 	 */
 	static log4cxx::LoggerPtr logger;
 public:
-	static pDataUtilImpl Instance() throw (CommunicationException);
+	/**
+	 * @throws CommunicationException If there is an error initializing
+	 *         the internal producers for observation and file events.
+	 */
+	static pDataUtilImpl Instance() noexcept(false);
 
-	int postObservationEvent(data::ObservationEvent event, const std::string & datalabel) throw (CommunicationException);
+	/**
+	 * @throws CommunicationException If there is an error sending the event
+	 *         to the GMP via JMS.
+	 */
+	int postObservationEvent(data::ObservationEvent event, const std::string & datalabel) noexcept(false);
 
-	int postAncillaryFileEvent(const std::string & filename, const std::string & datalabel) throw (CommunicationException);
+	/**
+	 * @throws CommunicationException If there is an error sending the event
+	 *         to the GMP via JMS.
+	 */
+	int postAncillaryFileEvent(const std::string & filename, const std::string & datalabel) noexcept(false);
 
+	/**
+	 * @throws CommunicationException If there is an error sending the event
+	 *         to the GMP via JMS.
+	 */
 	int postIntermediateFileEvent(const std::string & filename,
-					const std::string & datalabel, const std::string & hint) throw (CommunicationException);
+					const std::string & datalabel, const std::string & hint) noexcept(false);
 
 	virtual ~DataUtilImpl();
 
@@ -37,7 +55,11 @@ private:
 
 	pJmsFileEventsProducer pFileEventsProducer;
 
-	DataUtilImpl() throw (CommunicationException);
+	/**
+	 * @throws CommunicationException If there is an error initializing
+	 *         the observation event or file event producers.
+	 */
+	DataUtilImpl() noexcept(false);
 };
 
 }
