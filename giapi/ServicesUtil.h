@@ -6,6 +6,8 @@
 #include <giapi/giapi.h>
 #include <giapi/giapiexcept.h>
 
+#include <stdexcept>
+
 namespace giapi {
 
 /**
@@ -26,7 +28,7 @@ public:
 	 * @throws GiapiException if there is an error accessing the GMP to log
 	 *         the message.
 	 */
-	static void systemLog(log::Level level, const std::string &msg) throw (GiapiException);
+	static void systemLog(log::Level level, const std::string &msg) noexcept(false);
 
 	/**
 	 * Returns the current observatory time in milliseconds. The granularity
@@ -39,7 +41,7 @@ public:
 	 * @throws GiapiException if there is an error accessing the GMP to get the
 	 *         observatory time
 	 */
-	static long64 getObservatoryTime() throw (GiapiException);
+	static long64 getObservatoryTime() noexcept(false);
 
 	/**
 	 * Gets the GIAPI property indicated by the specified key.
@@ -56,7 +58,7 @@ public:
 	 *         property
 	 */
 	static const std::string getProperty(const std::string &key,
-			                             long timeout = 0) throw (GiapiException);
+			                             long timeout = 0) noexcept(false);
 
 private:
 	ServicesUtil();

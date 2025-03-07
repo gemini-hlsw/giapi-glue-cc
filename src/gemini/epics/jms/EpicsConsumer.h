@@ -15,6 +15,8 @@
 
 #include <gmp/ConnectionManager.h>
 
+#include <stdexcept>
+
 using namespace cms;
 using namespace gmp;
 
@@ -40,28 +42,36 @@ typedef std::tr1::shared_ptr<EpicsConsumer> pEpicsConsumer;
 class EpicsConsumer: public MessageListener {
 
 public:
-	virtual ~EpicsConsumer() throw ();
+	virtual ~EpicsConsumer() noexcept;
 
 	/**
 	 * Invoked by the JMS whenever a new message is received
+	 * @throw
+	 * If there is an issue processing the message.
 	 */
-	virtual void onMessage(const Message* message) throw();
+	virtual void onMessage(const Message* message) noexcept(false);
 
 	/**
 	 * Static factory to create consumers for different EPICS channels
 	 * associated to the corresponding EPICS status handler.
+	 * @throw CommunicationException
+	 * If there is a failure in establishing
+	 * a connection to the EPICS channel.
 	 */
 	static pEpicsConsumer create(const std::string &channelName,
-			pEpicsStatusHandler handler) throw (CommunicationException);
+			pEpicsStatusHandler handler) noexcept(false);
 
 private:
 
 	/**
 	 * Constructor. Start monitoring (via JMS) the specified channel and invokes
 	 * the given handler when an update is received.
+	 * @throw CommunicationException
+	 * If the consumer fails to establish a
+	 * connection to the EPICS system.
 	 */
 	EpicsConsumer(const std::string &channelName, pEpicsStatusHandler handler)
-			throw (CommunicationException);
+			noexcept(false);
 
 	/**
 	 * Close and destroy associated JMS resources used by this consumer

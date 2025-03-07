@@ -9,6 +9,7 @@
 #include <giapi/EpicsStatusItem.h>
 #include <giapi/giapi.h>
 
+#include <stdexcept>
 
 
 namespace giapi {
@@ -24,16 +25,40 @@ public:
 
 	int getCount() const;
 
+	/**
+	 * @throw InvalidOperation
+	 * If the EPICS status item does not contain
+	 * string data or if the index is out of range.
+	 */
+	const std::string getDataAsString(int index) const noexcept(false);
 
-	const std::string getDataAsString(int index) const throw (InvalidOperation);
+	/**
+	 * @throw InvalidOperation
+	 * If the EPICS status item does not contain
+	 * integer data or if the index is out of range.
+	 */
+	int getDataAsInt(int index) const noexcept(false);
 
-	int getDataAsInt(int index) const throw (InvalidOperation);
+	/**
+	 * @throw InvalidOperation
+	 * If the EPICS status item does not contain
+	 * float data or if the index is out of range.
+	 */
+	float getDataAsFloat(int index) const noexcept(false);
 
-	float getDataAsFloat(int index) const throw (InvalidOperation);
+	/**
+	 * @throw InvalidOperation
+	 * If the EPICS status item does not contain
+	 *        double data or if the index is out of range.
+	 */
+	double getDataAsDouble(int index) const noexcept(false);
 
-	double getDataAsDouble(int index) const throw (InvalidOperation);
-
-	unsigned char getDataAsByte(int index) const throw (InvalidOperation);
+	/**
+	 * @throw InvalidOperation
+	 * If the EPICS status item does not contain
+	 *        byte data or if the index is out of range.
+	 */
+	unsigned char getDataAsByte(int index) const noexcept(false);
 
 
 
@@ -89,8 +114,11 @@ private:
 	/**
 	 * Auxiliary method to validate that an index is in the
 	 * appropriate range, i.e, 0 <= index < _nElements
+	 * @throw InvalidOperation
+	 * If the provided index is out of the valid range
+	 * (i.e., 0 <= index < _nElements).
 	 */
-	void validateIndex(int index) const throw (InvalidOperation);
+	void validateIndex(int index) const noexcept(false);
 
 };
 

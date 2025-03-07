@@ -17,7 +17,7 @@ LogStatusSender::~LogStatusSender() {
 }
 
 int LogStatusSender::postStatus(pStatusItem statusItem) const
-		throw (PostException) {
+		noexcept(false){
 	LOG4CXX_INFO(logger, "Post Status Item " << statusItem->getName());
 	return status::OK;
 }

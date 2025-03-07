@@ -6,6 +6,8 @@
 #include <giapi/giapi.h>
 #include <giapi/EpicsStatusItem.h>
 
+#include <stdexcept>
+
 namespace giapi {
 namespace gemini {
 namespace epics {
@@ -32,7 +34,13 @@ public:
    * @throws GiapiException if there is an error accessing the GMP
    *         or a timeout occurs.
    */
-  virtual pEpicsStatusItem getChannel(const std::string &name, long timeout) throw (GiapiException) = 0;
+  virtual pEpicsStatusItem getChannel(const std::string &name, long timeout) noexcept(false){
+	/**
+        * Implementation is missing...
+        * (It is defined this way only so that there are no errors when compiling with c++20)
+        */
+	return std::tr1::shared_ptr<EpicsStatusItem>();
+};
 
   /**
    * Destructor

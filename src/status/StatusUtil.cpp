@@ -12,12 +12,12 @@ StatusUtil::StatusUtil() {
 StatusUtil::~StatusUtil() {
 }
 
-int StatusUtil::postStatus(const std::string &name) throw (GiapiException) {
+int StatusUtil::postStatus(const std::string &name) noexcept(false) {
 	pStatusSender sender = StatusSenderFactory::Instance()->getStatusSender();
 	return sender->postStatus(name);
 }
 
-int StatusUtil::postStatus() throw (GiapiException) {
+int StatusUtil::postStatus() noexcept(false) {
 	pStatusSender sender = StatusSenderFactory::Instance()->getStatusSender();
 	return sender->postStatus();
 }

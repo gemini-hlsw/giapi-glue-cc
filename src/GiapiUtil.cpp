@@ -14,7 +14,7 @@ GiapiUtil::~GiapiUtil() {
 }
 
 void GiapiUtil::registerGmpErrorHandler(giapi_error_handler handler)
-		throw (CommunicationException) {
+		noexcept(false) {
 
 	try {
 		pConnectionManager manager = ConnectionManager::Instance();
@@ -29,7 +29,7 @@ void GiapiUtil::registerGmpErrorHandler(giapi_error_handler handler)
 
 
 void GiapiUtil::registerGmpErrorHandler(pGiapiErrorHandler handler)
-		throw (CommunicationException) {
+		noexcept(false) {
 
 	try {
 		pConnectionManager manager = ConnectionManager::Instance();

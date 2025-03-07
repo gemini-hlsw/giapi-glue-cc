@@ -21,7 +21,7 @@ log4cxx::LoggerPtr SequenceCommandConsumer::logger(log4cxx::Logger::getLogger("g
 
 SequenceCommandConsumer::SequenceCommandConsumer(command::SequenceCommand id,
 		command::ActivitySet activities,
-		pSequenceCommandHandler handler) throw (CommunicationException) {
+		pSequenceCommandHandler handler) noexcept(false) {
 	_sequenceCommand = id;
 	init( JmsUtil::getTopic(id), activities, handler );
 
@@ -29,7 +29,7 @@ SequenceCommandConsumer::SequenceCommandConsumer(command::SequenceCommand id,
 
 SequenceCommandConsumer::SequenceCommandConsumer(const std::string & prefix,
 		command::ActivitySet activities,
-		pSequenceCommandHandler handler) throw (CommunicationException) {
+		pSequenceCommandHandler handler) noexcept(false) {
     _sequenceCommand = giapi::command::APPLY;
 	init( JmsUtil::getTopic(prefix), activities, handler );
 
@@ -38,8 +38,7 @@ SequenceCommandConsumer::SequenceCommandConsumer(const std::string & prefix,
 void SequenceCommandConsumer::init(
 		const std::string & topic,
 		command::ActivitySet activities,
-		pSequenceCommandHandler handler) throw (CommunicationException) {
-
+		pSequenceCommandHandler handler) noexcept(false) {
 	_handler = handler;
 
 	try {
@@ -69,15 +68,14 @@ void SequenceCommandConsumer::init(
 }
 
 
-SequenceCommandConsumer::~SequenceCommandConsumer() throw (){
+SequenceCommandConsumer::~SequenceCommandConsumer() noexcept{
 	LOG4CXX_DEBUG(logger, "Destroying Sequence Command Consumer " << _sequenceCommand);
 	cleanup();
 }
 
 pSequenceCommandConsumer SequenceCommandConsumer::create(
 		command::SequenceCommand id, command::ActivitySet activities,
-		pSequenceCommandHandler handler) throw (CommunicationException) {
-
+		pSequenceCommandHandler handler) noexcept(false) {
 	pSequenceCommandConsumer consumer(new SequenceCommandConsumer(id,
 			activities, handler));
 	return consumer;
@@ -86,8 +84,7 @@ pSequenceCommandConsumer SequenceCommandConsumer::create(
 
 pSequenceCommandConsumer SequenceCommandConsumer::create(
 		const std::string &prefix, command::ActivitySet activities,
-		pSequenceCommandHandler handler) throw (CommunicationException) {
-
+		pSequenceCommandHandler handler) noexcept(false) {
 	pSequenceCommandConsumer consumer(new SequenceCommandConsumer(prefix,
 			activities, handler));
 	return consumer;
@@ -96,7 +93,7 @@ pSequenceCommandConsumer SequenceCommandConsumer::create(
 
 
 
-void SequenceCommandConsumer::onMessage(const Message* message) throw (){
+void SequenceCommandConsumer::onMessage(const Message* message) noexcept(false){
 
 	try {
 		const MapMessage* mapMessage =

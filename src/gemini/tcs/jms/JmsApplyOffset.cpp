@@ -23,7 +23,7 @@ namespace giapi {
 
          namespace jms {
 
-            JmsApplyOffset::JmsApplyOffset() throw (CommunicationException) :
+            JmsApplyOffset::JmsApplyOffset() noexcept(false):
                                             JmsProducer(GMPKeys::GMP_TCS_OFFSET_DESTINATION) {
 	       instName = giapi::util::PropertiesUtil::Instance().getProperty("gmp.instrument");
 	       if(giapi::util::StringUtil::isEmpty(instName)) {
@@ -69,14 +69,14 @@ namespace giapi {
             }
 
 
-            pTcsOffset JmsApplyOffset::create() throw (CommunicationException) {
+            pTcsOffset JmsApplyOffset::create()  noexcept(false) {
                pTcsOffset tcsOffset(new JmsApplyOffset());
                return tcsOffset;
             }
 
             int JmsApplyOffset::sendOffset(const double p, const double q,
                                            const OffsetType offsetType, const long timeout,
-		                           void (*callbackOffset)(int, std::string)) throw (CommunicationException, TimeoutException) {
+		                           void (*callbackOffset)(int, std::string)) noexcept(false) {
 
                BytesMessage * rMsg = NULL;
                int wasOffsetApplied = 0;
@@ -145,7 +145,7 @@ namespace giapi {
             int JmsApplyOffset::sendOffset(const double p, 
 			                   const double q,
 	              			   const OffsetType offsetType, 
-					   const long timeout) throw (CommunicationException, TimeoutException) {
+					   const long timeout) noexcept(false) {
                return sendOffset(p, q, offsetType, timeout, NULL);
             }
 

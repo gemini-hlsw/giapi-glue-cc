@@ -5,6 +5,8 @@
 #include <gemini/tcs/TcsFetcher.h>
 #include <util/jms/JmsProducer.h>
 
+#include <stdexcept>
+
 namespace giapi {
 
    namespace gemini {
@@ -35,21 +37,25 @@ namespace giapi {
             	 * @throws TimeoutException if a timeout occurs.
             	 *
             	 */
-            	int fetch(TcsContext &ctx, long timeout) throw (CommunicationException,
-            			TimeoutException);
+            	int fetch(TcsContext &ctx, long timeout) noexcept(false);
             
             	/**
             	 * Static factory method to instantiate a new JmsTcsFetcher object
             	 * and obtain a smart pointer to access it.
+		 * @throws CommunicationException
+		 * If the initialization fails due to a connection error.
             	 */
-            	static pTcsFetcher create() throw (CommunicationException);
+            	static pTcsFetcher create() noexcept(false);
             
             private:
             
             	/**
             	 * Private Constructor
+		 * @throws CommunicationException
+		 * If there is an issue establishing the connection
+            	 *        with the TCS system.
             	 */
-            	JmsTcsFetcher() throw (CommunicationException);
+            	JmsTcsFetcher() noexcept(false);
             
             	/**
             	 * Auxiliary method to reconstruct the TcsContext from
@@ -63,7 +69,7 @@ namespace giapi {
             	 *         the content from the JMS Message
             	 */
             	int _buildTcsContext(TcsContext & ctx, Message * msg)
-            			throw (CMSException);
+            			noexcept(false);
             
             	/**
             	 * Size of the TCS context
@@ -80,3 +86,4 @@ namespace giapi {
 
 }
 #endif /* JMSTCSFETCHER_H_ */
+

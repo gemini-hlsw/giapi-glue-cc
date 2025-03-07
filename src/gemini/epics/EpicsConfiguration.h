@@ -23,9 +23,11 @@ public:
 	/**
 	 * Initialize the configuration. This requires access to the
 	 * GMP to get the values.
+	 * @throw GiapiException
+	 * If there is an error while initializing the configuration,
+	 *        for example, due to connection issues with the GMP.
 	 */
-	virtual void init() throw (GiapiException) = 0;
-
+	virtual void init() noexcept(false) = 0;
 	/**
 	 * Return true if this epics configuration was correctly initialized
 	 * and contains information from the valid epics channels from the GMP

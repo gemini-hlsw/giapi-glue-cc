@@ -7,6 +7,8 @@
 #include <giapi/giapi.h>
 #include <giapi/giapiexcept.h>
 
+#include <stdexcept>
+
 namespace giapi {
 
 /**
@@ -79,7 +81,7 @@ public:
 	 * the getCount() method)
 	 */
 	virtual const std::string getDataAsString(int index) const
-			throw (InvalidOperation) = 0;
+			noexcept(false)=0;
 
 	/**
 	 * Read the data element at the specified index position as
@@ -95,7 +97,7 @@ public:
 	 * number of elements in this status item (as returned by the
 	 * the getCount() method)
 	 */
-	virtual int getDataAsInt(int index) const throw (InvalidOperation) = 0;
+	virtual int getDataAsInt(int index) const noexcept(false)=0;
 
 	/**
 	 * Read the data element at the specified index position as
@@ -111,7 +113,7 @@ public:
 	 * number of elements in this status item (as returned by the
 	 * the getCount() method)
 	 */
-	virtual float getDataAsFloat(int index) const throw (InvalidOperation) = 0;
+	virtual float getDataAsFloat(int index) const noexcept(false)=0;
 
 	/**
 	 * Read the data element at the specified index position as
@@ -127,7 +129,7 @@ public:
 	 * number of elements in this status item (as returned by the
 	 * the getCount() method)
 	 */
-	virtual double getDataAsDouble(int index) const throw (InvalidOperation) = 0;
+	virtual double getDataAsDouble(int index) const noexcept(false)=0;
 
 	/**
 	 * Read the data element at the specified index position as
@@ -143,7 +145,7 @@ public:
 	 * number of elements in this status item (as returned by the
 	 * the getCount() method)
 	 */
-	virtual unsigned char getDataAsByte(int index) const throw (InvalidOperation) = 0;
+	virtual unsigned char getDataAsByte(int index) const noexcept(false)=0;
 
 };
 

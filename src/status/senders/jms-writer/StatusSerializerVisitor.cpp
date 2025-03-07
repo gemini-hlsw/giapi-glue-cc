@@ -18,12 +18,12 @@ StatusSerializerVisitor::~StatusSerializerVisitor() {
 }
 
 void StatusSerializerVisitor::visitStatusItem(StatusItem *item)
-		throw (CMSException) {
+		noexcept(false) {
 	writeHeader(BASIC_OFFSET, item);
 }
 
 void StatusSerializerVisitor::visitAlarmItem(AlarmStatusItem * alarm)
-		throw (CMSException) {
+		noexcept(false) {
 	writeHeader(ALARM_OFFSET, alarm);
 
 	alarm::Cause cause = alarm->getCause();
@@ -74,12 +74,12 @@ void StatusSerializerVisitor::visitAlarmItem(AlarmStatusItem * alarm)
 }
 
 void StatusSerializerVisitor::visitHealthItem(HealthStatusItem * item)
-		throw (CMSException) {
+		noexcept(false) {
 	writeHeader(HEALTH_OFFSET, item);
 }
 
 void StatusSerializerVisitor::writeHeader(int offset, StatusItem *item)
-		throw (CMSException) {
+		noexcept(false) {
 
 	const type::Type type = item->getStatusType();
 	std::string value;

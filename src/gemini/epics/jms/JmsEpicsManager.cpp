@@ -10,7 +10,7 @@ namespace giapi {
 log4cxx::LoggerPtr JmsEpicsManager::logger(log4cxx::Logger::getLogger(
 		"giapi::gemini::JmsEpicsManager"));
 
-JmsEpicsManager::JmsEpicsManager() throw (CommunicationException) {
+JmsEpicsManager::JmsEpicsManager() noexcept(false) {
 	try {
 		_connectionManager = ConnectionManager::Instance();
 		//create an auto-acknowledged session
@@ -48,13 +48,13 @@ JmsEpicsManager::~JmsEpicsManager() {
 	_epicsConsumersMap.clear();
 }
 
-pEpicsManager JmsEpicsManager::create() throw (CommunicationException) {
+pEpicsManager JmsEpicsManager::create() noexcept(false) {
 	pEpicsManager mgr(new JmsEpicsManager());
 	return mgr;
 }
 
 int JmsEpicsManager::subscribeEpicsStatus(const std::string & name,
-		pEpicsStatusHandler handler) throw (GiapiException) {
+		pEpicsStatusHandler handler) noexcept(false) {
 
 	if (!(_epicsConfiguration->isInitialized())) {
 		//attempt to initialize it
@@ -75,8 +75,7 @@ int JmsEpicsManager::subscribeEpicsStatus(const std::string & name,
 }
 
 int JmsEpicsManager::unsubscribeEpicsStatus(const std::string & name)
-		throw (GiapiException) {
-
+		noexcept(false) {
 	if (_epicsConfiguration->hasChannel(name)) {
 		_epicsConsumersMap.erase(name);
 		return status::OK;

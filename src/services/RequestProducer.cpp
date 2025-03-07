@@ -14,7 +14,7 @@ namespace giapi {
 log4cxx::LoggerPtr RequestProducer::logger(log4cxx::Logger::getLogger(
 		"giapi.RequestProducer"));
 
-RequestProducer::RequestProducer() throw (CommunicationException) {
+RequestProducer::RequestProducer() noexcept(false){
 	try {
 		_connectionManager = ConnectionManager::Instance();
 		//create an auto-acknowledged session
@@ -40,7 +40,7 @@ RequestProducer::~RequestProducer() {
 	cleanup();
 }
 
-pRequestProducer RequestProducer::create() throw (CommunicationException) {
+pRequestProducer RequestProducer::create() noexcept(false){
 	pRequestProducer producer(new RequestProducer());
 	return producer;
 }
@@ -63,7 +63,7 @@ void RequestProducer::cleanup() {
 }
 
 std::string RequestProducer::getProperty(const std::string &key, long timeout)
-		throw (CommunicationException, TimeoutException) {
+		noexcept(false){
 
 	//prepare a message to the GMP, requesting the property
 

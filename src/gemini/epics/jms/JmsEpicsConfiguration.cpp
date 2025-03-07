@@ -15,7 +15,7 @@ JmsEpicsConfiguration::~JmsEpicsConfiguration() {
 
 }
 
-void JmsEpicsConfiguration::init() throw (CommunicationException, TimeoutException)  {
+void JmsEpicsConfiguration::init() noexcept(false) {
 	//request the channles
 	requestChannels(1000);
 }
@@ -34,8 +34,7 @@ pEpicsConfiguration JmsEpicsConfiguration::create(pSession session) {
 	return conf;
 }
 
-void JmsEpicsConfiguration::requestChannels(long timeout) throw (CommunicationException, TimeoutException) {
-
+void JmsEpicsConfiguration::requestChannels(long timeout) noexcept(false){
 	Message *request= NULL;
 
 	try {
