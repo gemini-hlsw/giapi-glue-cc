@@ -63,6 +63,9 @@ public:
 	 * @return A new Session object from the current connection.
 	 */
 	pSession createSession() noexcept(false);
+
+
+	pSession createSession(cms::Session::AcknowledgeMode acknowledgeMode) noexcept(false);
 	/**
 	 * Handles the exceptions that might happen with the connection
 	 * to the broker

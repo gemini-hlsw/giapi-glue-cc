@@ -27,3 +27,10 @@ src/examples/tcsApplyOffsetCallback
 src/examples/tcscontext
 src/examples/observe-simulator
 src/examples/epicsget
+compile_commands.json
+external/expat
+src/examples/fits_receiver
+src/examples/fits_sender
+src/examples/ghost-split-command
+src/examples/igrins2obssimulator
+.vscode/

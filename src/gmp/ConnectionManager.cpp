@@ -150,9 +150,13 @@ void ConnectionManager::onException(const CMSException & ex) {
 
 }
 
-pSession ConnectionManager::createSession() noexcept(false) {
-	pSession session(_connection->createSession(Session::AUTO_ACKNOWLEDGE));
+pSession ConnectionManager::createSession(cms::Session::AcknowledgeMode acknowledgeMode) noexcept(false) {
+	pSession session(_connection->createSession(acknowledgeMode));
 	return session;
+}
+
+pSession ConnectionManager::createSession() noexcept(false) {
+	return createSession(cms::Session::CLIENT_ACKNOWLEDGE);
 }
 
 }
