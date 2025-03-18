@@ -12,6 +12,18 @@
 #include <iomanip>
 #include <sstream>
 
+#define NUM_ITERATIONS 500
+
+// Structure to hold timing data
+struct PerfData {
+    int iteration;
+    uint64_t fileSize;
+    uint64_t serializeTime;
+    uint64_t sendTime;
+};
+
+// Store results
+std::vector<PerfData> perfResults;
 
 // Logger for this example
 static log4cxx::LoggerPtr exampleLogger(log4cxx::Logger::getLogger("giapi.examples.fits_sender"));
@@ -20,18 +32,10 @@ void printUsage(const char* program) {
     std::cout << "Usage: " << program << " <fits_file_path>" << std::endl;
 }
 
-int main(int argc, char* argv[]) {
-    if (argc != 2) {
-        printUsage(argv[0]);
-        return 1;
-    }
-
+int sendFitsFile(const std::string& fitsPath, const std::string& detID, int it)
+{
     try {
-        // Configure logging
-        //log4cxx::BasicConfigurator::configure();
 
-        // Read the FITS file
-        std::string fitsPath = argv[1];
         std::ifstream file(fitsPath, std::ios::binary | std::ios::ate);
 
         if (!file.is_open()) {
@@ -53,20 +57,53 @@ int main(int argc, char* argv[]) {
            std::cerr << "ifstream state: fail=" << file.fail() << ", bad=" << file.bad() << ", eof=" << file.eof() << std::endl;
            return 1;
         }
-
         LOG4CXX_INFO(exampleLogger, "Successfully read FITS file: " << fitsPath);
+        uint64_t ts_startSer = ScorpioData::getCurrentTimestamp();
 
-        uint64_t timestamp = ScorpioData::getCurrentTimestamp();
         // Create FitsData structure
-        ScorpioData fitsData("ScorpioData", timestamp);
+        ScorpioData fitsData(detID, ts_startSer);
         fitsData.data = buffer;
-        std::cout<< "sending the fitsData " << fitsPath<<std::endl;
-        giapi::InstTransferData::sendImage("detH", fitsData.serialize(), false);
+        std::vector<unsigned char> serializedData = fitsData.serialize();
+        uint64_t ts_endSer = ScorpioData::getCurrentTimestamp();
+        giapi::InstTransferData::sendImage(detID, serializedData, false);
+        uint64_t ts_endTransfer = ScorpioData::getCurrentTimestamp();
+        // Store results
+        perfResults.push_back({it, static_cast<uint64_t>(size), ts_startSer - ts_endSer, ts_endSer - ts_endTransfer});
 
     } catch (const giapi::GiapiException& e) {
         LOG4CXX_INFO(exampleLogger, "Error: " << e.what());
         return 1;
     }
+    return 0;
+}
+
+void saveResultsToFile(const std::string& filename) {
+    std::ofstream outFile(filename);
+    outFile << "Iteration,File Size (bytes),Serialize Time (ms),Send Latency (ms)\n";
+    for (const auto& data : perfResults) {
+        outFile << data.iteration << "," 
+                << data.fileSize << ","
+                << data.serializeTime / 1000 << ","
+                << data.sendTime / 1000 << "\n";
+    }
+    outFile.close();
+    LOG4CXX_INFO(exampleLogger, "Saved performance results to " << filename);
+}
+
+int main(int argc, char* argv[]) {
+    if (argc != 3) {
+        std::cerr << "Usage: " << argv[0] << " <fits_file_1> <fits_file_2>" << std::endl;
+        return 1;
+    }
+
+    // Send both FITS files multiple times
+    for (int i =0; i < NUM_ITERATIONS; i++) {
+        sendFitsFile(argv[1], "detH1", i);
+        sendFitsFile(argv[2], "detH2", i);
+    }
+
+    // Save results to a CSV file
+    saveResultsToFile("sender_performance.csv");
 
     return 0;
 } 

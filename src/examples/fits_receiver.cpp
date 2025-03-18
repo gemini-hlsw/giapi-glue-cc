@@ -10,6 +10,20 @@
 #include <iomanip>
 #include <sstream>
 #include <thread>
+#include <csignal>
+#include <atomic>
+
+// Structure to hold timing data
+struct PerfData {
+    uint64_t networkTime;
+    uint64_t deserializeTime;
+};
+
+// Atomic flag to detect Ctrl+C
+std::atomic<bool> running(true);
+
+// Store results
+std::vector<PerfData> perfResults;
 
 // Logger for this example
 static log4cxx::LoggerPtr exampleLogger(log4cxx::Logger::getLogger("giapi.examples.fits_receiver"));
@@ -46,18 +60,18 @@ void handleFitsData(const std::vector<unsigned char>& binaryData) {
             throw std::runtime_error("Error: Received data is not a ScorpioData instance. Label: " + data.dataLabel);
         }
         
-        std::cout << "Processing ScorpioDatam, ts: " << data.timestamp << std::endl;
+        //std::cout << "Processing ScorpioDatam, ts: " << data.timestamp << std::endl;
         
         uint64_t ts2 = ScorpioData::getCurrentTimestamp();
-        uint64_t tsres = ts2 - data.timestamp;
-        LOG4CXX_INFO(exampleLogger, "Time spent in Serialize, and network: " << (tsReceived - data.timestamp)/1000 << " ms");
-        LOG4CXX_INFO(exampleLogger, "Time spent in Serialize, network and Deserialize: " << tsres / 1000 << " ms");
+        uint64_t tsDeserialization = ts2 - tsReceived;
+        LOG4CXX_DEBUG(exampleLogger, "Time spent in Serialize, and network: " << (tsReceived - data.timestamp)/1000 << " ms");
+        LOG4CXX_DEBUG(exampleLogger, "Time spent in Deserialize: " << tsDeserialization / 1000   << " ms");
         
         std::string filename = "received_" + data.dataLabel + ".fits";
         
         std::ofstream outFile(filename, std::ios::binary);
         if (!outFile.is_open()) {
-            LOG4CXX_INFO(exampleLogger, "Failed to create file: " << filename);
+            LOG4CXX_DEBUG(exampleLogger, "Failed to create file: " << filename);
             return;
         }
 
@@ -82,11 +96,45 @@ void handleFitsData(const std::vector<unsigned char>& binaryData) {
         
         outFile.close();
         uint64_t ts3 = ScorpioData::getCurrentTimestamp();
-        tsres = ts3 - ts2;
-        LOG4CXX_INFO(exampleLogger, "Successfully saved FITS file, Spent in saving the fits file: " << tsres / 1000 << " ms");
+        ts3 = ts3 - ts2;
+        LOG4CXX_DEBUG(exampleLogger, "Successfully saved FITS file, Spent in saving the fits file: " << ts3 / 1000 << " ms");
+        // Store results
+        perfResults.push_back({tsReceived - data.timestamp, tsDeserialization});
+
+    // Log performance
         
     } catch (const std::exception& e) {
         LOG4CXX_ERROR(exampleLogger, "Error processing FITS data: " << e.what());
+    }
+}
+
+// Signal handler for Ctrl+C
+void signalHandler(int signal) {
+    if (signal == SIGINT) {
+        LOG4CXX_INFO(exampleLogger, "Ctrl+C detected! Saving results and exiting...");
+        running = false; // Set flag to exit loop
+    }
+}
+
+// Function to save results to a CSV file
+void saveResultsToFile(const std::string& filename) {
+    std::ofstream outFile(filename);
+    outFile << "Network Time (ms),Deserialize Time (ms)\n";
+    for (const auto& data : perfResults) {
+        outFile << (data.networkTime)/1000 << ","
+                << (data.deserializeTime) / 1000 << "\n";
+    }
+    outFile.close();
+    LOG4CXX_INFO(exampleLogger, "Saved performance results to " << filename);
+}
+
+// Thread function to subscribe to a detector
+void subscribeToDetector(const std::string& detID) {
+    try {
+        LOG4CXX_INFO(exampleLogger, "Starting subscription for: " << detID);
+        giapi::InstTransferData::receiveImage(detID, handleFitsData);
+    } catch (const std::exception& e) {
+        LOG4CXX_ERROR(exampleLogger, "Error in subscription for " << detID << ": " << e.what());
     }
 }
 
@@ -99,12 +147,18 @@ int main(int argc, char* argv[]) {
         LOG4CXX_INFO(exampleLogger, "Waiting for FITS files from scorpio...");
         
         // Subscribe to receive FITS data from scorpio
-        giapi::InstTransferData::receiveImage("detH", handleFitsData);
+        std::thread thread1(subscribeToDetector, "detH1");
+        std::cout<<"Sleeping" << std::endl;
+        std::this_thread::sleep_for(std::chrono::seconds(2));
+        std::thread thread2(subscribeToDetector, "detH2");
         
         // Keep the program running
-        while (true) {
+        while (running) {
             std::this_thread::sleep_for(std::chrono::seconds(1));
         }
+        
+        // Save performance results before exiting
+        saveResultsToFile("receiver_performance.csv");
         
     } catch (const giapi::GiapiException& e) {
         LOG4CXX_ERROR(exampleLogger, "GiapiException: " << e.what());
