@@ -63,6 +63,9 @@ public:
 	 * @return A new Session object from the current connection.
 	 */
 	pSession createSession() noexcept(false);
+
+
+	pSession createSession(cms::Session::AcknowledgeMode acknowledgeMode) noexcept(false);
 	/**
 	 * Handles the exceptions that might happen with the connection
 	 * to the broker
@@ -79,6 +82,8 @@ public:
 
 	void registerHandler(pGiapiErrorHandler handler);
 
+	pConnection createDedicatedConnection();
+       
 private:
 	ConnectionManager();
 	/**
@@ -94,10 +99,12 @@ private:
 	std::set<giapi_error_handler> _errorHandlersFunctions;
 
 	std::set<pGiapiErrorHandler> _errorHandlerObjects;
-
+	
+	std::string createUri();
+	
 	/**
 	 * Initialize the communication to the broker
-	 */
+	 */ 
 	void startup() noexcept(false);
 	/**
 	 * Timeout to use to retry a connection to the GMP in

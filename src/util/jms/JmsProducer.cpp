@@ -16,20 +16,19 @@ namespace jms {
 log4cxx::LoggerPtr JmsProducer::logger(log4cxx::Logger::getLogger(
 		"giapi.JmsProducer"));
 
+JmsProducer::JmsProducer(const std::string& queueName) : JmsProducer(queueName, cms::Session::CLIENT_ACKNOWLEDGE) {} 
 
-JmsProducer::JmsProducer(const std::string& queueName) noexcept(false){
+JmsProducer::JmsProducer(const std::string& queueName, cms::Session::AcknowledgeMode acknowledgeMode) noexcept(false) {
 
 	try {
 		_connectionManager = ConnectionManager::Instance();
 		//create an auto-acknowledged session
-		_session = _connectionManager->createSession();
+		_session = _connectionManager->createSession(acknowledgeMode);
 
 		//We will use a topic to send data
-		_destination = pDestination(_session->createTopic(
-				queueName));
+		_destination = pDestination(_session->createTopic(queueName));
 		//Instantiate the message producer for this destination
-		_producer = pMessageProducer(_session->createProducer(
-				_destination.get()));
+		_producer = pMessageProducer(_session->createProducer(_destination.get()));
 	} catch (CMSException& e) {
 		//clean any resources that might have been allocated
 		cleanup();
@@ -37,12 +36,6 @@ JmsProducer::JmsProducer(const std::string& queueName) noexcept(false){
 				+ e.getMessage());
 	}
 }
-
-
-//pJmsProducer JmsProducer::create(const std::string &name) throw (CommunicationException) {
-//	pJmsProducer producer(new JmsProducer(name));
-//	return producer;
-//}
 
 JmsProducer::~JmsProducer() {
 	LOG4CXX_DEBUG(logger, "Destroying Generic JMS Producer");

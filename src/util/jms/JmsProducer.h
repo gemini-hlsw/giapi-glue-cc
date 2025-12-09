@@ -42,6 +42,14 @@ protected:
 	JmsProducer(const std::string & queueName) noexcept(false);
 
 	/**
+	 * Constructor
+	 * @throw CommunicationException
+	 * If there is an issue initializing the producer,
+	 * such as connection failure or session creation errors.
+	 */
+	JmsProducer(const std::string & queueName, cms::Session::AcknowledgeMode acknowledgeMode) noexcept(false);
+
+	/**
 	 * The JMS Session associated to this producer.
 	 */
 	pSession _session;

@@ -17,10 +17,10 @@ ICD50 - GIAPI C++ Language Glue API.
 
 # Dependencies
 
-The GIAPI C++ API now supports the C++20 standard. C++20 introduces significant
+The GIAPI C++ API now supports the C++14 standard. C++14 introduces significant
 improvements over C++11, including enhanced performance, modern syntactic features,
 and expanded standard library capabilities. The GIAPI library can be compiled with any
-version of the GCC 10 compiler, which was among the first to fully implement C++20.
+version of the GCC 10 compiler, which was among the first to fully implement C++14.
 Currently, Gemini is using GIAPI on Rocky 9 with GCC 11.5.0.
 
 The following are tools used to build the GIAPI C++ API:
@@ -36,7 +36,7 @@ to the standard C++14.
 This decision was made considering that the "ActiveMQ" library, at the moment, only supports
 at most this version of C++. 
 
-It should be noted that, even so, GIAPI supports the standard of C++20 with all the modifications
+It should be noted that, even so, GIAPI supports the standard of C++14 with all the modifications
 in the build configurations of the externals. Also, all the dockerfiles are using Rocky 9 by default,
 but changing for Rocky 8 it's also works.
 
@@ -81,6 +81,6 @@ The steps performed from GEMINI to compile the library on Rocky 9 are described 
 
 # History
 The first version of the giapi-glue dates from October 24, 2008. It was written by AN (Arturo Nunez). 
-During these years it has been maintained mainly by Carlos Quiroz, Ignacio Arriagada and Fran. Ramos. . 
-Migration to std=c++20/14 made by Pedro Arce.
+During these years it has been maintained mainly by Carlos Quiroz, Ignacio Arriagada and Fran. Ramos.
+Migration to std=c++14 made by Pedro Arce (internship).
 

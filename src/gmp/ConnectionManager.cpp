@@ -6,6 +6,7 @@
 #include <decaf/util/concurrent/CountDownLatch.h>
 #include <activemq/library/ActiveMQCPP.h>
 #include <decaf/io/IOException.h>
+#include <iostream>
 
 namespace gmp {
 log4cxx::LoggerPtr ConnectionManager::logger(log4cxx::Logger::getLogger("giapi.gmp.ConnectionManager"));
@@ -49,26 +50,37 @@ void ConnectionManager::registerHandler(pGiapiErrorHandler handler) {
 }
 
 
-void ConnectionManager::startup() noexcept(false) {
+std::string ConnectionManager::createUri() {
+	
     std::string hostname = giapi::util::PropertiesUtil::Instance().getProperty("gmp.hostname");
     if(giapi::util::StringUtil::isEmpty(hostname)){
         hostname = std::string("localhost");
     }
+
     std::string brokerURI =
         "failover:(tcp://"+hostname+":61616"
         "?wireFormat=openwire"
-//        "&transport.useInactivityMonitor=false"
-//        "&connection.alwaysSyncSend=true"
+        //"&transport.useInactivityMonitor=false"
+        //"&connection.alwaysSyncSend=true"
         "&connection.useAsyncSend=true"
-//        "&transport.commandTracingEnabled=true"
-//        "&transport.tcpTracingEnabled=true"
-//        "&wireFormat.tightEncodingEnabled=true"
-        ")";
+        //"&transport.commandTracingEnabled=true"
+        //"&transport.tcpTracingEnabled=true"
+        //"&wireFormat.tightEncodingEnabled=true"
+        ")?startupMaxReconnectAttempts=1&initialReconnectDelay=100";
 
+	LOG4CXX_DEBUG(logger, "Broker URI: " << brokerURI);
+	return brokerURI;
+
+}
+
+void ConnectionManager::startup() noexcept(false) {
 	try {
+		std::string brokerURI = createUri();
+		LOG4CXX_DEBUG(logger, "Connecting to GMP broker at: " << brokerURI);
 		std::auto_ptr<ConnectionFactory> connectionFactory(
 				ConnectionFactory::createCMSConnectionFactory( brokerURI ));
 
+		
 		// Create a Connection
 		_connection.reset(connectionFactory->createConnection());
 
@@ -77,8 +89,16 @@ void ConnectionManager::startup() noexcept(false) {
 		_connection->setExceptionListener(this);
 
 	} catch (CMSException& e) {
+		LOG4CXX_ERROR(logger, "Problem connecting to GMP. " << e.getMessage());
 		throw GmpException("Problem connecting to GMP. " + e.getMessage());
 	}
+	catch (const std::exception& e) {
+		LOG4CXX_ERROR(logger, "Standard exception connecting to GMP: " << e.what());
+		throw GmpException(std::string("Problem connecting to GMP: ") + e.what());
+    } catch (...) {
+        LOG4CXX_ERROR(logger, "Unknown exception connecting to GMP");
+        throw GmpException("Unknown problem connecting to GMP");
+    }
 }
 
 pConnectionManager ConnectionManager::Instance() noexcept(false) {
@@ -107,6 +127,7 @@ void ConnectionManager::onException(const CMSException & ex) {
 	bool connected = false;
 	while (!connected) {
 		try {
+			LOG4CXX_INFO(logger, "Attempting reconnection...");
 			startup();
 			connected = true;
 		} catch (GmpException &e) {
@@ -117,27 +138,6 @@ void ConnectionManager::onException(const CMSException & ex) {
 	}
 
 	LOG4CXX_INFO(logger, "Connection recovered. Invoking user provided error handlers");
-/*
-	//functions first...
-	std::set<giapi_error_handler>::const_iterator it = _errorHandlersFunctions.begin();
-
-	while (it != _errorHandlersFunctions.end()) {
-		//invoke this handler
-		(*it)();
-		it++;
-	}
-
-	//now the objects...
-	std::set<pGiapiErrorHandler>::const_iterator itObject =
-			_errorHandlerObjects.begin();
-
-	while (itObject != _errorHandlerObjects.end()) {
-		//invoke this handler
-		pGiapiErrorHandler handler = *itObject;
-		handler->onError();
-		itObject++;
-	}
-*/
 
 	for (const auto &handler : _errorHandlersFunctions) {
 		handler();
@@ -150,9 +150,28 @@ void ConnectionManager::onException(const CMSException & ex) {
 
 }
 
-pSession ConnectionManager::createSession() noexcept(false) {
-	pSession session(_connection->createSession(Session::AUTO_ACKNOWLEDGE));
+pConnection ConnectionManager::createDedicatedConnection() {
+    std::string brokerURI = createUri();
+    LOG4CXX_DEBUG(logger, "Creating dedicated connection for consumer, broker URI: " << brokerURI);
+	try {
+		// Create a new connection factory (you may already store broker URI internally)
+    	ConnectionFactory* factory = ConnectionFactory::createCMSConnectionFactory(brokerURI);
+    	Connection* rawConnection = factory->createConnection();
+    	LOG4CXX_DEBUG(logger, "Connection created, broker URI: " << brokerURI);
+    	return pConnection(rawConnection);
+	} catch (const CMSException& e) {
+		LOG4CXX_ERROR(logger, "Error creating dedicated connection: " << e.what());
+		throw CommunicationException("Error creating dedicated connection: " + std::string(e.what()));
+	}
+}
+
+pSession ConnectionManager::createSession(cms::Session::AcknowledgeMode acknowledgeMode) noexcept(false) {
+	pSession session(_connection->createSession(acknowledgeMode));
 	return session;
+}
+
+pSession ConnectionManager::createSession() noexcept(false) {
+	return createSession(cms::Session::CLIENT_ACKNOWLEDGE);
 }
 
 }
